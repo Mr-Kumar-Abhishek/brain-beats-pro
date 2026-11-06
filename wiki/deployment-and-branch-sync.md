@@ -55,6 +55,9 @@ git push origin main master dev debug claude
 git push base-stream main master dev debug claude
 ```
 
+> [!IMPORTANT]
+> **Upstream Push Policy**: Do **not** push to `upstream` unless explicitly indicated or requested. Routine synchronization must target only `origin` and `base-stream`.
+
 ---
 
 ## 3. GitHub Pages Deployment (`gh-pages`)

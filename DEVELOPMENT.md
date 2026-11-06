@@ -378,6 +378,13 @@ This project maintains synchronized branches across three designated remotes:
 | **`base-stream`** | `git@github.com:Mr-Kumar-Abhishek/brain-beats-pro.git` | **Pro Distribution & Mirror Remote**: Secondary distribution and backup upstream mirror tracking aligned development branches (`main`, `master`, `dev`, `debug`, `claude`, `gh-pages`). |
 | **`upstream`** | `git@github.com:cybernetics-decentral/brain-beats.git` | **Organization Source Remote**: Canonical organizational upstream repository for core cybernetics-decentral community tracking and integration. |
 
+### Synchronization Rules & Push Policies
+
+> [!IMPORTANT]
+> **Push Restrictions**:
+> - **`origin`** & **`base-stream`**: Standard targets for routine multi-branch pushes (`main`, `master`, `dev`, `debug`, `claude`).
+> - **`upstream`**: **Pull/Fetch-Only by default**. Do **not** push to `upstream` unless explicitly instructed or requested by the maintainer.
+
 ### Synchronization Commands
 
 ```bash
@@ -393,10 +400,7 @@ git push origin main master dev debug claude
 # 3. Synchronize with base-stream mirror:
 git push base-stream main master dev debug claude
 
-# 4. Sync upstream organization remote (where applicable):
-for branch in main master dev debug; do
-  git push upstream HEAD:refs/heads/$branch || true
-done
+# Note: Push to upstream is strictly reserved and executed ONLY when explicitly indicated.
 ```
 
 ---
