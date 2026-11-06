@@ -422,7 +422,7 @@ Brain Beats Pro enforces a strict boundary between software engineering, configu
 When evaluating or executing future framework migrations (e.g., modern SSGs, hybridized frontend architectures, or SSR frameworks):
 
 1. **Liquid Template Preservation:** All HTML/JS program files and views that interface with the content or blog engine must preserve and implement standard **Liquid templates** (`_layouts/`, `_includes/`, and front matter bindings).
-2. **Template Modularization:** Shared site headers, navigation bars, footers, MathJax equations (`_includes/mathjax.html`), SEO metadata tags, and volume control matrices must remain modularized via Liquid includes (`{% raw %}{% include filename.html %}{% endraw %}`) to uphold the DRY (Don't Repeat Yourself) architectural principle.
+2. **Template Modularization:** Shared site headers, navigation bars, footers, MathJax equations (`_includes/mathjax.html`), Schema.org JSON-LD SEO structured data (`_includes/seo-schema.html`), SEO metadata tags, and volume control matrices must remain modularized via Liquid includes (`{% raw %}{% include filename.html %}{% endraw %}`) to uphold the DRY (Don't Repeat Yourself) architectural principle.
 3. **Dynamic Pagination & Post Routing:** Blog listings, pagination (`paginator.posts`), search indices, and category permalinks must maintain seamless compatibility with Liquid variables and loop constructs across all target framework environments.
 4. **Client-Side Synthesis & Service Worker Decoupling:** Any migration must keep the Web Audio API synthesis engine (`js/main.js`), audio worklets, preset JSON catalogs, and PWA service worker precaching completely decoupled from server-rendering layers to preserve 100% offline functionality.
 
@@ -557,10 +557,10 @@ curl -I http://127.0.0.1:4000/blog/
 4. **Interactive Controls:** Ensure touch targets are ≥ 42px on mobile, action buttons support flex-wrapping, and form controls specify proper ARIA labels.
 
 ### 18.4. Step 4: Run Automated TDD Test Verification
-Ensure all 84 test assertions pass cleanly with zero failures before committing:
+Ensure all 86 test assertions pass cleanly with zero failures before committing:
 ```bash
 npm test
-# Expected output: Test Results: 84 Passed, 0 Failed
+# Expected output: Test Results: 86 Passed, 0 Failed
 ```
 
 ### 18.5. Step 5: Commit Changes Following Conventional Commits

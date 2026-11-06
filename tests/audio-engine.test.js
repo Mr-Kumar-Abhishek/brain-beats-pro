@@ -513,6 +513,35 @@ async function runTestSuite() {
     "Google Translate plugin element and modular include are properly integrated into layouts and views"
   );
 
+  const seoSchemaHtml = fs.readFileSync(path.join(__dirname, '../_includes/seo-schema.html'), 'utf8');
+  const postLayoutContent = fs.readFileSync(path.join(__dirname, '../_layouts/post.html'), 'utf8');
+  assert(
+    seoSchemaHtml.includes('application/ld+json') &&
+    seoSchemaHtml.includes('https://schema.org') &&
+    seoSchemaHtml.includes('BlogPosting') &&
+    seoSchemaHtml.includes('WebApplication') &&
+    seoSchemaHtml.includes('BreadcrumbList') &&
+    defaultLayoutContent.includes('{% include seo-schema.html %}') &&
+    indexHtmlContent.includes('{% include seo-schema.html %}') &&
+    postLayoutContent.includes('itemtype="https://schema.org/BlogPosting"'),
+    "SEO Schema.org JSON-LD Liquid include and microdata are integrated across layouts and root pages"
+  );
+
+  const discordPluginHtml = fs.readFileSync(path.join(__dirname, '../_includes/discord-plugin.html'), 'utf8');
+  assert(
+    discordPluginHtml.includes('id="discord-community-plugin"') &&
+    discordPluginHtml.includes('discord-theme-light') &&
+    discordPluginHtml.includes('theme=light') &&
+    discordPluginHtml.includes('id="discordPluginModal"') &&
+    discordPluginHtml.includes('modal-fullscreen-sm-down') &&
+    discordPluginHtml.includes('container-fluid px-2 px-sm-3 px-md-4 px-lg-5') &&
+    discordPluginHtml.includes('flex-column flex-sm-row') &&
+    discordPluginHtml.includes('flex-fill flex-sm-grow-0') &&
+    defaultLayoutContent.includes('{% include discord-plugin.html %}') &&
+    indexHtmlContent.includes('{% include discord-plugin.html %}'),
+    "Discord community plugin in white/light theme is responsive across all screen sizes using Bootstrap and integrated across layouts and root views"
+  );
+
   console.log("\nPhase 14: Cloud CI/CD & Netlify Zero-Exit-Code Hardening Verification");
   const gemfileContent = fs.readFileSync(path.join(__dirname, '../Gemfile'), 'utf8');
   assert(!gemfileContent.includes("jekyll-github-metadata"), "Gemfile excludes jekyll-github-metadata to prevent AWS rate-limit exit code 1");

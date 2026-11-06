@@ -2,11 +2,11 @@
 layout: default
 ---
 <main>
-	<article>
-		<h1>{{ page.title }}</h1>
-		<time class="meta" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</time>
+	<article itemscope itemtype="https://schema.org/BlogPosting">
+		<h1 itemprop="headline">{{ page.title }}</h1>
+		<time class="meta" itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</time>
 
-		<div class="post">
+		<div class="post" itemprop="articleBody">
 		{{ content }}
 		</div>
 

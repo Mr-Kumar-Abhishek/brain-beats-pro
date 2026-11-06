@@ -76,7 +76,8 @@ og-title: "Brain Beats Pro | webring"
 			src="https://www.googletagmanager.com/gtag/js?id=UA-70747360-2"
 			></script>
 		<script async src="./js/google-analytics.js" ></script>
-	</head>
+		{% include seo-schema.html %}
+</head>
 	<body>
 		<!--[if lte IE 9]>
 		<p class="browserupgrade">
@@ -291,7 +292,7 @@ og-title: "Brain Beats Pro | webring"
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
 								<li>
-									<a class="dropdown-item" href="https://discord.gg/JNRPJDFWdY"
+									<a class="dropdown-item" href="https://discord.gg/JNRPJDFWdY" data-bs-toggle="modal" data-bs-target="#discordPluginModal"
 										>Chat</a
 										>
 								</li>
@@ -372,6 +373,7 @@ og-title: "Brain Beats Pro | webring"
 		<script>
 			const jsonData = "./json/webring.json";
 		</script>
+		{% include discord-plugin.html %}
 		<script src="./js/jquery-3.6.0.slim.min.js"></script>
 		<script src="./js/desc-data.js"></script>
 		<script src="./js/favs.js"></script>

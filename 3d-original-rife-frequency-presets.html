@@ -81,7 +81,8 @@ og-title: "Brain Beats Pro | 3D Original RIFE frequency presets"
 			src="https://www.googletagmanager.com/gtag/js?id=UA-70747360-2"
 			></script>
 		<script async src="./js/google-analytics.js" ></script>
-	</head>
+		{% include seo-schema.html %}
+</head>
 	<body>
 		<!--[if lte IE 9]>
 		<p class="browserupgrade">
@@ -296,7 +297,7 @@ og-title: "Brain Beats Pro | 3D Original RIFE frequency presets"
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
 								<li>
-									<a class="dropdown-item" href="https://discord.gg/JNRPJDFWdY"
+									<a class="dropdown-item" href="https://discord.gg/JNRPJDFWdY" data-bs-toggle="modal" data-bs-target="#discordPluginModal"
 										>Chat</a
 										>
 								</li>
@@ -374,6 +375,7 @@ og-title: "Brain Beats Pro | 3D Original RIFE frequency presets"
 			</template>
 		</div>
 		</div>
+		{% include discord-plugin.html %}
 		<div class="volume-box">
 			<p>
 				<b><i>volume</i></b>

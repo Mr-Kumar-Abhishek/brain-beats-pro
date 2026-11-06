@@ -52,7 +52,8 @@ layout: compress
 			 src="https://www.googletagmanager.com/gtag/js?id=UA-70747360-2"
 		   ></script>
 		   <script async src="/js/google-analytics.js" ></script>
-		{% include mathjax.html %}		  
+		{% include mathjax.html %}
+		{% include seo-schema.html %}
 
 	</head>
 	<body>
@@ -83,6 +84,9 @@ layout: compress
 					  <li class="nav-item">
 						<a class="nav-link" href="{{ '/cocomo.html' | relative_url }}">COCOMO Estimation</a>
 					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="https://discord.gg/JNRPJDFWdY" data-bs-toggle="modal" data-bs-target="#discordPluginModal">Chat</a>
+					  </li>
 					</ul>
 					{% include google-translate.html %}
 					<!--
@@ -102,6 +106,7 @@ layout: compress
 				</div>
 			</div>
 		</div>
+		{% include discord-plugin.html %}
 		<footer class="container-fluid text-center my-4 px-3 px-md-4">
     		<ul class="list-inline mb-2 text-center mx-auto">
         		<li class="list-inline-item"><a href="mailto:support@brain-beats.in"><i title="email" class="fa-solid fa-envelope"></i></a></li>

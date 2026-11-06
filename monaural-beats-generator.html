@@ -60,6 +60,7 @@ og-title: "Brain Beats Pro | Monaural beats"
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-70747360-2"></script>
 	<script async src="./js/google-analytics.js"></script>
+	{% include seo-schema.html %}
 </head>
 
 <body>
@@ -232,7 +233,7 @@ og-title: "Brain Beats Pro | Monaural beats"
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
 							<li>
-								<a class="dropdown-item" href="https://discord.gg/JNRPJDFWdY">Chat</a>
+								<a class="dropdown-item" href="https://discord.gg/JNRPJDFWdY" data-bs-toggle="modal" data-bs-target="#discordPluginModal">Chat</a>
 							</li>
 							<li>
 								<a class="dropdown-item" href="/privacy-policy.html">Privacy Policy</a>
@@ -300,6 +301,7 @@ og-title: "Brain Beats Pro | Monaural beats"
 				</div>
 			</div>
 		</div>
+		{% include discord-plugin.html %}
 		<div class="volume-box">
 			<p>
 				<b><i>volume</i></b>
