@@ -1,0 +1,52 @@
+<!-- Bootstrap Instruction and Medical Disclaimer Modal -->
+<div class="modal fade" id="instructionModal" tabindex="-1" aria-labelledby="instructionModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h5 class="modal-title" id="instructionModalLabel"> ~ Instruction and Disclaimer ~</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<!-- Modal Body -->
+			<div class="modal-body">
+				<br>
+				<ol>
+					<li>Lower your volume to a comfortable level and use headphones/earphones.</li>
+					<li>Choose the desired frequency preset or synthesis carrier.</li>
+					<li>Play the frequency preset in a quiet environment.</li>
+				</ol>
+				<br>
+				<p><strong>Disclaimer:</strong> These healing frequencies are not a substitute for professional medical care. Use them at your own risk and discretion.</p>
+				<p class="text-secondary small">The vibrational protocols and bio-acoustic frequencies discussed herein are intended strictly for scientific modeling, psychoacoustic research, and complementary wellness education. They do not constitute medical diagnosis, clinical advice, or treatment. Acute, progressive, or severe medical symptoms require urgent evaluation by licensed physicians. Never discontinue prescribed pharmaceuticals or medical therapies in favor of acoustic protocols.</p>
+				<h6>Note:</h6>
+				<br>
+				<ul>
+					<li>On screen presets can be searched from the search bar in the navigation menu.</li>
+					<li>Microbial eradication and viral prophylaxis require FDA-approved clinical therapeutics.</li>
+					<li>If you experience discomfort, pause playback immediately and adjust volume.</li>
+				</ul>
+				<br>
+			</div>
+			<!-- Modal Footer -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Alias for disclaimerModal target -->
+<script type="text/javascript">
+  (function() {
+    document.addEventListener('click', function(e) {
+      var trigger = e.target.closest('[data-bs-target="#disclaimerModal"]');
+      if (trigger) {
+        var modalEl = document.getElementById('instructionModal');
+        if (modalEl && window.bootstrap && window.bootstrap.Modal) {
+          var modal = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+          modal.show();
+        }
+      }
+    });
+  })();
+</script>
+
