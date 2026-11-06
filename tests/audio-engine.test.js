@@ -220,12 +220,39 @@ async function runTestSuite() {
     assert(false, `Single tone tests threw exception: ${e.message}`);
   }
 
-  console.log("\nPhase 4: Double Tone Synthesis (Binaural & Monaural)");
+  console.log("\nPhase 4: Double Tone Synthesis, Polarity & Channel Dynamics");
   try {
     global.play_binaural(200, 208);
     assert(global.binaural_flag === 1, "play_binaural(200, 208) activates binaural beat pair");
+    assert(global.polarity_gain_1 !== null && global.polarity_gain_2 !== null, "polarity gain nodes are initialized on binaural playback");
+    assert(global.polarity_gain_1.gain.value === 1.0 && global.polarity_gain_2.gain.value === 1.0, "normal polarity sets in-phase gain (+1.0 / +1.0)");
+
+    // Test dynamic polarity switching
+    global.set_binaural_polarity('inverted-right');
+    assert(global.polarity_gain_1.gain.value === 1.0 && global.polarity_gain_2.gain.value === -1.0, "inverted-right polarity sets R gain to -1.0 (180deg anti-phase)");
+
+    global.set_binaural_polarity('inverted-left');
+    assert(global.polarity_gain_1.gain.value === -1.0 && global.polarity_gain_2.gain.value === 1.0, "inverted-left polarity sets L gain to -1.0");
+
+    global.set_binaural_polarity('inverted-both');
+    assert(global.polarity_gain_1.gain.value === -1.0 && global.polarity_gain_2.gain.value === -1.0, "inverted-both polarity sets both gains to -1.0");
+
+    global.set_binaural_polarity('normal');
+    assert(global.polarity_gain_1.gain.value === 1.0 && global.polarity_gain_2.gain.value === 1.0, "normal polarity restores in-phase gains to +1.0");
+
+    // Test real-time channel swapping
+    const f1Before = global.double_tone_oscillator_1.frequency.value;
+    const f2Before = global.double_tone_oscillator_2.frequency.value;
+    global.swap_binaural_channels();
+    assert(
+      global.double_tone_oscillator_1.frequency.value === f2Before &&
+      global.double_tone_oscillator_2.frequency.value === f1Before,
+      "swap_binaural_channels() dynamically transposes active oscillator frequencies"
+    );
+
     global.stop_binaural();
     assert(global.binaural_flag === 0, "stop_binaural() stops double tone oscillators");
+    assert(global.polarity_gain_1 === null && global.polarity_gain_2 === null, "stop_binaural() cleanly disposes polarity gain nodes");
 
     global.play_monaural(200, 208);
     assert(global.monaural_flag === 1, "play_monaural(200, 208) activates monaural beat pair");
@@ -441,6 +468,17 @@ async function runTestSuite() {
 
   const mainJsContent = fs.readFileSync(path.join(__dirname, '../js/main.js'), 'utf8');
   assert(mainJsContent.includes("play_yellow_noise") && mainJsContent.includes("play_violet_noise") && mainJsContent.includes("live_volume_set"), "js/main.js contains yellow noise, violet noise, and volume dynamics patches");
+  assert(mainJsContent.includes("binaural_polarity") && mainJsContent.includes("set_binaural_polarity") && mainJsContent.includes("swap_binaural_channels"), "js/main.js contains binaural polarity engine and channel swap functions");
+
+  const binauralGenHtml = fs.readFileSync(path.join(__dirname, '../binaural-beats-generator.html'), 'utf8');
+  const mindMachineGenHtml = fs.readFileSync(path.join(__dirname, '../binaural-mind-machine-generator.html'), 'utf8');
+  assert(
+    binauralGenHtml.includes('id="binaural-polarity"') &&
+    binauralGenHtml.includes('swap_binaural_channels()') &&
+    mindMachineGenHtml.includes('id="binaural-polarity"') &&
+    mindMachineGenHtml.includes('swap_binaural_channels()'),
+    "Binaural generator and mind machine generator pages include polarity and channel swap UX controls"
+  );
 
   console.log("\nPhase 14: Cloud CI/CD & Netlify Zero-Exit-Code Hardening Verification");
   const gemfileContent = fs.readFileSync(path.join(__dirname, '../Gemfile'), 'utf8');

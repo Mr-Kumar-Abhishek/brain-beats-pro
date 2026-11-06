@@ -348,9 +348,9 @@ og-title: "Brain Beats Pro | binaural mind machine generator"
 										<div class="col text-start">
 											<div class="card-text">
 												<form>
-													<div class="row">
-														<div class="form-group col">
-															<label for="freq1">Left Ear Frequency</label>
+													<div class="row g-3">
+														<div class="col-12 col-md-6">
+															<label for="freq1" class="form-label fw-semibold">Left Ear Frequency (Hz)</label>
 															<input
 																id="freq1"
 																type="number"
@@ -360,8 +360,8 @@ og-title: "Brain Beats Pro | binaural mind machine generator"
 																step="0.01" 
 																>
 														</div>
-														<div class="form-group col">
-															<label for="freq2">Right Ear frequency</label>
+														<div class="col-12 col-md-6">
+															<label for="freq2" class="form-label fw-semibold">Right Ear frequency (Hz)</label>
 															<input
 																id="freq2"
 																type="number"
@@ -370,6 +370,23 @@ og-title: "Brain Beats Pro | binaural mind machine generator"
 																min="0"
 																step="0.01" 
 																>
+														</div>
+													</div>
+													<div class="row g-3 mt-1 align-items-end">
+														<div class="col-12 col-md-8">
+															<label for="binaural-polarity" class="form-label fw-semibold">Audio Polarity &amp; Phase</label>
+															<select id="binaural-polarity" class="form-select" onchange="set_binaural_polarity(this.value)" aria-label="Binaural audio polarity mode">
+																<option value="normal" selected>Normal (+ / +) &mdash; In-Phase Standard</option>
+																<option value="inverted-right">Invert Right (+ / &minus;) &mdash; Anti-Phase Acoustic Width</option>
+																<option value="inverted-left">Invert Left (&minus; / +) &mdash; Anti-Phase Left</option>
+																<option value="inverted-both">Invert Both (&minus; / &minus;) &mdash; 180&deg; Full Inversion</option>
+															</select>
+															<div class="form-text">Invert channel phase (180&deg;) for intracranial expansion or centered acoustic focus.</div>
+														</div>
+														<div class="col-12 col-md-4">
+															<button type="button" class="btn btn-outline-secondary w-100" onclick="swap_binaural_channels()" title="Swap Left and Right ear frequencies">
+																<span aria-hidden="true">&#8644;</span> Swap L / R
+															</button>
 														</div>
 													</div>
 												</form>
@@ -684,6 +701,7 @@ og-title: "Brain Beats Pro | binaural mind machine generator"
 									<li>Sit in a dark room.</li>
 									<li>Lower your volume and use earphones/headphones!</li>
 									<li>Set the desired frequency. The generator will produce the difference of the two frequencies you enter.</li>
+									<li>Optionally select an Audio Polarity mode (e.g. Invert Right for anti-phase spatial widening) or Swap L/R channels.</li>
 									<li>Keep it in front of your eyes.</li>
 									<li>Play the mind machine generator</li>
 									<li>Lastly and the most important step, <strong>CLOSE YOUR EYES!</strong></li>
@@ -693,8 +711,9 @@ og-title: "Brain Beats Pro | binaural mind machine generator"
 								<br>
 								<ul>
 									<li>The mind machine generator works with the difference of the two frequencies. The generator will produce a frequency which is the difference of two frequencies you enter.</li>
-									<li>The upper limit of individual frequency (of the two) which a human brain can detect binaural beats is till 1000 Hz.</p>
-									<li>The human hearing range is from 20 Hz to 20000 Hz. Individial frequencies should be in this range.</li>
+									<li>The upper limit of individual frequency (of the two) which a human brain can detect binaural beats is till 1000 Hz.</li>
+									<li>The human hearing range is from 20 Hz to 20000 Hz. Individual frequencies should be in this range.</li>
+									<li><strong>Polarity &amp; Phase:</strong> Normal (+ / +) produces standard in-phase stereo sound. Invert Right (+ / &minus;) inverts the right channel phase by 180&deg;, generating anti-phase binaural interference for an expanded acoustic space. Swap L / R reverses carrier frequencies between left and right ears.</li>
 								</ul>
 								<br>
 							</div>

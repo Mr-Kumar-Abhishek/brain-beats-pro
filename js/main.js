@@ -34,6 +34,9 @@ var double_tone_oscillator_1;
 var double_tone_oscillator_2;
 var single_tone_oscillator;
 var sine_oscillators;
+var binaural_polarity = 'normal'; // 'normal', 'inverted-right', 'inverted-left', 'inverted-both'
+var polarity_gain_1 = null;
+var polarity_gain_2 = null;
 
 var monaural_flag = 0;
 var binaural_flag = 0;
@@ -539,11 +542,34 @@ function play_double_tone (freq1, freq2, form, deviation) {
     
     double_tone_oscillator_1.frequency.setValueAtTime(freq1, audioCtx.currentTime);
     double_tone_oscillator_2.frequency.setValueAtTime(freq2, audioCtx.currentTime);
+
+    polarity_gain_1 = audioCtx.createGain();
+    polarity_gain_2 = audioCtx.createGain();
+
+    var g1 = 1.0;
+    var g2 = 1.0;
+    if (deviation == "binaural") {
+      if (binaural_polarity === 'inverted-right') {
+        g1 = 1.0;
+        g2 = -1.0;
+      } else if (binaural_polarity === 'inverted-left') {
+        g1 = -1.0;
+        g2 = 1.0;
+      } else if (binaural_polarity === 'inverted-both') {
+        g1 = -1.0;
+        g2 = -1.0;
+      }
+    }
+    polarity_gain_1.gain.value = g1;
+    polarity_gain_2.gain.value = g2;
     
     volume = audioCtx.createGain();
     
-    double_tone_oscillator_1.connect(pannerNode_1);
-    double_tone_oscillator_2.connect(pannerNode_2);
+    double_tone_oscillator_1.connect(polarity_gain_1);
+    polarity_gain_1.connect(pannerNode_1);
+
+    double_tone_oscillator_2.connect(polarity_gain_2);
+    polarity_gain_2.connect(pannerNode_2);
       
     pannerNode_1.connect(volume);
     pannerNode_2.connect(volume);
@@ -1275,8 +1301,18 @@ function play_mind_machine_binaural(freq1, freq2){
 function stop_double_tone() {
   if(double_tone_flag == 1){
     double_tone_flag = 0;
-    double_tone_oscillator_1.stop();
-    double_tone_oscillator_2.stop();
+    try {
+      double_tone_oscillator_1.stop();
+      double_tone_oscillator_2.stop();
+    } catch (e) {}
+    if (polarity_gain_1) {
+      try { polarity_gain_1.disconnect(); } catch (e) {}
+      polarity_gain_1 = null;
+    }
+    if (polarity_gain_2) {
+      try { polarity_gain_2.disconnect(); } catch (e) {}
+      polarity_gain_2 = null;
+    }
   }
 }
 
@@ -1634,7 +1670,13 @@ function generator_validator(freq1, freq2, freq_type) {
 function play_binaural_generator(){
   var freq1 = $("#freq1").val();
   var freq2 = $("#freq2").val();
-   if(generator_validator(freq1, freq2, "binaural")){
+  if (typeof $ !== 'undefined' && $("#binaural-polarity").length) {
+    var p = $("#binaural-polarity").val();
+    if (p) {
+      binaural_polarity = p;
+    }
+  }
+  if(generator_validator(freq1, freq2, "binaural")){
     play_binaural(freq1, freq2);
   } else {
     return console.error("Binaural generator validation failed.");
@@ -1666,10 +1708,83 @@ function play_sq_monaural_generator(){
 function play_mind_machine_binaural_generator(){
   var freq1 = $("#freq1").val();
   var freq2 = $("#freq2").val();
-   
-
+  if (typeof $ !== 'undefined' && $("#binaural-polarity").length) {
+    var p = $("#binaural-polarity").val();
+    if (p) {
+      binaural_polarity = p;
+    }
+  }
   if(generator_validator(freq1, freq2, "binaural")){
     play_mind_machine_binaural(freq1, freq2);
+  }
+}
+
+function set_binaural_polarity(mode) {
+  binaural_polarity = mode || 'normal';
+  if (typeof document !== 'undefined') {
+    var sel = document.getElementById('binaural-polarity');
+    if (sel && sel.value !== binaural_polarity) {
+      sel.value = binaural_polarity;
+    }
+  }
+  live_polarity_set();
+  return binaural_polarity;
+}
+
+function live_polarity_set() {
+  if (polarity_gain_1 && polarity_gain_2 && audioCtx) {
+    var g1 = 1.0;
+    var g2 = 1.0;
+    if (deviation_type === 'binaural') {
+      if (binaural_polarity === 'inverted-right') {
+        g1 = 1.0;
+        g2 = -1.0;
+      } else if (binaural_polarity === 'inverted-left') {
+        g1 = -1.0;
+        g2 = 1.0;
+      } else if (binaural_polarity === 'inverted-both') {
+        g1 = -1.0;
+        g2 = -1.0;
+      }
+    }
+    var t = audioCtx.currentTime || 0;
+    if (polarity_gain_1.gain && polarity_gain_1.gain.setValueAtTime) {
+      polarity_gain_1.gain.setValueAtTime(g1, t);
+    } else if (polarity_gain_1.gain) {
+      polarity_gain_1.gain.value = g1;
+    }
+    if (polarity_gain_2.gain && polarity_gain_2.gain.setValueAtTime) {
+      polarity_gain_2.gain.setValueAtTime(g2, t);
+    } else if (polarity_gain_2.gain) {
+      polarity_gain_2.gain.value = g2;
+    }
+  }
+}
+
+function swap_binaural_channels() {
+  if (typeof document !== 'undefined') {
+    var f1 = document.getElementById('freq1');
+    var f2 = document.getElementById('freq2');
+    if (f1 && f2) {
+      var tmp = f1.value;
+      f1.value = f2.value;
+      f2.value = tmp;
+    }
+  }
+  if (double_tone_flag === 1 && double_tone_oscillator_1 && double_tone_oscillator_2) {
+    var cur1 = double_tone_oscillator_1.frequency.value;
+    var cur2 = double_tone_oscillator_2.frequency.value;
+    var t = audioCtx ? audioCtx.currentTime : 0;
+    if (double_tone_oscillator_1.frequency.setValueAtTime) {
+      double_tone_oscillator_1.frequency.setValueAtTime(cur2, t);
+      double_tone_oscillator_2.frequency.setValueAtTime(cur1, t);
+    } else {
+      double_tone_oscillator_1.frequency.value = cur2;
+      double_tone_oscillator_2.frequency.value = cur1;
+    }
+    var tempB1 = beat_freq_1;
+    beat_freq_1 = beat_freq_2;
+    beat_freq_2 = tempB1;
   }
 }
 
