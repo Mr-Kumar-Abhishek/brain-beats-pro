@@ -12,5 +12,5 @@ end
 gem "webrick", "~> 1.8"
 gem "kramdown-parser-gfm", "~> 1.1"
 gem "faraday-retry", "~> 2.0"
-gem "json", "2.18.0"
+gem "json", "2.19.9"
 gem "bigdecimal", "4.0.1"
