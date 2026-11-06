@@ -1,7 +1,7 @@
 # Brain Beats - Brainwave Entrainment & Web Audio Synthesis Engine
 
 [![Node.js Version](https://img.shields.io/badge/Node.js-24%20LTS-339933?logo=nodedotjs)](https://nodejs.org/)
-[![Test Suite](https://img.shields.io/badge/Tests-63%20Passed%20(100%25)-success?logo=jest)](TEST_REPORT.md)
+[![Test Suite](https://img.shields.io/badge/Tests-84%20Passed%20(100%25)-success?logo=jest)](TEST_REPORT.md)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](LICENSE)
 [![Content License: CC BY 4.0](https://img.shields.io/badge/Content_License-CC_BY_4.0-lightgrey.svg)](LICENSE-CONTENT.txt)
 [![PWA: Offline-First](https://img.shields.io/badge/PWA-Offline--First-orange?logo=pwa)](sw.js)
@@ -155,7 +155,7 @@ Phase 12: Node.js 24 Deployment Verification ... [PASS]
 Phase 13: Developer Docs & Patch Verification .. [PASS]
 Phase 14: Cloud CI/CD & Netlify Hardening ...... [PASS]
 ==================================================
-   Test Results: 63 Passed, 0 Failed
+   Test Results: 84 Passed, 0 Failed
 ==================================================
 ```
 
@@ -200,6 +200,7 @@ npm run build
 │       ├── pages.yml                   # GitHub Actions Pages CI/CD workflow (Node 24)
 │       └── codeql.yml                  # Automated CodeQL static analysis security scan
 ├── _includes/
+│   ├── google-translate.html           # Google Translate widget & dynamic RTL language engine
 │   └── mathjax.html                    # MathJax 3 typography configuration & offline loader
 ├── _layouts/
 │   ├── compress.html                   # HTML minification layout
@@ -225,7 +226,7 @@ npm run build
 │   ├── build-css.js                    # Dart Sass transpilation build script
 │   └── generate-sitemap.js             # Automated sitemap.xml generator
 ├── tests/
-│   └── audio-engine.test.js            # Automated TDD unit/integration test suite (63 tests)
+│   └── audio-engine.test.js            # Automated TDD unit/integration test suite (84 tests)
 ├── .node-version                       # Node.js 24 environment version file
 ├── .nvmrc                              # NVM runtime configuration (Node 24)
 ├── 3d-*.html                           # 3D spatial audio generators & preset pages

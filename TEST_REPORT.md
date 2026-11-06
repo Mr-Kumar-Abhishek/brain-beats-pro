@@ -3,7 +3,7 @@
 **Project:** Brain Beats  
 **Date:** September 20, 2026  
 **Methodology:** Test-Driven Development (TDD)  
-**Status:** All Tests Passing (63/63)
+**Status:** All Tests Passing (84/84)
 
 ---
 
@@ -42,6 +42,8 @@ flowchart LR
 | **Cycle 10** | Developer Docs & Patch Integrity | Documentation excluded from build artifacts & unverified patches | Restored comprehensive `README.md`, developer indexes, and added Phase 13 test gates | Validated `README.md`, `DEVELOPMENT.md`, `CONTRIBUTING.md`, `cocomo-cost-estimate.md`, and DSP patches |
 | **Cycle 11** | Cloud CI/CD & Netlify Hardening | Netlify exit codes 10, 1, and 2 on deployment branches and rate limits | Configured multi-branch dual-mode build handling and context in `netlify.toml`, removed unauthenticated gems, automated local sitemap | Added Phase 14 automated test gates in `tests/audio-engine.test.js` |
 | **Cycle 12** | Modular SCSS & Build Pipeline | Fragmented stylesheets across app & blog with manual CSS edits | Consolidated into modular `_sass/` partials with Dart Sass transpiler (`scripts/build-css.js`) | Integrated `"build:css"` into `"build"` pipeline and verified clean Jekyll copy without duplicate destination conflicts |
+| **Cycle 13** | Audio Polarity & Channel Dynamics | Binaural synthesis lacked phase inversion controls and channel frequency swapping | Implemented `binaural_polarity` gain nodes in `js/main.js` and `swap_binaural_channels()` | Integrated dedicated master settings panel and preset card swap buttons across all binaural views |
+| **Cycle 14** | Multi-Language Translation & Responsive Bootstrap UX | Translation shifted body margin down 40px, top iframes overlaid navbar, text nodes orphaned, RTL scripts rendered LTR, and blog images distorted | Added `_includes/google-translate.html` with dynamic RTL script detection, suppressed `.VIpgJd-ZVi9od-ORHb-OEVmcd` iframes, eliminated orphaned text, updated `img { max-width: 100%; }`, and bounded mobile navbar collapse with touch scrolling | Applied Bootstrap 5 logical utility inversions (`.me-*` / `.ms-*`), floating audio dock redesign, and text expansion safeguards across 100+ languages |
 
 ---
 
@@ -57,8 +59,8 @@ The test suite is automated via Node.js in [`tests/audio-engine.test.js`](file:/
    * Verifies singleton context creation and automatic state transition from `suspended` to `running`.
 3. **Phase 3: Single Tone Synthesis & Parameter Safety**
    * Tests `play_pure_tone()`, `play_solfeggio()`, `play_angel()`, and `play_single_tone()` with and without waveform arguments.
-4. **Phase 4: Double Tone Synthesis (Binaural & Monaural)**
-   * Verifies stereo separation (-1 / +1 panner offsets for binaural; 0 / 0 for monaural).
+4. **Phase 4: Double Tone Synthesis, Polarity & Channel Dynamics**
+   * Verifies stereo separation (-1 / +1 panner offsets for binaural; 0 / 0 for monaural), phase inversion (`binaural_polarity` gain nodes for Normal, Inverted-Right, Inverted-Left, and Inverted-Both), and dynamic channel frequency swapping (`swap_binaural_channels`).
 5. **Phase 5: 3D Spatial Audio & Multi-Frequency Matrices**
    * Tests multi-oscillator allocation and spatial distribution via `play_sine_3d_auto()` and custom frequency presets (`XTRA`, `PROV`, `CUST`, `VEGA`, `RIFE`).
 6. **Phase 6: Noise Synthesizers & Worklet Fallbacks**
@@ -80,7 +82,7 @@ The test suite is automated via Node.js in [`tests/audio-engine.test.js`](file:/
 12. **Phase 12: Deployment Runtime & Node.js 24 Environment Verification**
     * Validates `.node-version` (24), `.nvmrc` (24), `netlify.toml` (`NODE_VERSION = "24"`), `package.json` (`engines.node >= 24.0.0`), and `.github/workflows/pages.yml` deployment workflow linkage.
 13. **Phase 13: Developer Documentation, README & Patch Integrity Verification**
-    * Validates `README.md` (complete feature & developer guide index), `DEVELOPMENT.md`, `TEST_REPORT.md`, `CONTRIBUTING.md`, `cocomo-cost-estimate.md`, dual licensing scopes, contact email (`support@brain-beats.in`), and core DSP synthesis patches (`js/main.js`).
+    * Validates `README.md` (complete feature & developer guide index), `DEVELOPMENT.md` (including multi-remote topology and upstream push restrictions), `TEST_REPORT.md`, `CONTRIBUTING.md`, `cocomo-cost-estimate.md`, dual licensing scopes, contact email (`support@brain-beats.in`), core DSP synthesis patches (`js/main.js`), polarity engine & channel swap functions, generator polarity/channel swap controls, preset master settings/swap buttons, and Google Translate plugin layout integration.
 14. **Phase 14: Cloud CI/CD & Netlify Zero-Exit-Code Hardening Verification**
     * Validates exclusion of `jekyll-github-metadata` (Exit Code 1), exclusion of `@netlify/plugin-sitemap` (Exit Code 10), dual-mode conditional build command in `netlify.toml`, `[context.gh-pages]` static build fallback, automated sitemap generator script, canonical domain integrity (`https://brain-beats.in`), and CodeQL scanning workflow configuration.
 
@@ -109,9 +111,19 @@ Phase 3: Single Tone Synthesis & Parameter Safety
   [PASS] play_solfeggio(528) activates solfeggio tone
   [PASS] play_angel(888) activates angel frequency
 
-Phase 4: Double Tone Synthesis (Binaural & Monaural)
+Phase 4: Double Tone Synthesis, Polarity & Channel Dynamics
   [PASS] play_binaural(200, 208) activates binaural beat pair
+  [PASS] polarity gain nodes are initialized on binaural playback
+  [PASS] normal polarity sets in-phase gain (+1.0 / +1.0)
+  [PASS] inverted-right polarity sets R gain to -1.0 (180deg anti-phase)
+  [PASS] inverted-left polarity sets L gain to -1.0
+  [PASS] inverted-both polarity sets both gains to -1.0
+  [PASS] normal polarity restores in-phase gains to +1.0
+  [PASS] swap_binaural_channels() dynamically transposes active oscillator frequencies
   [PASS] stop_binaural() stops double tone oscillators
+  [PASS] stop_binaural() cleanly disposes polarity gain nodes
+  [PASS] swap_binaural_channels(triggerEl) starts swapped preset playback
+  [PASS] swap_binaural_channels(triggerEl) correctly transposes (174, 174.1) to (174.1, 174)
   [PASS] play_monaural(200, 208) activates monaural beat pair
 
 Phase 5: 3D Spatial Audio & Multi-Frequency Matrices
@@ -153,6 +165,9 @@ Phase 8: Frequency Calculation & Octave Range Shifting
   [PASS] adjustFrequency shifts infrasound (<20Hz) up into hearing range
   [PASS] adjustFrequency preserves in-range frequencies (440Hz)
   [PASS] adjustFrequency shifts ultrasound (>20kHz) down into hearing range
+  [PASS] adjustFrequency guards against zero inputs (defaults to 440Hz)
+  [PASS] adjustFrequency guards against empty string inputs (defaults to 440Hz)
+  [PASS] adjustFrequency guards against negative inputs (defaults to 440Hz)
 
 Phase 9: Preset Database Schema & File Integrity
   [PASS] All 25 JSON preset database files are valid
@@ -180,6 +195,7 @@ Phase 12: Deployment Runtime & Node.js 24 Environment Verification
 Phase 13: Developer Documentation, README & Patch Integrity Verification
   [PASS] README.md exists and contains complete feature guide & developer documentation index
   [PASS] DEVELOPMENT.md contains architecture and developer guidelines
+  [PASS] DEVELOPMENT.md documents multi-remote topology including base-stream and upstream
   [PASS] TEST_REPORT.md contains TDD audit matrix and execution records
   [PASS] CONTRIBUTING.md contains contribution and security rules
   [PASS] cocomo-cost-estimate.md contains COCOMO economic valuation
@@ -189,6 +205,10 @@ Phase 13: Developer Documentation, README & Patch Integrity Verification
   [PASS] Web UI templates and pages include Creative Commons content license scope and clean navigation without raw links
   [PASS] Web UI templates and layouts include support@brain-beats.in contact email
   [PASS] js/main.js contains yellow noise, violet noise, and volume dynamics patches
+  [PASS] js/main.js contains binaural polarity engine and channel swap functions
+  [PASS] Binaural generator and mind machine generator pages include polarity and channel swap UX controls
+  [PASS] binaural-base-beats.html preset UI includes master polarity settings panel and card swap buttons
+  [PASS] Google Translate plugin element and modular include are properly integrated into layouts and views
 
 Phase 14: Cloud CI/CD & Netlify Zero-Exit-Code Hardening Verification
   [PASS] Gemfile excludes jekyll-github-metadata to prevent AWS rate-limit exit code 1
@@ -198,7 +218,7 @@ Phase 14: Cloud CI/CD & Netlify Zero-Exit-Code Hardening Verification
   [PASS] package.json contains automated sitemap and offline build scripts
   [PASS] sitemap.xml exists and maintains canonical domain integrity (https://brain-beats.in)
   [PASS] .github/workflows/codeql.yml exists and configures automated CodeQL scanning
-   Test Results: 66 Passed, 0 Failed
+   Test Results: 84 Passed, 0 Failed
 ==================================================
 
 ```

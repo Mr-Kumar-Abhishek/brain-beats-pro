@@ -428,6 +428,172 @@ When evaluating or executing future framework migrations (e.g., modern SSGs, hyb
 
 ---
 
+## 16. Internationalization (i18n), Google Translate & Multi-Language UX Architecture
+
+Brain Beats provides native, seamless translation across 100+ global languages using a modular Google Translate integration combined with automated script detection, Right-to-Left (RTL) directional layout flipping, and language text expansion resilience.
+
+### 16.1. Modular Include & Client-Side Initializer (`_includes/google-translate.html`)
+The translation engine is encapsulated as a DRY Liquid template included in `_layouts/default.html` (covering all research blog posts and documentation) and in the fixed header of all 45 web app preset catalogs and audio generators:
+
+```html
+<div id="google_translate_element" class="google-translate-box my-2 my-xl-0 me-xl-2"></div>
+<script type="text/javascript">
+(function() {
+  var rtlLanguages = {
+    'ar': true, 'arc': true, 'bcc': true, 'bqi': true, 'ckb': true,
+    'dv': true, 'fa': true, 'glk': true, 'he': true, 'iw': true,
+    'khw': true, 'ks': true, 'ku': true, 'mzn': true, 'pnb': true,
+    'ps': true, 'sd': true, 'ug': true, 'ur': true, 'yi': true
+  };
+  // Dynamic language detection & RTL switching logic
+})();
+
+function googleTranslateElementInit() {
+  if (typeof google !== 'undefined' && google.translate && google.translate.TranslateElement) {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+}
+</script>
+<script type="text/javascript" async src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+```
+
+### 16.2. Modern Banner Frame Suppression & Orphaned Text Elimination
+Standard Google Translate widgets inject top banner iframes (`.goog-te-banner-frame` and modern `.VIpgJd-ZVi9od-ORHb-OEVmcd`) that displace fixed-position headers by modifying `document.body.style.top = "40px"`. Furthermore, the widget inserts an unstyled text node `"Powered by "` after the select box.
+* **Iframe Suppression:** All legacy and modern translation iframe selectors are suppressed via CSS (`display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important;`).
+* **Header Displacement Lock:** Forced `body { top: 0px !important; }` prevents top offset shifts on fixed-top headers.
+* **Orphaned Text Removal:** Setting `.goog-te-gadget { font-size: 0 !important; color: transparent !important; }` and restoring `font-size: 0.8125rem` on `.goog-te-combo` cleanly hides the orphaned `"Powered by "` text node without affecting the combobox.
+* **Hover Popup Suppression:** Translation tooltips and text highlights (`#goog-gt-tt`, `.goog-te-balloon-frame`, `.goog-text-highlight`) are suppressed to preserve pristine Bootstrap styling.
+
+### 16.3. Dynamic Right-to-Left (RTL) Layout Engine
+When an RTL language (e.g. Arabic, Hebrew, Persian/Farsi, Urdu, Pashto, Sindhi, Uyghur, Yiddish, Kurdish) is selected:
+1. **Automated Detection:** The client-side script parses the selected language code from `.goog-te-combo` or the `googtrans` cookie, immediately setting `document.documentElement.dir = 'rtl'` and toggling `.rtl-mode`.
+2. **Event Dispatching:** A custom DOM event `bb:languagechange` with payload `{ language, isRtl }` is broadcasted on `document`.
+3. **Bootstrap Utility Flipping:** CSS rules dynamically invert directional spacing:
+   - Margins: `.me-*` flips to `margin-left`, `.ms-*` flips to `margin-right`.
+   - Text Alignments: `.text-start` aligns right, `.text-end` aligns left.
+   - Navbar: `navbar-nav.me-auto` aligns to the right; dropdown menus open right-to-left (`right: 0; left: auto; text-align: right`).
+   - Forms & Selects: Form controls align right, with `.form-select` indicators repositioned to `left: 0.75rem`.
+   - Preset Cards: Favorite bookmark icons (`.fav`) mirror to the right; audio action buttons (*Swap*, *Play*, *Stop*) anchor to the left.
+   - Modals: Close button (`.btn-close`) floats to the left; footer buttons align to the right edge.
+
+### 16.4. Text Expansion & Script Safeguards
+* **Text Expansion:** Translations in German, Russian, Finnish, Spanish, and Greek can expand text length by 30-50%. The UI safeguards against breaking layouts via:
+  - `overflow-wrap: break-word` and `hyphens: auto` on card titles, descriptions, and dropdown items.
+  - Action buttons (`.btn-play-stop`) enforce `white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px;`.
+  - Preset action container utilizes flex wrapping (`display: flex; flex-wrap: wrap; gap: 0.35rem;`), ensuring buttons stack cleanly rather than clipping on narrow screens.
+* **Universal Multi-Script Font Stack:** Upgraded `$font-family-base` to a comprehensive international system stack (`-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", ...`), guaranteeing crisp native typography across Latin, Cyrillic, Greek, Arabic, Hebrew, Devanagari, Thai, and CJK ideographs.
+
+---
+
+## 17. Responsive Bootstrap 5 UX & Cross-Device Engineering
+
+Brain Beats enforces ergonomic, mobile-first responsive design across all viewports:
+
+| Viewport | Range | Layout & UX Behavior |
+| :--- | :--- | :--- |
+| **Extra Small (xs)** | `< 576px` | Compact `.fluidaner` (`margin-top: 76px; margin-bottom: 140px`), sleek floating audio dock (height: `4.25rem`, radius: `16px`, bottom: `10px`), touch targets ≥ 42px, narrow mobile buttons (`36px` height, `58px` min-width on `< 420px`). |
+| **Small (sm)** | `576px – 767px` | Centered preset cards (`col-sm-11`), floating audio pill (`480px` width, bottom: `12px`), responsive card padding. |
+| **Medium (md)** | `768px – 991px` | Tablet grid layout (`col-md-10`), floating audio pill (`520px` width, bottom: `15px`), expanded search bar (`max-width: 580px`). |
+| **Large (lg)** | `992px – 1199px` | Desktop card expansion (~800px), floating audio dock (`560px` width, bottom: `18px`). |
+| **Extra Large (xl / xxl)** | `≥ 1200px` | Full navbar expansion, floating audio dock (`600px` / `640px` width, bottom: `20px`), proportional container breathing room. |
+
+### 17.1. Bounded Navigation Collapse with Touch Scrolling
+On mobile and tablet viewports (`< 1200px`), the navigation header collapses into a Bootstrap hamburger toggler. To prevent long dropdown lists (such as the 13-item *Generators* menu or 11-item *Beats* menu) from extending beyond the visible screen:
+```scss
+@media (max-width: 1199.98px) {
+  .navbar-collapse {
+    max-height: calc(100vh - 4.5rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+```
+
+### 17.2. Ergonomic Floating Audio Dock (`.volume-box`)
+Replaced the legacy 128px (`8rem`) full-width block with a floating audio dock:
+- Reclaims over 30% of usable vertical viewport space on mobile devices.
+- Uses glassmorphic backdrop blurring (`backdrop-filter: blur(10px)`), smooth 16px corner radii, and subtle elevation shadows (`0 4px 20px rgba(0,0,0,0.14)`).
+- Features uppercase micro-label typography (`font-size: 0.75rem; letter-spacing: 0.08em; font-weight: 600; text-transform: uppercase; color: #6c757d`).
+
+### 17.3. Standardized Responsive Image Scaling
+Replaced legacy global `img { width: 99%; }` rules with modern responsive scaling (`img { max-width: 100%; height: auto; }`). Fixed-dimension inline images and Google Translate branding icons specify `width: auto !important; max-width: none !important;` to eliminate stretched image distortions in blog articles and navigation headers.
+
+---
+
+## 18. Step-by-Step Development & Multi-Remote Synchronization Procedures
+
+Follow these established procedures when developing, testing, and synchronizing changes across the Brain Beats ecosystem:
+
+### 18.1. Step 1: Pull and Synchronize from Remote
+Before starting any local development task, fetch and fast-forward the working tree to the latest remote state:
+```bash
+# Fetch all branches and prune obsolete references
+git fetch --all --prune
+
+# Pull and rebase current branch against origin/main
+git pull --rebase origin main
+```
+
+### 18.2. Step 2: Start Local Development Server
+Brain Beats utilizes Jekyll to transpile Sass, bind Liquid layouts, and serve both the web application and the research blog:
+```bash
+# Start incremental local Jekyll development daemon
+bundle exec jekyll serve --host 127.0.0.1 --port 4000 --incremental
+
+# In a separate terminal or background task, inspect local endpoints:
+curl -I http://127.0.0.1:4000/
+curl -I http://127.0.0.1:4000/blog/
+```
+
+### 18.3. Step 3: Implement Code & UX Enhancements
+1. **Audio Synthesis & DSP:** Modify `js/main.js` using defensive null-checks, singleton AudioContext lifecycle methods, and proper node `.disconnect()` disposal.
+2. **Liquid Includes & Views:** Place reusable components in `_includes/` and include them via `{% raw %}{% include filename.html %}{% endraw %}`.
+3. **SCSS & Stylesheets:** Edit modular SCSS partials in `_sass/` (`_variables.scss`, `_base.scss`, `_layout.scss`, `_components.scss`, `_footer.scss`) and synchronize compiled production outputs in `css/main.css` and `blog/css/main.css`.
+4. **Interactive Controls:** Ensure touch targets are ≥ 42px on mobile, action buttons support flex-wrapping, and form controls specify proper ARIA labels.
+
+### 18.4. Step 4: Run Automated TDD Test Verification
+Ensure all 84 test assertions pass cleanly with zero failures before committing:
+```bash
+npm test
+# Expected output: Test Results: 84 Passed, 0 Failed
+```
+
+### 18.5. Step 5: Commit Changes Following Conventional Commits
+Stage changes and format commits according to Conventional Commits:
+```bash
+git add -A
+git commit -m "feat(scope): concise description of enhancements"
+```
+
+### 18.6. Step 6: Multi-Remote Branch Synchronization & Push Policies
+Synchronize local tracking branches (`main`, `master`, `dev`, `debug`, `claude`) and push strictly to authorized distribution remotes:
+
+```bash
+# 1. Fast-forward all local tracking branches to main:
+git branch -f master main
+git branch -f dev main
+git branch -f debug main
+git branch -f claude main
+
+# 2. Push tracking branches to origin (Primary CI/CD & GitHub Pages):
+git push origin main master dev debug claude
+
+# 3. Push tracking branches to base-stream (Pro distribution & mirror):
+git push base-stream main master dev debug claude
+```
+
+> [!CAUTION]
+> **Upstream Push Restriction Directive**:
+> Strictly **reduce/avoid pushes towards `upstream`** (`git@github.com:cybernetics-decentral/brain-beats.git`).
+> Routine pushes are strictly prohibited to `upstream` unless explicitly instructed and approved by the maintainer.
+
+---
+
 <div align="center">
 <sub>&copy; Brain Beats Pro. Written content and documentation are licensed under <a href="LICENSE-CONTENT.txt">CC BY 4.0</a>. Software code, synthesis mechanics, and configuration files are copyleft protected under <a href="LICENSE">GNU AGPLv3</a>.</sub>
 </div>
