@@ -131,8 +131,26 @@ blockquote {
 }
 
 img {
-  width: 99%;
-  text-align: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.post img,
+article img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#google_translate_element img,
+.goog-te-gadget img {
+  width: auto !important;
+  max-width: none !important;
+  height: auto !important;
+  display: inline-block !important;
 }
 
 @media print {
