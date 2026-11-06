@@ -2,6 +2,10 @@
 html, body {
   overflow-x: hidden;
   max-width: 100vw;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html {
@@ -11,7 +15,7 @@ html {
 }
 
 h1, h2, h3, h4, nav ul, footer ul {
-  font-family: "Helvetica", "Arial", "Sans-Serif";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -404,6 +408,9 @@ table.gsc-search-box {
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.35;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 @media (max-width: 575.98px) {
   .card-title {
@@ -423,6 +430,9 @@ table.gsc-search-box {
   font-size: 0.95rem;
   line-height: 1.5;
   color: #495057;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 @media (max-width: 575.98px) {
   .card-text {
@@ -440,6 +450,13 @@ table.gsc-search-box {
 
 .card-body {
   padding: 1.25rem;
+}
+.card-body .row.align-items-center > .col.text-end {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.35rem;
 }
 @media (max-width: 575.98px) {
   .card-body {
@@ -1000,4 +1017,145 @@ body {
     margin: 0.5rem;
     max-width: calc(100% - 1rem);
   }
+}
+
+/* Dropdown menu language text wrapping */
+.dropdown-menu {
+  max-width: 24rem;
+}
+
+.dropdown-item {
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Suppress Google translation hover tooltips & highlights */
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.goog-text-highlight {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* ==========================================================================
+   RTL Mode Styles for Right-to-Left Languages (Arabic, Hebrew, Persian, Urdu)
+   ========================================================================== */
+html[dir="rtl"],
+html.rtl-mode {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] body,
+html.rtl-mode body {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] p,
+html[dir="rtl"] .post ul li,
+html[dir="rtl"] time,
+html[dir="rtl"] .text-start,
+html.rtl-mode p,
+html.rtl-mode .post ul li,
+html.rtl-mode time,
+html.rtl-mode .text-start {
+  text-align: right !important;
+}
+
+html[dir="rtl"] .text-end,
+html.rtl-mode .text-end {
+  text-align: left !important;
+}
+
+/* Logical margins flip for LTR Bootstrap utilities */
+html[dir="rtl"] .me-1, html.rtl-mode .me-1 { margin-left: 0.25rem !important; margin-right: 0 !important; }
+html[dir="rtl"] .me-2, html.rtl-mode .me-2 { margin-left: 0.5rem !important; margin-right: 0 !important; }
+html[dir="rtl"] .me-3, html.rtl-mode .me-3 { margin-left: 1rem !important; margin-right: 0 !important; }
+html[dir="rtl"] .ms-1, html.rtl-mode .ms-1 { margin-right: 0.25rem !important; margin-left: 0 !important; }
+html[dir="rtl"] .ms-2, html.rtl-mode .ms-2 { margin-right: 0.5rem !important; margin-left: 0 !important; }
+html[dir="rtl"] .ms-3, html.rtl-mode .ms-3 { margin-right: 1rem !important; margin-left: 0 !important; }
+
+/* Navbar in RTL */
+html[dir="rtl"] .navbar-nav.me-auto,
+html.rtl-mode .navbar-nav.me-auto {
+  margin-right: 0 !important;
+  margin-left: auto !important;
+}
+
+html[dir="rtl"] .navbar-nav,
+html.rtl-mode .navbar-nav {
+  padding-right: 0;
+}
+
+html[dir="rtl"] .navbar-nav .dropdown-menu,
+html.rtl-mode .navbar-nav .dropdown-menu {
+  text-align: right;
+  right: 0;
+  left: auto;
+}
+
+/* Form controls in RTL */
+html[dir="rtl"] .form-select,
+html.rtl-mode .form-select {
+  background-position: left 0.75rem center;
+  padding-right: 0.75rem;
+  padding-left: 2.25rem;
+  text-align: right;
+}
+
+html[dir="rtl"] .form-control,
+html.rtl-mode .form-control {
+  text-align: right;
+}
+
+/* Card actions in RTL */
+html[dir="rtl"] .card-body,
+html.rtl-mode .card-body {
+  direction: rtl;
+}
+
+html[dir="rtl"] .card-body .row.align-items-center > .col.text-end,
+html.rtl-mode .card-body .row.align-items-center > .col.text-end {
+  justify-content: flex-start;
+}
+
+/* Volume dock in RTL */
+html[dir="rtl"] .volume-box,
+html.rtl-mode .volume-box {
+  direction: rtl;
+}
+
+/* Modals in RTL */
+html[dir="rtl"] .modal-header .btn-close,
+html.rtl-mode .modal-header .btn-close {
+  margin: -0.5rem auto -0.5rem -0.5rem;
+}
+
+html[dir="rtl"] .modal-footer,
+html.rtl-mode .modal-footer {
+  justify-content: flex-start;
+}
+
+/* Search bar in RTL */
+html[dir="rtl"] .search-form,
+html.rtl-mode .search-form {
+  text-align: center;
+}
+
+html[dir="rtl"] blockquote,
+html.rtl-mode blockquote {
+  border-right: 0.8rem solid #b3b3b3;
+  border-left: none;
+  text-align: right;
+}
+
+html[dir="rtl"] blockquote .small,
+html.rtl-mode blockquote .small {
+  text-align: left;
 }
