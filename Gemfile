@@ -8,7 +8,9 @@ group :jekyll_plugins do
   gem "jekyll-sitemap"
 end
 
-# Runtime support for Ruby 3.x
+# Runtime support for Ruby 3.x / 4.x
 gem "webrick", "~> 1.8"
 gem "kramdown-parser-gfm", "~> 1.1"
 gem "faraday-retry", "~> 2.0"
+gem "json", "2.18.0"
+gem "bigdecimal", "4.0.1"

@@ -4,7 +4,7 @@ GEM
     addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
     base64 (0.3.0)
-    bigdecimal (4.1.3)
+    bigdecimal (4.0.1)
     colorator (1.1.0)
     concurrent-ruby (1.3.8)
     csv (3.3.6)
@@ -26,6 +26,7 @@ GEM
     ffi (1.17.4-arm-linux-gnu)
     ffi (1.17.4-arm-linux-musl)
     ffi (1.17.4-arm64-darwin)
+    ffi (1.17.4-x64-mingw-ucrt)
     ffi (1.17.4-x86-linux-gnu)
     ffi (1.17.4-x86-linux-musl)
     ffi (1.17.4-x86_64-darwin)
@@ -42,6 +43,9 @@ GEM
       bigdecimal
       rake (~> 13.3)
     google-protobuf (4.36.2-arm64-darwin)
+      bigdecimal
+      rake (~> 13.3)
+    google-protobuf (4.36.2-x64-mingw-ucrt)
       bigdecimal
       rake (~> 13.3)
     google-protobuf (4.36.2-x86-linux-gnu)
@@ -90,7 +94,7 @@ GEM
       jekyll (>= 3.7, < 5.0)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
-    json (2.21.2)
+    json (2.18.0)
     kramdown (2.5.2)
       rexml (>= 3.4.4)
     kramdown-parser-gfm (1.1.0)
@@ -137,6 +141,8 @@ GEM
       google-protobuf (~> 4.31)
     sass-embedded (1.104.1-riscv64-linux-musl)
       google-protobuf (~> 4.31)
+    sass-embedded (1.104.1-x64-mingw-ucrt)
+      google-protobuf (~> 4.31)
     sass-embedded (1.104.1-x86_64-darwin)
       google-protobuf (~> 4.31)
     sass-embedded (1.104.1-x86_64-linux-android)
@@ -165,6 +171,7 @@ PLATFORMS
   riscv64-linux-gnu
   riscv64-linux-musl
   ruby
+  x64-mingw-ucrt
   x86-linux-gnu
   x86-linux-musl
   x86_64-darwin
@@ -173,18 +180,20 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  bigdecimal (= 4.0.1)
   faraday-retry (~> 2.0)
   jekyll (~> 4.4)
   jekyll-feed
   jekyll-paginate
   jekyll-sitemap
+  json (= 2.18.0)
   kramdown-parser-gfm (~> 1.1)
   webrick (~> 1.8)
 
 CHECKSUMS
   addressable (2.9.0) sha256=7fdf6ac3660f7f4e867a0838be3f6cf722ace541dd97767fa42bc6cfa980c7af
   base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
-  bigdecimal (4.1.3) sha256=61ebe1e5e559bdc3cc6f2c0ee7f427321fc838f59611c294356eb04d6e21cf66
+  bigdecimal (4.0.1) sha256=8b07d3d065a9f921c80ceaea7c9d4ae596697295b584c296fe599dd0ad01c4a7
   colorator (1.1.0) sha256=e2f85daf57af47d740db2a32191d1bdfb0f6503a0dfbc8327d0c9154d5ddfc38
   concurrent-ruby (1.3.8) sha256=b2f1be836e968ccc78ccfce277ea79c72a88633f22306782c16ff23fb415d1e1
   csv (3.3.6) sha256=aba61e7e507a66f03d45cb1f3c4b6359861c3504038b422962875dce099e4456
@@ -199,6 +208,7 @@ CHECKSUMS
   ffi (1.17.4-arm-linux-gnu) sha256=d6dbddf7cb77bf955411af5f187a65b8cd378cb003c15c05697f5feee1cb1564
   ffi (1.17.4-arm-linux-musl) sha256=9d4838ded0465bef6e2426935f6bcc93134b6616785a84ffd2a3d82bc3cf6f95
   ffi (1.17.4-arm64-darwin) sha256=19071aaf1419251b0a46852abf960e77330a3b334d13a4ab51d58b31a937001b
+  ffi (1.17.4-x64-mingw-ucrt) sha256=f6ff9618cfccc494138bddade27aa06c74c6c7bc367a1ea1103d80c2fcb9ed35
   ffi (1.17.4-x86-linux-gnu) sha256=38e150df5f4ca555e25beca4090823ae09657bceded154e3c52f8631c1ed72cf
   ffi (1.17.4-x86-linux-musl) sha256=fbeec0fc7c795bcf86f623bb18d31ea1820f7bd580e1703a3d3740d527437809
   ffi (1.17.4-x86_64-darwin) sha256=aa70390523cf3235096cf64962b709b4cfbd5c082a2cb2ae714eb0fe2ccda496
@@ -209,6 +219,7 @@ CHECKSUMS
   google-protobuf (4.36.2-aarch64-linux-gnu) sha256=c3279ec6eaa59f6ed6276eda2a33cffb4306471183ab79a332e698b8564f5169
   google-protobuf (4.36.2-aarch64-linux-musl) sha256=0772c9dde1e6dce9a6b44d1d35c28c29adee99d9bd6aff5e21840daeb22161ce
   google-protobuf (4.36.2-arm64-darwin) sha256=f70d810e6bbab9d8ad9c1d5fd685a21de4c10ad3ad32efb9455e17e5b1286917
+  google-protobuf (4.36.2-x64-mingw-ucrt) sha256=02b55d56c1c56a58a5e1cc3a7dda87e97343574ea5aa4f0e503379ba2647bbd1
   google-protobuf (4.36.2-x86-linux-gnu) sha256=ffcd06d49bffca24afff18c900dd61a51ea3028d43c47d0d9621d00bf38a5866
   google-protobuf (4.36.2-x86-linux-musl) sha256=e1afec03babd73c9117cc09d5fc2a98dfef37a414bfd8a4d0ceaac7bd66fc028
   google-protobuf (4.36.2-x86_64-darwin) sha256=8d1bd2a344f7f589703b202ad2ee4cca8ef731b4ced45782ef92d385967384ba
@@ -222,7 +233,7 @@ CHECKSUMS
   jekyll-sass-converter (3.1.0) sha256=83925d84f1d134410c11d0c6643b0093e82e3a3cf127e90757a85294a3862443
   jekyll-sitemap (1.4.0) sha256=0de08c5debc185ea5a8f980e1025c7cd3f8e0c35c8b6ef592f15c46235cf4218
   jekyll-watch (2.2.1) sha256=bc44ed43f5e0a552836245a54dbff3ea7421ecc2856707e8a1ee203a8387a7e1
-  json (2.21.2) sha256=1f1d3b7cf2b3ba1a69beca0bb6db13d5438b80bff3cd54cdaaa620b9b07c1c6a
+  json (2.18.0) sha256=b10506aee4183f5cf49e0efc48073d7b75843ce3782c68dbeb763351c08fd505
   kramdown (2.5.2) sha256=1ba542204c66b6f9111ff00dcc26075b95b220b07f2905d8261740c82f7f02fa
   kramdown-parser-gfm (1.1.0) sha256=fb39745516427d2988543bf01fc4cf0ab1149476382393e0e9c48592f6581729
   liquid (4.0.4) sha256=4fcfebb1a045e47918388dbb7a0925e7c3893e58d2bd6c3b3c73ec17a2d8fdb3
@@ -249,6 +260,7 @@ CHECKSUMS
   sass-embedded (1.104.1-riscv64-linux-android) sha256=a28ab9ef7bfa998666c16bc12f95db8cd306a457ae11e6ce263fb88a777d5ede
   sass-embedded (1.104.1-riscv64-linux-gnu) sha256=c672b56e36b125cc57234c543d50cc468f36f6dc858154341920953d19590b98
   sass-embedded (1.104.1-riscv64-linux-musl) sha256=4bafa3ce08e5b107668e5b75f94fba58a1644d2ec09808d9a807306a43d8bf1d
+  sass-embedded (1.104.1-x64-mingw-ucrt) sha256=b859211fa221e40a67da0463b258a6e7c54f4973621d2bad4b7f932c4a9a0bce
   sass-embedded (1.104.1-x86_64-darwin) sha256=aca394ec6d9911f8bb589cb39e6ef7cfdc9d3467c4f06866a2921a77ee060e0e
   sass-embedded (1.104.1-x86_64-linux-android) sha256=a096345383293ffe20558059b1db779e4509f4b7270bad1fa9f517159fdda7b9
   sass-embedded (1.104.1-x86_64-linux-gnu) sha256=a9223bd34c4f5616412f4affbc8c450e5c547f69940ce42c92d23fca9111ea87
