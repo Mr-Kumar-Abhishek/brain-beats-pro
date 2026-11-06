@@ -24,16 +24,35 @@ flowchart TD
 
 ### Branch Roles:
 - **`main`**: The primary branch and single source of truth for all code, documentation, and blog posts.
-- **`master`**, **`dev`**, **`debug`**: Synchronized branches kept aligned with `main`.
+- **`master`**, **`dev`**, **`debug`**, **`claude`**: Synchronized branches kept aligned with `main`.
 - **`gh-pages`**: Production deployment branch containing pre-rendered Jekyll HTML, static assets, and the service worker bundle.
 
 ---
 
-## 2. Multi-Branch Push Workflow
+## 2. Multi-Remote & Multi-Branch Push Workflow
 
-Once changes are tested and committed to `main`, push to all source branches simultaneously:
+The repository tracks three remote endpoints:
+
+| Remote Name | Repository URL | Function & Role |
+| :--- | :--- | :--- |
+| **`origin`** | `git@github.com:Mr-Kumar-Abhishek/brain-beats.git` | Primary personal fork & GitHub Pages CI/CD deployment remote (`main`, `master`, `dev`, `debug`, `claude`, `gh-pages`). |
+| **`base-stream`** | `git@github.com:Mr-Kumar-Abhishek/brain-beats-pro.git` | Pro distribution mirror tracking all aligned branch tips (`main`, `master`, `dev`, `debug`, `claude`, `gh-pages`). |
+| **`upstream`** | `git@github.com:cybernetics-decentral/brain-beats.git` | Organization core repository for decentralized community sync. |
+
+### Synchronization Commands:
+
 ```bash
-git push origin main main:master main:dev main:debug
+# 1. Fast-forward local tracking branches to main:
+git branch -f master main
+git branch -f dev main
+git branch -f debug main
+git branch -f claude main
+
+# 2. Push to origin:
+git push origin main master dev debug claude
+
+# 3. Push to base-stream mirror:
+git push base-stream main master dev debug claude
 ```
 
 ---

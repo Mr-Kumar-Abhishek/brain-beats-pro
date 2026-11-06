@@ -370,16 +370,32 @@ The project includes an automated GitHub Pages deployment workflow using officia
 
 ## 13. Multi-Remote Synchronization Workflow
 
-This project maintains synchronized branches across both `origin` (personal) and `upstream` (organization) remotes:
+This project maintains synchronized branches across three designated remotes:
+
+| Remote Name | Repository URL | Purpose & Synchronization Role |
+| :--- | :--- | :--- |
+| **`origin`** | `git@github.com:Mr-Kumar-Abhishek/brain-beats.git` | **Primary Development & Deployment Remote**: Triggers automated GitHub Pages CI/CD workflows and hosts public releases across branches (`main`, `master`, `dev`, `debug`, `claude`, `gh-pages`). |
+| **`base-stream`** | `git@github.com:Mr-Kumar-Abhishek/brain-beats-pro.git` | **Pro Distribution & Mirror Remote**: Secondary distribution and backup upstream mirror tracking aligned development branches (`main`, `master`, `dev`, `debug`, `claude`, `gh-pages`). |
+| **`upstream`** | `git@github.com:cybernetics-decentral/brain-beats.git` | **Organization Source Remote**: Canonical organizational upstream repository for core cybernetics-decentral community tracking and integration. |
+
+### Synchronization Commands
 
 ```bash
-# Push current HEAD commit to all tracked remote branches:
-for branch in $(git branch -r | grep 'origin/' | grep -v 'HEAD' | sed 's/ *origin\///'); do
-  git push origin HEAD:refs/heads/$branch
-done
+# 1. Fast-forward all local tracking branches to current HEAD / main:
+git branch -f master main
+git branch -f dev main
+git branch -f debug main
+git branch -f claude main
 
-for branch in $(git branch -r | grep 'upstream/' | grep -v 'HEAD' | sed 's/ *upstream\///'); do
-  git push upstream HEAD:refs/heads/$branch
+# 2. Push unified branches to origin:
+git push origin main master dev debug claude
+
+# 3. Synchronize with base-stream mirror:
+git push base-stream main master dev debug claude
+
+# 4. Sync upstream organization remote (where applicable):
+for branch in main master dev debug; do
+  git push upstream HEAD:refs/heads/$branch || true
 done
 ```
 

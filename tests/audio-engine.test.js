@@ -458,6 +458,7 @@ async function runTestSuite() {
 
   const devGuideContent = fs.readFileSync(path.join(__dirname, '../DEVELOPMENT.md'), 'utf8');
   assert(devGuideContent.includes("System Architecture Overview") && devGuideContent.includes("Web Audio Engine"), "DEVELOPMENT.md contains architecture and developer guidelines");
+  assert(devGuideContent.includes("base-stream") && devGuideContent.includes("brain-beats-pro"), "DEVELOPMENT.md documents multi-remote topology including base-stream and upstream");
 
   const testReportContent = fs.readFileSync(path.join(__dirname, '../TEST_REPORT.md'), 'utf8');
   assert(testReportContent.includes("Red-Green-Refactor Matrix"), "TEST_REPORT.md contains TDD audit matrix and execution records");

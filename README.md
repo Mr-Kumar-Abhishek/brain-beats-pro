@@ -185,7 +185,10 @@ npm run build
 
 * **GitHub Pages CI/CD ([`.github/workflows/pages.yml`](.github/workflows/pages.yml)):** Automated GitHub Actions pipeline running on Node.js 24 and Ruby 3.3. Executes test gates, transpiles SCSS, builds Jekyll assets, compiles the Service Worker, and deploys directly to GitHub Pages and the [`gh-pages`](https://github.com/Mr-Kumar-Abhishek/brain-beats/tree/gh-pages) branch.
 * **Netlify Production ([`netlify.toml`](netlify.toml)):** Automated cloud edge deployment with strict HTTP security headers, immutable caching for audio worklets/fonts, and domain canonicalization to `brain-beats.in`.
-* **Multi-Remote Synchronization:** Maintains realigned branch tips across `origin` (`Mr-Kumar-Abhishek/brain-beats`) and `upstream` (`cybernetics-decentral/brain-beats`).
+* **Multi-Remote Synchronization:** Maintains synchronized branch tips across:
+  * `origin`: Primary development & deployment repository (`Mr-Kumar-Abhishek/brain-beats`)
+  * `base-stream`: Secondary mirror & pro distribution repository (`Mr-Kumar-Abhishek/brain-beats-pro`)
+  * `upstream`: Organization source repository (`cybernetics-decentral/brain-beats`)
 
 ---
 
