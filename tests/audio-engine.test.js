@@ -504,6 +504,15 @@ async function runTestSuite() {
     "binaural-base-beats.html preset UI includes master polarity settings panel and card swap buttons"
   );
 
+  const googleTranslateHtml = fs.readFileSync(path.join(__dirname, '../_includes/google-translate.html'), 'utf8');
+  assert(
+    googleTranslateHtml.includes('id="google_translate_element"') &&
+    googleTranslateHtml.includes('googleTranslateElementInit') &&
+    defaultLayoutContent.includes('{% include google-translate.html %}') &&
+    indexHtmlContent.includes('{% include google-translate.html %}'),
+    "Google Translate plugin element and modular include are properly integrated into layouts and views"
+  );
+
   console.log("\nPhase 14: Cloud CI/CD & Netlify Zero-Exit-Code Hardening Verification");
   const gemfileContent = fs.readFileSync(path.join(__dirname, '../Gemfile'), 'utf8');
   assert(!gemfileContent.includes("jekyll-github-metadata"), "Gemfile excludes jekyll-github-metadata to prevent AWS rate-limit exit code 1");
