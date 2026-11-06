@@ -505,21 +505,25 @@ function play_sq_monaural(freq1, freq2){
 }
 
 function play_binaural(freq1, freq2){
-  
-    beat_freq_1 = freq1;
-    beat_freq_2 = freq2;
-  
-    if (binaural_flag == 0){
-      stop_all_double_tone();
+  if (typeof $ !== 'undefined' && $("#binaural-polarity").length) {
+    var p = $("#binaural-polarity").val();
+    if (p) {
+      binaural_polarity = p;
+    }
+  }
+  beat_freq_1 = freq1;
+  beat_freq_2 = freq2;
 
-      binaural_flag = 1;
-      play_double_tone(beat_freq_1, beat_freq_2, oscillator_type, 'binaural');
-      
+  if (binaural_flag == 0){
+    stop_all_double_tone();
+
+    binaural_flag = 1;
+    play_double_tone(beat_freq_1, beat_freq_2, oscillator_type, 'binaural');
+    
   }else {
     stop_binaural();
     play_binaural(freq1, freq2);
   }
-  
 }
 
 function play_double_tone (freq1, freq2, form, deviation) {
@@ -1761,7 +1765,7 @@ function live_polarity_set() {
   }
 }
 
-function swap_binaural_channels() {
+function swap_binaural_channels(triggerEl) {
   if (typeof document !== 'undefined') {
     var f1 = document.getElementById('freq1');
     var f2 = document.getElementById('freq2');
@@ -1785,6 +1789,24 @@ function swap_binaural_channels() {
     var tempB1 = beat_freq_1;
     beat_freq_1 = beat_freq_2;
     beat_freq_2 = tempB1;
+  } else if (triggerEl) {
+    try {
+      var card = triggerEl.closest ? triggerEl.closest('.card') : null;
+      if (card) {
+        var playBtn = card.querySelector('.play');
+        if (playBtn) {
+          var onclickStr = playBtn.getAttribute('onclick') || '';
+          var match = onclickStr.match(/play_binaural\(\s*([\d.]+)\s*,\s*([\d.]+)\s*\)/);
+          if (match) {
+            var fA = parseFloat(match[1]);
+            var fB = parseFloat(match[2]);
+            play_binaural(fB, fA);
+          }
+        }
+      }
+    } catch (e) {
+      console.warn("Could not swap preset card frequencies:", e);
+    }
   }
 }
 

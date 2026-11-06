@@ -343,6 +343,33 @@ og-title: "Brain Beats Pro | binaural beats"
 				<span id="hilter-front" class="hilt"></span>
 				<span id="hilter-back" class="hilt-back"></span>
 			</div>
+			<!-- Binaural Preset Polarity & Channel Settings Panel -->
+			<div class="row justify-content-center mb-4">
+				<div class="col-12 col-md-10 col-lg-8">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title mb-3">Binaural Preset Polarity &amp; Channel Settings</h5>
+							<div class="row g-3 align-items-end">
+								<div class="col-12 col-md-8 text-start">
+									<label for="binaural-polarity" class="form-label fw-semibold">Audio Polarity &amp; Phase</label>
+									<select id="binaural-polarity" class="form-select" onchange="set_binaural_polarity(this.value)" aria-label="Binaural audio polarity mode">
+										<option value="normal" selected>Normal (+ / +) &mdash; In-Phase Standard</option>
+										<option value="inverted-right">Invert Right (+ / &minus;) &mdash; Anti-Phase Acoustic Width</option>
+										<option value="inverted-left">Invert Left (&minus; / +) &mdash; Anti-Phase Left</option>
+										<option value="inverted-both">Invert Both (&minus; / &minus;) &mdash; 180&deg; Full Inversion</option>
+									</select>
+									<div class="form-text">Invert channel phase (180&deg;) for intracranial expansion or centered acoustic focus across all presets.</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<button type="button" class="btn btn-outline-secondary w-100" onclick="swap_binaural_channels(this)" title="Swap Left and Right ear frequencies of active preset">
+										<span aria-hidden="true">&#8644;</span> Swap L / R
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="data-container">
 			<template class="data-cards">
 				<div class="row justify-content-center">
@@ -361,6 +388,9 @@ og-title: "Brain Beats Pro | binaural beats"
 										&nbsp;
 									</div>
 									<div class="col text-end">
+										<button type="button" class="btn btn-outline-secondary btn-play-stop me-1" onclick="swap_binaural_channels(this)" title="Swap Left and Right ear frequencies">
+											<span aria-hidden="true">&#8644;</span> Swap
+										</button>
 										<button class="btn btn-primary btn-play-stop play">
 										Play
 										</button>
@@ -400,6 +430,7 @@ og-title: "Brain Beats Pro | binaural beats"
 							<li>Lower your volume and use headphones/earphones.</li>
 							<li>Choose the Binaural Preset.</li>
 							<li>Play the Binaural Preset.</li>
+							<li>Optionally adjust Audio Polarity &amp; Phase or Swap L/R channels to experiment with intracranial widening.</li>
 						</ol>
 						</br>
 						<p><strong>Disclaimer:</strong> These healing frequencies are not a substitute for professional medical care. Use them at your own risk and discretion.</p>
@@ -408,6 +439,7 @@ og-title: "Brain Beats Pro | binaural beats"
 						<ul>
 							<li>On screen presets can be searched from the search bar in the navigation menu.</li>
 							<li>You could save these presets in favorites section by clicking on like (heart icon).</li>
+							<li><strong>Polarity &amp; Phase:</strong> Normal (+ / +) produces standard in-phase stereo beats. Inverting the Right channel (+ / &minus;) generates anti-phase binaural interference for an expanded acoustic space. Swap L / R transposes left and right ear carrier frequencies.</li>
 						</ul>
 					</div>
 					<!-- Modal Footer (Optional) -->

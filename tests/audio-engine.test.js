@@ -254,6 +254,22 @@ async function runTestSuite() {
     assert(global.binaural_flag === 0, "stop_binaural() stops double tone oscillators");
     assert(global.polarity_gain_1 === null && global.polarity_gain_2 === null, "stop_binaural() cleanly disposes polarity gain nodes");
 
+    // Test preset card channel swapping when stopped
+    const mockCard = {
+      querySelector: (selector) => selector === '.play' ? { getAttribute: () => 'play_binaural(174, 174.1);' } : null
+    };
+    const mockTrigger = {
+      closest: (selector) => selector === '.card' ? mockCard : null
+    };
+    global.swap_binaural_channels(mockTrigger);
+    assert(global.binaural_flag === 1, "swap_binaural_channels(triggerEl) starts swapped preset playback");
+    assert(
+      global.double_tone_oscillator_1.frequency.value === 174.1 &&
+      global.double_tone_oscillator_2.frequency.value === 174,
+      "swap_binaural_channels(triggerEl) correctly transposes (174, 174.1) to (174.1, 174)"
+    );
+    global.stop_binaural();
+
     global.play_monaural(200, 208);
     assert(global.monaural_flag === 1, "play_monaural(200, 208) activates monaural beat pair");
     global.stop_monaural();
@@ -472,12 +488,19 @@ async function runTestSuite() {
 
   const binauralGenHtml = fs.readFileSync(path.join(__dirname, '../binaural-beats-generator.html'), 'utf8');
   const mindMachineGenHtml = fs.readFileSync(path.join(__dirname, '../binaural-mind-machine-generator.html'), 'utf8');
+  const binauralBaseHtml = fs.readFileSync(path.join(__dirname, '../binaural-base-beats.html'), 'utf8');
   assert(
     binauralGenHtml.includes('id="binaural-polarity"') &&
     binauralGenHtml.includes('swap_binaural_channels()') &&
     mindMachineGenHtml.includes('id="binaural-polarity"') &&
     mindMachineGenHtml.includes('swap_binaural_channels()'),
     "Binaural generator and mind machine generator pages include polarity and channel swap UX controls"
+  );
+  assert(
+    binauralBaseHtml.includes('id="binaural-polarity"') &&
+    binauralBaseHtml.includes('swap_binaural_channels(this)') &&
+    binauralBaseHtml.includes('Binaural Preset Polarity &amp; Channel Settings'),
+    "binaural-base-beats.html preset UI includes master polarity settings panel and card swap buttons"
   );
 
   console.log("\nPhase 14: Cloud CI/CD & Netlify Zero-Exit-Code Hardening Verification");
