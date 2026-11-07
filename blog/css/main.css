@@ -536,7 +536,8 @@ table.gsc-search-box {
   }
 }
 
-.fav, .faved {
+.fav,
+.faved {
   font-size: 1.75rem;
   line-height: 1;
   color: rgb(233, 48, 94);
@@ -551,16 +552,19 @@ table.gsc-search-box {
   touch-action: manipulation;
 }
 @media (max-width: 575.98px) {
-  .fav, .faved {
+  .fav,
+  .faved {
     font-size: 1.5rem;
     min-width: 36px;
     min-height: 36px;
   }
 }
-.fav:hover, .faved:hover {
+.fav:hover,
+.faved:hover {
   transform: scale(1.15);
 }
-.fav:active, .faved:active {
+.fav:active,
+.faved:active {
   transform: scale(0.9);
 }
 
@@ -976,7 +980,10 @@ html.rtl-mode body {
   direction: rtl;
   text-align: right;
 }
-html[dir=rtl] p, html[dir=rtl] .post ul li, html[dir=rtl] time, html[dir=rtl] .text-start,
+html[dir=rtl] p,
+html[dir=rtl] .post ul li,
+html[dir=rtl] time,
+html[dir=rtl] .text-start,
 html.rtl-mode p,
 html.rtl-mode .post ul li,
 html.rtl-mode time,

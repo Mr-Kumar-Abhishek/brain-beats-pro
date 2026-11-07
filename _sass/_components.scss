@@ -44,9 +44,11 @@
   0% {
     box-shadow: 0 0 4px rgba(13, 110, 253, 0.4);
   }
+
   50% {
     box-shadow: 0 0 14px rgba(13, 110, 253, 0.85);
   }
+
   100% {
     box-shadow: 0 0 4px rgba(13, 110, 253, 0.4);
   }
@@ -114,7 +116,7 @@
 .card-body {
   padding: 1.25rem;
 
-  .row.align-items-center > .col.text-end {
+  .row.align-items-center>.col.text-end {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
@@ -194,7 +196,8 @@
   }
 }
 
-.fav, .faved {
+.fav,
+.faved {
   font-size: 1.75rem;
   line-height: 1;
   color: $fav-pink;
@@ -441,8 +444,13 @@ ul.posts {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(-360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
 }
 
 @keyframes yin-yang-anim {
@@ -450,18 +458,22 @@ ul.posts {
     opacity: 0;
     transform: rotate(0deg) scaleX(0) scaleY(0);
   }
+
   25% {
     opacity: 0.5;
     transform: rotate(-180deg) scaleX(0.5) scaleY(0.5);
   }
+
   50% {
     opacity: 1;
     transform: rotate(-360deg) scaleX(1) scaleY(1);
   }
+
   75% {
     opacity: 0.5;
     transform: rotate(-540deg) scaleX(0.5) scaleY(0.5);
   }
+
   100% {
     opacity: 0;
     transform: rotate(-720deg) scaleX(0) scaleY(0);
@@ -469,8 +481,15 @@ ul.posts {
 }
 
 @keyframes flicker {
-  0% { background-color: white; color: black; }
-  50% { background-color: black; color: white; }
+  0% {
+    background-color: white;
+    color: black;
+  }
+
+  50% {
+    background-color: black;
+    color: white;
+  }
 }
 
 .flicker {
@@ -626,7 +645,10 @@ html.rtl-mode {
     text-align: right;
   }
 
-  p, .post ul li, time, .text-start {
+  p,
+  .post ul li,
+  time,
+  .text-start {
     text-align: right !important;
   }
 
@@ -635,12 +657,35 @@ html.rtl-mode {
   }
 
   /* Logical margins flip for LTR Bootstrap utilities */
-  .me-1 { margin-left: 0.25rem !important; margin-right: 0 !important; }
-  .me-2 { margin-left: 0.5rem !important; margin-right: 0 !important; }
-  .me-3 { margin-left: 1rem !important; margin-right: 0 !important; }
-  .ms-1 { margin-right: 0.25rem !important; margin-left: 0 !important; }
-  .ms-2 { margin-right: 0.5rem !important; margin-left: 0 !important; }
-  .ms-3 { margin-right: 1rem !important; margin-left: 0 !important; }
+  .me-1 {
+    margin-left: 0.25rem !important;
+    margin-right: 0 !important;
+  }
+
+  .me-2 {
+    margin-left: 0.5rem !important;
+    margin-right: 0 !important;
+  }
+
+  .me-3 {
+    margin-left: 1rem !important;
+    margin-right: 0 !important;
+  }
+
+  .ms-1 {
+    margin-right: 0.25rem !important;
+    margin-left: 0 !important;
+  }
+
+  .ms-2 {
+    margin-right: 0.5rem !important;
+    margin-left: 0 !important;
+  }
+
+  .ms-3 {
+    margin-right: 1rem !important;
+    margin-left: 0 !important;
+  }
 
   /* Navbar in RTL */
   .navbar-nav.me-auto {
@@ -674,7 +719,7 @@ html.rtl-mode {
   .card-body {
     direction: rtl;
 
-    .row.align-items-center > .col.text-end {
+    .row.align-items-center>.col.text-end {
       justify-content: flex-start;
     }
   }
@@ -955,5 +1000,3 @@ html.rtl-mode {
     border-top: 1px solid #e3e5e8;
   }
 }
-
-

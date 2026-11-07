@@ -75,6 +75,7 @@ jobs:
           cp css/main.css _site/css/main.css || true
           cp blog/css/main.css _site/blog/css/main.css || true
           cp README.md _site/README.md || true
+          cp RELEASE_NOTES.md _site/RELEASE_NOTES.md || true
           cp DEVELOPMENT.md _site/DEVELOPMENT.md || true
           cp TEST_REPORT.md _site/TEST_REPORT.md || true
           cp CONTRIBUTING.md _site/CONTRIBUTING.md || true
