@@ -1,6 +1,6 @@
 {
   "name": "brain-beats",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Brainwave entrainment web audio application and research blog",
   "scripts": {
     "test": "node tests/audio-engine.test.js",
