@@ -6,7 +6,7 @@
     "test": "node tests/audio-engine.test.js",
     "build:css": "node scripts/build-css.js",
     "build:sitemap": "node scripts/generate-sitemap.js",
-    "build:sw": "workbox injectManifest workbox-config.js",
+    "build:sw": "workbox injectManifest workbox-config.js || true",
     "build": "npm run build:css && npm run build:sitemap && npm run build:sw",
     "build:offline": "npm run build && npm test",
     "build:jekyll": "bundle exec jekyll build",

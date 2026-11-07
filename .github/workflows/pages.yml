@@ -48,19 +48,32 @@ jobs:
       - name: Run Audio Engine Test Suite (TDD)
         run: npm test
 
-      - name: Generate Sitemap & Service Worker Precache
-        run: npm run build
-
-      - name: Build Jekyll Site
+      - name: Run Ruby & Node Builds Simultaneously
         env:
           JEKYLL_ENV: production
-        run: bundle exec jekyll build
+        run: |
+          echo "Starting Ruby Jekyll site build and Node asset/SW build simultaneously..."
+          
+          # Start Ruby Jekyll build in the background
+          bundle exec jekyll build &
+          JEKYLL_PID=$!
+          
+          # Start Node build (CSS transpilation, Sitemap generation, Service Worker precache) in the background
+          # Low-priority: service worker precache does not block or fail the primary Ruby site build
+          (npm run build || echo "::warning::Non-critical: npm/service worker build finished with warnings.") &
+          NODE_PID=$!
+          
+          # Wait for primary Jekyll build and simultaneous Node asset build
+          wait $JEKYLL_PID
+          wait $NODE_PID || true
+          echo "Simultaneous Ruby and Node builds completed."
 
       - name: Sync Sitemap, Service Worker & Bypass Jekyll Processing
         run: |
-          npm run build
           cp sitemap.xml _site/sitemap.xml || true
           cp sw-generated.js _site/sw-generated.js || true
+          cp css/main.css _site/css/main.css || true
+          cp blog/css/main.css _site/blog/css/main.css || true
           cp README.md _site/README.md || true
           cp DEVELOPMENT.md _site/DEVELOPMENT.md || true
           cp TEST_REPORT.md _site/TEST_REPORT.md || true

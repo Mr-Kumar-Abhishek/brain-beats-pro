@@ -223,15 +223,6 @@
   }
 }
 
-  &:hover {
-    transform: scale(1.15);
-  }
-
-  &:active {
-    transform: scale(0.9);
-  }
-}
-
 .fav:before {
   content: ' \2661';
 }
