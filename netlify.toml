@@ -1,0 +1,79 @@
+# Netlify Configuration for Brain Beats
+# Jekyll static site generator & Web Audio PWA
+
+[build]
+  command = "if [ -f Gemfile ]; then bundle exec jekyll build && (cp sitemap.xml sw-generated.js README.md DEVELOPMENT.md TEST_REPORT.md CONTRIBUTING.md cocomo-cost-estimate.md package.json .node-version .nvmrc netlify.toml _site/ 2>/dev/null || true) && touch _site/.nojekyll; else mkdir -p _site && (cp -r * _site/ 2>/dev/null || true) && touch _site/.nojekyll; fi"
+  publish = "_site"
+
+[build.environment]
+  RUBY_VERSION = "3.3"
+  NODE_VERSION = "24"
+  JEKYLL_ENV = "production"
+
+[context.production]
+  publish = "_site"
+  command = "if [ -f Gemfile ]; then bundle exec jekyll build && (cp sitemap.xml sw-generated.js README.md DEVELOPMENT.md TEST_REPORT.md CONTRIBUTING.md cocomo-cost-estimate.md package.json .node-version .nvmrc netlify.toml _site/ 2>/dev/null || true) && touch _site/.nojekyll; else mkdir -p _site && (cp -r * _site/ 2>/dev/null || true) && touch _site/.nojekyll; fi"
+
+[context.deploy-preview]
+  publish = "_site"
+  command = "if [ -f Gemfile ]; then bundle exec jekyll build && (cp sitemap.xml sw-generated.js README.md DEVELOPMENT.md TEST_REPORT.md CONTRIBUTING.md cocomo-cost-estimate.md package.json .node-version .nvmrc netlify.toml _site/ 2>/dev/null || true) && touch _site/.nojekyll; else mkdir -p _site && (cp -r * _site/ 2>/dev/null || true) && touch _site/.nojekyll; fi"
+
+[context.branch-deploy]
+  publish = "_site"
+  command = "if [ -f Gemfile ]; then bundle exec jekyll build && (cp sitemap.xml sw-generated.js README.md DEVELOPMENT.md TEST_REPORT.md CONTRIBUTING.md cocomo-cost-estimate.md package.json .node-version .nvmrc netlify.toml _site/ 2>/dev/null || true) && touch _site/.nojekyll; else mkdir -p _site && (cp -r * _site/ 2>/dev/null || true) && touch _site/.nojekyll; fi"
+
+[context.gh-pages]
+  publish = "_site"
+  command = "mkdir -p _site && (cp -r * _site/ 2>/dev/null || true) && touch _site/.nojekyll"
+
+# Service Worker & Manifest headers (never cache SW so users get updates instantly)
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Content-Type = "application/javascript; charset=utf-8"
+
+[[headers]]
+  for = "/sw-generated.js"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Content-Type = "application/javascript; charset=utf-8"
+
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Content-Type = "application/manifest+json; charset=utf-8"
+
+# Caching for static audio worklets, fonts, images, and JSON presets
+[[headers]]
+  for = "/noise-processor/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/json/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Global security and performance headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+
+# Domain canonicalization / redirects
+[[redirects]]
+  from = "https://brain-beats.netlify.app/*"
+  to = "https://brain-beats-pro.netlify.app/:splat"
+  status = 301
+  force = true
