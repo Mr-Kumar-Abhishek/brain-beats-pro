@@ -272,8 +272,12 @@ Contributions are welcome! Please review the comprehensive **[Contribution Guide
 
 This project enforces a strict boundary separating software programming, configuration files, and server configurations from creative and educational content:
 
-* **Software, Programming Mechanics, Configuration Files & Server Configurations:** Copyleft protected under the **GNU Affero General Public License v3.0 (AGPL-3.0)**. Covers all application source code, JavaScript synthesis algorithms, AudioWorklet processors, scripts, interactive generative mechanics, configuration files, and server configurations (`package.json`, `.node-version`, `.nvmrc`, `netlify.toml`, `_config.yml`, Workbox configs, web server headers/redirects, and CI/CD pipelines). See [`LICENSE`](LICENSE) for complete terms.
-* **Content & Documentation:** &copy; Brain Beats Pro. Licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license. Applies exclusively to written documentation, research guides, blog articles, and audio frequency preset catalogs. Does *not* apply to software programming, audio engines, technical mechanics, configuration files, or server configurations. See [`LICENSE-CONTENT.txt`](LICENSE-CONTENT.txt) for complete terms.
+* **Software, Programming Mechanics, Configuration Files & Server Configurations:** Copyleft protected under the **GNU Affero General Public License v3.0 (AGPL-3.0)** published by the Free Software Foundation. Covers all application source code, JavaScript synthesis algorithms, AudioWorklet processors, scripts, interactive generative mechanics, configuration files, and server configurations (`package.json`, `.node-version`, `.nvmrc`, `netlify.toml`, `_config.yml`, Workbox configs, web server headers/redirects, and CI/CD pipelines). See [`LICENSE`](LICENSE) for complete terms.
+* **Content & Documentation:** &copy; Brain Beats Pro. Licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license, created and published by the **Creative Commons organization** (`https://creativecommons.org/`).
+  * **Commercial Use Permitted:** Downstream users are authorized to copy, share, transform, and build upon content for any purpose, including commercial endeavors.
+  * **Compulsory Attribution:** Users MUST give appropriate credit (citing Brain Beats and its authors), provide a link to the CC BY 4.0 license, and clearly indicate if changes were made.
+  * **International Legal Protection:** License theft, unauthorized license stripping, or copyright infringement is strictly prohibited under international copyright treaties (WIPO, Berne Convention) and statutory laws.
+  * Applies exclusively to written documentation, research guides, blog articles, and audio frequency preset catalogs. Does *not* apply to software programming, audio engines, technical mechanics, configuration files, or server configurations. See [`LICENSE-CONTENT.txt`](LICENSE-CONTENT.txt) for complete terms.
 
 ---
 

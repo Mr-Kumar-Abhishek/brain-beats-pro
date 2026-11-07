@@ -2,10 +2,30 @@
 BRAIN BEATS - CONTENT & DOCUMENTATION LICENSE
 ================================================================================
 
+ORGANIZATION & ISSUER:
+This license document and the Creative Commons licensing standard are created 
+and published by the Creative Commons organization (https://creativecommons.org/).
+
 IMPORTANT SCOPE & SEPARATION NOTICE:
 The Creative Commons Attribution 4.0 International (CC BY 4.0) license applies 
 EXCLUSIVELY to written content, including documentation, blog posts, research 
 articles, educational guides, and audio preset data catalogs (JSON presets).
+
+COMMERCIAL USE & ATTRIBUTION REQUIREMENTS:
+Under CC BY 4.0, users and downstream licensees are permitted to copy, 
+redistribute, remix, transform, and build upon the material in any medium or 
+format for ANY purpose, INCLUDING COMMERCIAL PURPOSES. 
+
+However, ATTRIBUTION IS COMPULSORY: You MUST give appropriate credit (citing 
+the reference author/project Brain Beats and linking to the source), provide a 
+link to the license, and indicate if changes were made. 
+
+INTERNATIONAL LEGAL ENFORCEMENT & PROHIBITION OF LICENSE THEFT:
+License theft, license stripping, misappropriation of intellectual property, 
+and failure to respect the dual-licensing framework (CC BY 4.0 for content and 
+GNU AGPL-3.0 for software/configuration) is strictly prohibited under international 
+copyright treaties, including the Berne Convention, WIPO Copyright Treaty, and 
+national statutory intellectual property laws.
 
 This Creative Commons license DOES NOT apply to any software source code, 
 programming logic, Web Audio API DSP algorithms, AudioWorklet processors, 

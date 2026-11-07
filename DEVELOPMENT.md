@@ -49,7 +49,12 @@ flowchart TD
 2. **Offline-First PWA:** Service Worker precaches all core assets, application scripts, styles, audio processors, and 25 JSON preset databases.
 3. **DRY Jekyll Architecture:** Clean Liquid layout inheritance with automatic fallback chains for SEO/meta tags across thousands of research articles.
 4. **FDA Regulatory & Medical Reference Standards:** All clinical pharmaceutical benchmarks, pathogen associations, and medical drug cross-references across research articles and frequency documentation are sourced directly from official public health datasets and registries maintained by the **Food and Drug Administration (FDA), USA** (including openFDA API datasets, FDA Approved Drug Products with Therapeutic Equivalence Evaluations [Orange Book], NDA/BLA application monographs, and 510(k) device clearances).
-5. **Automated TDD Test Suite:** Node.js-based test suite (`npm test`) validating syntax, audio lifecycle, DSP functions, JSON database integrity, and precache completeness.
+5. **DRY Multi-Remote Git Workflow & Isolated Deployment:** Strict adherence to "Don't Repeat Yourself" (DRY) in branch management and deployment automation. The `gh-pages` branch is strictly designated as an automated, compiled static deployment target built by CI/CD. It must never be checked out into local working directories or treated as source code.
+6. **Strict Dual Licensing & International Copyright Protection:**
+   - **Content & Documentation:** Creative Commons Attribution 4.0 International (CC BY 4.0) published by the **Creative Commons organization** (`https://creativecommons.org/`). Allows commercial use with **compulsory attribution/credit** to Brain Beats and reference authors.
+   - **Software & Configuration:** GNU Affero General Public License v3.0 (GNU AGPLv3) strictly covering all code, DSP algorithms, mechanics, configuration files, and server infrastructure.
+   - **Prohibition of License Theft:** Stripping licenses or violating dual-licensing terms is strictly prohibited under international copyright laws and WIPO treaties.
+7. **Automated TDD Test Suite:** Node.js-based test suite (`npm test`) validating syntax, audio lifecycle, DSP functions, JSON database integrity, and precache completeness.
 
 ---
 
@@ -572,26 +577,52 @@ git commit -m "feat(scope): concise description of enhancements"
 ```
 
 ### 18.6. Step 6: Multi-Remote Branch Synchronization & Push Policies
-Synchronize local tracking branches (`main`, `master`, `dev`, `debug`, `claude`) and push strictly to authorized distribution remotes:
+Synchronize local tracking branches (`main`, `master`, `dev`, `debug`, `claude`) and push strictly to authorized distribution remotes adhering to DRY standards:
 
+#### DRY Git Aliases for Automation
+To eliminate repetitive commands and error-prone branch hopping, use the following DRY git aliases:
 ```bash
-# 1. Fast-forward all local tracking branches to main:
+# Multi-branch merge synchronization alias (DRY branch alignment):
+git config alias.syncbranch '!f() { git checkout master && git merge main && git checkout dev && git merge main && git checkout debug && git merge main && git checkout claude && git merge main && git checkout main; }; f'
+
+# Multi-remote deployment push alias (pushes source branches to all remotes):
+git config alias.pushall '!git push origin main master dev debug claude && git push base-stream main master dev debug claude && git push upstream main master dev debug claude'
+```
+
+#### GitHub Pages Deployment Isolation (`gh-pages`)
+- **`gh-pages` is strictly an automated deployment artifact branch**, compiled by GitHub Actions from source branches (`main`/`master`).
+- **NEVER checkout `gh-pages` locally** into the source tree working directory. Checking out `gh-pages` unpacks thousands of compiled HTML build artifacts and destroys the local source git index.
+- To synchronize `gh-pages` across mirrors (`origin`, `base-stream`), synchronize via direct remote refspec without checkout:
+  ```bash
+  git push origin upstream/gh-pages:gh-pages --force
+  git push base-stream upstream/gh-pages:gh-pages --force
+  ```
+
+#### Multi-Remote Push Sequence (Upstream Priority)
+When pushing source branches, **priority goes to `upstream`** (`cybernetics-decentral/brain-beats`), followed by `origin` and `base-stream`:
+```bash
+# 1. Align all tracking branches to main:
 git branch -f master main
 git branch -f dev main
 git branch -f debug main
 git branch -f claude main
 
-# 2. Push tracking branches to origin (Primary CI/CD & GitHub Pages):
+# 2. Push to upstream FIRST (Primary upstream distribution):
+git push upstream main master dev debug claude
+
+# 3. Push to origin (Repository CI/CD & GitHub Pages):
 git push origin main master dev debug claude
 
-# 3. Push tracking branches to base-stream (Pro distribution & mirror):
+# 4. Push to base-stream (Pro mirror & distribution):
 git push base-stream main master dev debug claude
 ```
 
-> [!CAUTION]
-> **Upstream Push Restriction Directive**:
-> Strictly **reduce/avoid pushes towards `upstream`** (`git@github.com:cybernetics-decentral/brain-beats.git`).
-> Routine pushes are strictly prohibited to `upstream` unless explicitly instructed and approved by the maintainer.
+> [!IMPORTANT]
+> **Licensing & Regulatory Compliance Mandate**:
+> 1. All medical and drug reference benchmarks must strictly cite the **Food and Drug Administration (FDA), USA**.
+> 2. Content & documentation are licensed under **CC BY 4.0** by the **Creative Commons organization**, permitting commercial use with compulsory attribution/credit.
+> 3. Software DSP code and configuration files are licensed under **GNU AGPLv3**.
+> 4. License theft or unauthorized license stripping is strictly prohibited under international copyright law.
 
 ---
 
