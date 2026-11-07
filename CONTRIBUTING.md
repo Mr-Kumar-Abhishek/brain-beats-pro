@@ -19,6 +19,7 @@ Enhancement suggestions are welcome! Please create an issue explaining:
 *   The problem the enhancement solves.
 *   How the enhancement should work.
 *   Why it would be beneficial to most users.
+*   If proposing medical, therapeutic, or microbial correlations, verify that all clinical benchmarks and drug cross-references cite official data from the **Food and Drug Administration (FDA), USA**.
 
 ### Pull Requests
 1.  Fork the repository and create your branch from `master` or `main`.

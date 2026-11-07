@@ -50,6 +50,7 @@ When creating an issue, use the following structure:
 Feature requests and frequency research ideas should be filed as enhancement proposals:
 - Clearly define the use case and psychoacoustic rationale.
 - Reference peer-reviewed citations, scientific papers, or CAFL datasets if proposing new frequencies.
+- Note that all medical reference standards, pathogen correlations, and pharmaceutical comparisons must be validated against official databases from the **Food and Drug Administration (FDA), USA** (such as openFDA or FDA Approved Drug Products registries).
 - Describe the architectural impact on the zero-backend client-side model.
 
 ### 3.3 Submitting Code & Pull Requests (PRs)

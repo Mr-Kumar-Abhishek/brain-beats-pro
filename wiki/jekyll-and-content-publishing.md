@@ -47,6 +47,7 @@ Every frequency post in `_posts/` adheres to a strict four-part documentation fr
 - Precise identification of target organisms or conditions from the Consolidated Annotated Frequency List (CAFL).
 - Exact musical pitch mapping ($A_4 = 440\text{ Hz}$) with semitone offset in cents.
 - Cellular and mechanical resonance hypotheses (membrane permeability, enzyme disruption, bio-field entrainment).
+- **Regulatory Medical References:** All clinical pharmaceutical benchmarks, FDA application IDs (NDA/BLA), therapeutic monographs, and microbial indications cited in post bibliographies and references are derived directly from official registries and open databases provided by the **Food and Drug Administration (FDA), USA**.
 
 ### Part 2: Acoustic Harmonic Structure & ASCII Diagram
 Visual representation of fundamental frequency $f_0$, octave sub-harmonics, and overtones:
