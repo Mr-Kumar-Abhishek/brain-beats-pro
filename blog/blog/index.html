@@ -22,14 +22,14 @@ keywords: Brain Beats Pro blog, binaural beats blog, frequency research
 		  </ul>
 	  </section>
 	  <!-- Pagination links -->
-	  <nav>
+	  <nav aria-label="Blog Pagination">
 		  <ul class="pagination justify-content-center">
 			  {% if paginator.previous_page %}
-				<li class="page-item"><a class="page-link" href="{{ paginator.previous_page_path | relative_url }}">
-				  Previous
+				<li class="page-item"><a class="page-link" href="{{ paginator.previous_page_path | relative_url }}" title="Go to Page {{ paginator.previous_page }}">
+				  &laquo; Previous
 				</a></li>
 			  {% else %}
-				<li class="page-item disabled"><span class="previous page-link">Previous</span></li>
+				<li class="page-item disabled"><span class="previous page-link">&laquo; Previous</span></li>
 			  {% endif %}
 			  <li class="page-item">
 			   <span class="page_number page-link">
@@ -38,10 +38,10 @@ keywords: Brain Beats Pro blog, binaural beats blog, frequency research
 			  </li>
 			  {% if paginator.next_page %}
 			   <li class="page-item">
-				<a class="page-link" href="{{ paginator.next_page_path | relative_url }}">Next</a>
+				<a class="page-link" href="{{ paginator.next_page_path | relative_url }}" title="Go to Page {{ paginator.next_page }}">Next &raquo;</a>
 			  </li>
 			  {% else %}
-			  <li class="page-item disabled"><span class="next page-link">Next</span></li>
+			  <li class="page-item disabled"><span class="next page-link">Next &raquo;</span></li>
 			  {% endif %}
 		  </ul>
 	  </nav>

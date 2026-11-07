@@ -4,6 +4,28 @@ This document tracks all version releases, deployment stabilization reports, CI/
 
 ---
 
+## [1.0.1] - 2026-11-07
+
+### 🔗 Semantic Release: Liquid Clickable Link Titles & Accessible Navigation
+
+#### 1. Executive Summary
+This release implements accessible, SEO-optimized, and screen-reader-compliant `title` attributes across all clickable anchors and pagination links rendered through Liquid templates in `_layouts/post.html`, `_layouts/default.html`, and `blog/` views.
+
+#### 2. Key Changes & Improvements
+- **Liquid Post Navigation Titles in `_layouts/post.html`:**
+  - Added dedicated next/previous post pagination navigation rendered with Liquid:
+    - `<a href="{{ page.previous.url | relative_url }}" title="{{ page.previous.title | escape }}" rel="prev">`
+    - `<a href="{{ page.next.url | relative_url }}" title="{{ page.next.title | escape }}" rel="next">`
+- **Liquid Navbar & Footer Anchor Titles in `_layouts/default.html`:**
+  - Integrated descriptive Liquid-compatible `title` attributes on all navigation bar links (`Home`, `Brain Beats Pro Web App`, `Blog Posts`, `Blog Search`, `Licenses`, `COCOMO Estimation`, `Chat`).
+  - Added descriptive `title` attributes on footer contact and licensing links (`support@brain-beats.in`, Atom RSS, CC BY 4.0, and GNU AGPLv3).
+- **Blog Archive & Pagination Titles:**
+  - Enriched blog archive and pagination controls in `blog/index.html` and `blog/blog/index.html` with descriptive `title` attributes for pagination steps (`title="Go to Page {{ paginator.next_page }}"`).
+- **Test Suite Verification:**
+  - All 86 automated unit tests pass with zero errors (`tests/audio-engine.test.js`).
+
+---
+
 ## [1.0.0] - 2026-11-07
 
 ### 🚀 Milestone: Production Deployment Stabilization & CI/CD Optimization
@@ -43,3 +65,4 @@ For detailed cycle-by-cycle engineering records and test suite audits, consult [
 <div align="center">
 <sub>&copy; Brain Beats Pro. Written content and documentation are licensed under <a href="LICENSE-CONTENT.txt">CC BY 4.0</a>. Software code, synthesis mechanics, and configuration files are copyleft protected under <a href="LICENSE">GNU AGPLv3</a>.</sub>
 </div>
+
