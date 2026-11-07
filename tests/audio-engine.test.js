@@ -558,6 +558,51 @@ async function runTestSuite() {
   const codeqlWorkflow = fs.readFileSync(path.join(__dirname, '../.github/workflows/codeql.yml'), 'utf8');
   assert(codeqlWorkflow.includes("github/codeql-action/analyze"), ".github/workflows/codeql.yml exists and configures automated CodeQL scanning");
 
+  console.log("\nPhase 15: Liquid Accessible Navigation & Link Title UX Verification");
+  assert(
+    postLayoutContent.includes('class="blog-post-nav') &&
+    postLayoutContent.includes('title="{{ page.previous.title | escape }}"') &&
+    postLayoutContent.includes('title="{{ page.next.title | escape }}"') &&
+    postLayoutContent.includes('{% include disclaimer-modal.html %}'),
+    "_layouts/post.html includes Liquid next/previous navigation with title attributes and disclaimer modal"
+  );
+
+  assert(
+    defaultLayoutContent.includes('class="navbar-brand"') &&
+    defaultLayoutContent.includes('title="Brain Beats Pro - Free Online Brainwave Entrainment Application"') &&
+    defaultLayoutContent.includes('title="Brain Beats Pro Blog Home"') &&
+    defaultLayoutContent.includes('title="Launch Brain Beats Pro Web Audio Application"') &&
+    defaultLayoutContent.includes('title="Browse All Brainwave & Frequency Research Posts"') &&
+    defaultLayoutContent.includes('title="Search Frequency Research & Articles"') &&
+    defaultLayoutContent.includes('title="View Software AGPL-3.0 and Content CC BY 4.0 Licenses"') &&
+    defaultLayoutContent.includes('title="View COCOMO II Software Engineering Economic Valuation"') &&
+    defaultLayoutContent.includes('title="Join the Brain Beats Pro Discord Community"'),
+    "_layouts/default.html navbar links contain accessible Liquid titles"
+  );
+
+  assert(
+    defaultLayoutContent.includes('title="Email Brain Beats Pro Support"') &&
+    defaultLayoutContent.includes('title="Subscribe to Brain Beats Pro Atom/RSS Feed"') &&
+    defaultLayoutContent.includes('title="Creative Commons Attribution 4.0 International License Details"') &&
+    defaultLayoutContent.includes('title="GNU Affero General Public License v3.0 Details"'),
+    "_layouts/default.html footer anchors contain descriptive accessible title attributes"
+  );
+
+  const blogIndexContent = fs.readFileSync(path.join(__dirname, '../blog/blog/index.html'), 'utf8');
+  assert(
+    blogIndexContent.includes('title="Go to Page {{ paginator.previous_page }}"') &&
+    blogIndexContent.includes('title="Go to Page {{ paginator.next_page }}"') &&
+    blogIndexContent.includes('title="{{ post.title | escape }}"'),
+    "blog/blog/index.html pagination and post links contain dynamic Liquid title attributes"
+  );
+
+  const releaseNotesContent = fs.readFileSync(path.join(__dirname, '../RELEASE_NOTES.md'), 'utf8');
+  assert(
+    releaseNotesContent.includes('[1.0.1]') &&
+    releaseNotesContent.includes('Liquid Clickable Link Titles'),
+    "RELEASE_NOTES.md contains semantic release notes for v1.0.1 and deployment stabilization reports"
+  );
+
   console.log(`   Test Results: ${passed} Passed, ${failed} Failed`);
   console.log("==================================================\n");
 
