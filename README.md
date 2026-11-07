@@ -85,7 +85,10 @@ Brain Beats performs **100% client-side Web Audio synthesis** without external a
 > **Photosensitive Warning (Dreamachine):** The Dreamachine Generator produces rapid visual strobe effects. **Do not use** if you have photosensitive epilepsy or a history of seizures. Always use with eyes closed in a darkened room.
 
 > [!NOTE]
-> **Medical Disclaimer:** Brain Beats is designed for acoustic research, meditation, and relaxation. It is **not** a substitute for professional medical advice, diagnosis, or treatment.
+> **Medical Disclaimer & Regulatory References:**
+> Brain Beats is designed for psychoacoustic research, meditation, sound therapy exploration, and complementary wellness education. It is **not** a substitute for professional medical advice, diagnosis, or clinical treatment.
+> 
+> All medical benchmarks, microbial references, clinical drug cross-references, and therapeutic indications cited throughout the research documentation and frequency articles are derived directly from official public health datasets and regulatory drug databases provided by the **Food and Drug Administration (FDA), USA** (including openFDA, FDA Approved Drug Products / Orange Book, NDA/BLA application monographs, and 510(k) premarket clearance registries). Microbial eradication, viral prophylaxis, and progressive acute symptoms strictly require FDA-approved clinical pharmaceuticals and evaluation by licensed physicians. Never discontinue prescribed medical treatments in favor of acoustic protocols.
 
 ---
 

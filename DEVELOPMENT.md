@@ -48,7 +48,8 @@ flowchart TD
 1. **Zero-Backend Audio Synthesis:** All frequency generation, binaural beat processing, monaural modulation, and noise shaping runs entirely client-side inside the browser using the **Web Audio API**. It functions 100% offline without needing an active internet connection.
 2. **Offline-First PWA:** Service Worker precaches all core assets, application scripts, styles, audio processors, and 25 JSON preset databases.
 3. **DRY Jekyll Architecture:** Clean Liquid layout inheritance with automatic fallback chains for SEO/meta tags across thousands of research articles.
-4. **Automated TDD Test Suite:** Node.js-based test suite (`npm test`) validating syntax, audio lifecycle, DSP functions, JSON database integrity, and precache completeness.
+4. **FDA Regulatory & Medical Reference Standards:** All clinical pharmaceutical benchmarks, pathogen associations, and medical drug cross-references across research articles and frequency documentation are sourced directly from official public health datasets and registries maintained by the **Food and Drug Administration (FDA), USA** (including openFDA API datasets, FDA Approved Drug Products with Therapeutic Equivalence Evaluations [Orange Book], NDA/BLA application monographs, and 510(k) device clearances).
+5. **Automated TDD Test Suite:** Node.js-based test suite (`npm test`) validating syntax, audio lifecycle, DSP functions, JSON database integrity, and precache completeness.
 
 ---
 
