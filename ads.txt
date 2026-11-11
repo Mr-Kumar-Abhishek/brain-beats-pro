@@ -1,1 +1,4 @@
-google.com, pub-1948728148006217, DIRECT, f08c47fec0942fa0
+# Official demo publisher identifier (Test / Example)
+# PRODUCTION BACKUP REFERENCE:
+# google.com, pub-1948728148006217, DIRECT, f08c47fec0942fa0
+google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

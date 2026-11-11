@@ -1,10 +1,19 @@
 
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+// ==============================================================================
+// Google Ads Tracking Configuration
+// Demo / Example ID: AW-123456789
+// PRODUCTION BACKUP REFERENCE:
+// - Account ID: AW-645983156 (Customer ID: 645-983-156)
+// - Conversion Label: AW-645983156/Y4RXCPTPu9oYELTXg7QC
+// ==============================================================================
 
-  gtag('config', 'AW-645983156');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
 
-  /* Event snippet for Website traffic (1) conversion page */
-  
-gtag('event', 'conversion', {'send_to': 'AW-645983156/Y4RXCPTPu9oYELTXg7QC'});
+// Configured with official demo/example tracking ID
+gtag('config', 'AW-123456789');
+
+/* Event snippet for Website traffic conversion page (Demo) */
+gtag('event', 'conversion', {'send_to': 'AW-123456789/AbC_123DemoLabel'});
+
