@@ -2,7 +2,7 @@
 # Jekyll static site generator & Web Audio PWA
 
 [build]
-  command = "if [ -f Gemfile ]; then bundle exec jekyll build && (cp sitemap.xml sw-generated.js README.md DEVELOPMENT.md TEST_REPORT.md CONTRIBUTING.md cocomo-cost-estimate.md package.json .node-version .nvmrc netlify.toml _site/ 2>/dev/null || true) && touch _site/.nojekyll; else mkdir -p _site && (cp -r * _site/ 2>/dev/null || true) && touch _site/.nojekyll; fi"
+  command = "node scripts/build-css.js && if [ -f Gemfile ]; then bundle exec jekyll build && (cp sitemap.xml sw-generated.js README.md DEVELOPMENT.md TEST_REPORT.md CONTRIBUTING.md cocomo-cost-estimate.md package.json .node-version .nvmrc netlify.toml _site/ 2>/dev/null || true) && touch _site/.nojekyll; else mkdir -p _site && (cp -r * _site/ 2>/dev/null || true) && touch _site/.nojekyll; fi"
   publish = "_site"
 
 [build.environment]
@@ -12,15 +12,15 @@
 
 [context.production]
   publish = "_site"
-  command = "if [ -f Gemfile ]; then bundle exec jekyll build && (cp sitemap.xml sw-generated.js README.md DEVELOPMENT.md TEST_REPORT.md CONTRIBUTING.md cocomo-cost-estimate.md package.json .node-version .nvmrc netlify.toml _site/ 2>/dev/null || true) && touch _site/.nojekyll; else mkdir -p _site && (cp -r * _site/ 2>/dev/null || true) && touch _site/.nojekyll; fi"
+  command = "node scripts/build-css.js && if [ -f Gemfile ]; then bundle exec jekyll build && (cp sitemap.xml sw-generated.js README.md DEVELOPMENT.md TEST_REPORT.md CONTRIBUTING.md cocomo-cost-estimate.md package.json .node-version .nvmrc netlify.toml _site/ 2>/dev/null || true) && touch _site/.nojekyll; else mkdir -p _site && (cp -r * _site/ 2>/dev/null || true) && touch _site/.nojekyll; fi"
 
 [context.deploy-preview]
   publish = "_site"
-  command = "if [ -f Gemfile ]; then bundle exec jekyll build && (cp sitemap.xml sw-generated.js README.md DEVELOPMENT.md TEST_REPORT.md CONTRIBUTING.md cocomo-cost-estimate.md package.json .node-version .nvmrc netlify.toml _site/ 2>/dev/null || true) && touch _site/.nojekyll; else mkdir -p _site && (cp -r * _site/ 2>/dev/null || true) && touch _site/.nojekyll; fi"
+  command = "node scripts/build-css.js && if [ -f Gemfile ]; then bundle exec jekyll build && (cp sitemap.xml sw-generated.js README.md DEVELOPMENT.md TEST_REPORT.md CONTRIBUTING.md cocomo-cost-estimate.md package.json .node-version .nvmrc netlify.toml _site/ 2>/dev/null || true) && touch _site/.nojekyll; else mkdir -p _site && (cp -r * _site/ 2>/dev/null || true) && touch _site/.nojekyll; fi"
 
 [context.branch-deploy]
   publish = "_site"
-  command = "if [ -f Gemfile ]; then bundle exec jekyll build && (cp sitemap.xml sw-generated.js README.md DEVELOPMENT.md TEST_REPORT.md CONTRIBUTING.md cocomo-cost-estimate.md package.json .node-version .nvmrc netlify.toml _site/ 2>/dev/null || true) && touch _site/.nojekyll; else mkdir -p _site && (cp -r * _site/ 2>/dev/null || true) && touch _site/.nojekyll; fi"
+  command = "node scripts/build-css.js && if [ -f Gemfile ]; then bundle exec jekyll build && (cp sitemap.xml sw-generated.js README.md DEVELOPMENT.md TEST_REPORT.md CONTRIBUTING.md cocomo-cost-estimate.md package.json .node-version .nvmrc netlify.toml _site/ 2>/dev/null || true) && touch _site/.nojekyll; else mkdir -p _site && (cp -r * _site/ 2>/dev/null || true) && touch _site/.nojekyll; fi"
 
 [context.gh-pages]
   publish = "_site"
