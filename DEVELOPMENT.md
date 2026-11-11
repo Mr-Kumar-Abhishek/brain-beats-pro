@@ -579,43 +579,104 @@ git commit -m "feat(scope): concise description of enhancements"
 ### 18.6. Step 6: Multi-Remote Branch Synchronization & Push Policies
 Synchronize local tracking branches (`main`, `master`, `dev`, `debug`, `claude`) and push strictly to authorized distribution remotes adhering to DRY standards:
 
-#### DRY Git Aliases for Automation
+#### 18.6.1. Branch & Distribution Architecture Topology
+```mermaid
+flowchart TD
+    subgraph LocalWorkspace ["Local Working Directory (Source of Truth)"]
+        Main["main (Primary development)"]
+        Master["master (Mirror / release tracking)"]
+        Dev["dev (Feature staging)"]
+        Debug["debug (Diagnostic & regression)"]
+        Claude["claude (AI pair programming)"]
+    end
+
+    subgraph Priority1 ["Primary Target Remotes (1st Priority)"]
+        BaseStream["base-stream\n(Mr-Kumar-Abhishek/brain-beats-pro)\nBranches: main, master, dev, debug, claude, gh-pages"]
+        OrgRemote["org\n(cybernetics-decentral/brain-beats-pro)\nBranches: main, master, dev, debug, claude"]
+    end
+
+    subgraph Priority2 ["Secondary Mirror Remote (2nd Priority)"]
+        Origin["origin\n(Mr-Kumar-Abhishek/brain-beats)\nBranches: main, master, dev, debug, claude, gh-pages"]
+    end
+
+    subgraph Restricted ["Restricted / Archive Remote (Do NOT Push)"]
+        Upstream["upstream\n(cybernetics-decentral/brain-beats)\nRestricted: avoid automated pushes"]
+    end
+
+    Main --> Master
+    Main --> Dev
+    Main --> Debug
+    Main --> Claude
+
+    Master -->|Push Priority 1| BaseStream
+    Main -->|Push Priority 1| BaseStream
+    Dev -->|Push Priority 1| BaseStream
+    Debug -->|Push Priority 1| BaseStream
+    Claude -->|Push Priority 1| BaseStream
+
+    Master -->|Push Priority 1| OrgRemote
+    Main -->|Push Priority 1| OrgRemote
+    Dev -->|Push Priority 1| OrgRemote
+    Debug -->|Push Priority 1| OrgRemote
+    Claude -->|Push Priority 1| OrgRemote
+
+    Master -->|Push Priority 2| Origin
+    Main -->|Push Priority 2| Origin
+    Dev -->|Push Priority 2| Origin
+    Debug -->|Push Priority 2| Origin
+    Claude -->|Push Priority 2| Origin
+```
+
+#### 18.6.2. Configured Distribution Topology (`base-stream` & `org` Priority)
+Brain Beats distributes source code and releases across four designated remotes:
+- **`base-stream`** (`git@github.com:Mr-Kumar-Abhishek/brain-beats-pro.git`): **Priority 1 Personal Pro Canonical Distribution Remote**. Holds all active branch heads (`main`, `master`, `dev`, `debug`, `claude`) and static release deployment (`gh-pages`).
+- **`org`** (`git@github.com:cybernetics-decentral/brain-beats-pro.git`): **Priority 1 Organization Repository**. Designated for the Cybernetics Decentral organization publication. Tracks all core source branches (`main`, `master`, `dev`, `debug`, `claude`).
+- **`origin`** (`git@github.com:Mr-Kumar-Abhishek/brain-beats.git`): **Priority 2 Personal Fork Remote**. Serves as the continuous integration build mirror and primary Pages CI/CD builder.
+- **`upstream`** (`git@github.com:cybernetics-decentral/brain-beats.git`): **Restricted Remote**. Retained as a historical community archive; avoid routine pushes unless explicitly approved.
+
+#### 18.6.3. DRY Git Aliases for Pipeline Execution
 To eliminate repetitive commands and error-prone branch hopping, use the following DRY git aliases:
 ```bash
 # Multi-branch merge synchronization alias (DRY branch alignment):
 git config alias.syncbranch '!f() { git checkout master && git merge main && git checkout dev && git merge main && git checkout debug && git merge main && git checkout claude && git merge main && git checkout main; }; f'
 
-# Multi-remote deployment push alias (pushes source branches to all remotes):
-git config alias.pushall '!git push origin main master dev debug claude && git push base-stream main master dev debug claude && git push upstream main master dev debug claude'
+# Primary distribution push alias (pushes all 5 branches to base-stream, org, and origin):
+git config alias.pushall '!git push base-stream main master dev debug claude && git push org main master dev debug claude && git push origin main master dev debug claude'
+
+# Single-branch push alias (for rapid hotfixes on main):
+git config alias.pushmain '!git push base-stream main && git push org main && git push origin main'
 ```
 
-#### GitHub Pages Deployment Isolation (`gh-pages`)
-- **`gh-pages` is strictly an automated deployment artifact branch**, compiled by GitHub Actions from source branches (`main`/`master`).
-- **NEVER checkout `gh-pages` locally** into the source tree working directory. Checking out `gh-pages` unpacks thousands of compiled HTML build artifacts and destroys the local source git index.
-- To synchronize `gh-pages` across mirrors (`origin`, `base-stream`), synchronize via direct remote refspec without checkout:
-  ```bash
-  git push origin upstream/gh-pages:gh-pages --force
-  git push base-stream upstream/gh-pages:gh-pages --force
-  ```
-
-#### Multi-Remote Push Sequence (Upstream Priority)
-When pushing source branches, **priority goes to `upstream`** (`cybernetics-decentral/brain-beats`), followed by `origin` and `base-stream`:
+#### 18.6.4. Multi-Remote Push Sequence & Pipeline Execution
+When pushing source branches, execute in the standardized priority sequence:
 ```bash
-# 1. Align all tracking branches to main:
+# 1. Fast-forward and align all local tracking branches to main:
 git branch -f master main
 git branch -f dev main
 git branch -f debug main
 git branch -f claude main
 
-# 2. Push to upstream FIRST (Primary upstream distribution):
-git push upstream main master dev debug claude
+# 2. Pipeline Step 1: Push to base-stream (Primary personal Pro distribution):
+git push base-stream main master dev debug claude
 
-# 3. Push to origin (Repository CI/CD & GitHub Pages):
+# 3. Pipeline Step 2: Push to org (Cybernetics Decentral Organization repository):
+git push org main master dev debug claude
+
+# 4. Pipeline Step 3: Push to origin (Repository CI/CD mirror):
 git push origin main master dev debug claude
 
-# 4. Push to base-stream (Pro mirror & distribution):
-git push base-stream main master dev debug claude
+# OR simply run the DRY alias:
+git pushall
 ```
+
+#### 18.6.5. GitHub Pages Deployment Isolation (`gh-pages`)
+- **`gh-pages` is strictly an automated deployment artifact branch**, compiled by GitHub Actions from source branches (`main`/`master`).
+- **NEVER checkout `gh-pages` locally** into the source tree working directory. Checking out `gh-pages` unpacks thousands of compiled HTML build artifacts and destroys the local source git index.
+- To synchronize `gh-pages` across mirrors (`origin`, `base-stream`), compile or synchronize via direct remote refspec without checkout:
+  ```bash
+  git push origin gh-pages --force
+  git push base-stream gh-pages --force
+  ```
 
 > [!IMPORTANT]
 > **Licensing & Regulatory Compliance Mandate**:
@@ -623,6 +684,45 @@ git push base-stream main master dev debug claude
 > 2. Content & documentation are licensed under **CC BY 4.0** by the **Creative Commons organization**, permitting commercial use with compulsory attribution/credit.
 > 3. Software DSP code and configuration files are licensed under **GNU AGPLv3**.
 > 4. License theft or unauthorized license stripping is strictly prohibited under international copyright law.
+
+---
+
+## 19. COCOMO II Software Economic Valuation & Cost Calculation Summary
+
+For complete mathematical derivations, effort adjustment factors (EAF), and work breakdown structures, consult the formal [COCOMO Cost Estimate Report](cocomo-cost-estimate.md) and the interactive visual dashboard at [`cocomo.html`](file:///d:/big-projects/brain-beats/cocomo.html).
+
+### 19.1. Project Sizing Summary
+Based on static analysis of the active repository (excluding `node_modules`, `.git`, `_site`, and build artifacts):
+- **Total Clean Source Files:** 6,706 files
+- **Total Physical Source Lines (SLOC):** 533,963 lines (**533.963 KLOC**)
+  - *JSON Presets & Matrices:* 188,685 SLOC (35.3%)
+  - *Markdown Knowledge Base & Wiki:* 180,718 SLOC (33.8%)
+  - *Text Manifests & Configs:* 49,934 SLOC (9.4%)
+  - *Modular SCSS & CSS Stylesheets:* 45,640 SLOC (8.5%)
+  - *JavaScript Audio DSP & Build Tooling:* 43,396 SLOC (8.1%)
+  - *HTML UI Generators & Layouts:* 21,912 SLOC (4.1%)
+  - *Vector Media & AudioWorklets:* 3,682 SLOC (0.8%)
+
+### 19.2. COCOMO Mathematical Formulations & Valuation Metrics
+
+$$\text{Effort} = a \times (KLOC)^b \quad [\text{Person-Months}]$$
+$$\text{Schedule (TDEV)} = c \times (\text{Effort})^d \quad [\text{Months}]$$
+$$\text{Cost} = \text{Effort} \times \text{Labor Rate} \quad [\text{USD @ } \$8,000/\text{PM}]$$
+
+| Deployment Mode | Complexity & Architecture Scope | Coefficients ($a, b, c, d$) | Nominal Effort | Dev Duration (TDEV) | Avg Dev Staff | Total Dev Valuation (USD) | 5-Year TCO (Dev + Maint) |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Organic Mode** | Reusable web framework, stable PWA requirements | $a=2.4, b=1.05$<br>$c=2.5, d=0.38$ | **1,754.28 PM** | **42.73 mos** (3.56 yrs) | **41.05 devs** | **$14,034,209.37** | **$24,559,866.40** |
+| **Semi-Detached Mode** | Real-time Web Audio DSP, AudioWorklets, 25 JSON catalogs | $a=3.0, b=1.12$<br>$c=2.5, d=0.35$ | **3,403.56 PM** | **43.06 mos** (3.59 yrs) | **79.03 devs** | **$27,228,501.81** | **$54,457,003.62** |
+| **Embedded Mode** | Strict real-time buffer synchronization, offline PWA cache | $a=3.6, b=1.20$<br>$c=2.5, d=0.32$ | **6,750.19 PM** | **42.01 mos** (3.50 yrs) | **160.69 devs** | **$54,001,507.67** | **$121,503,392.25** |
+
+### 19.3. Specialized Work Breakdown Structure (WBS)
+- **Audio DSP Engine & AudioWorklet Processors (WP1):** 140.0 hrs (0.875 PM) = $7,000.00
+- **CAFL Frequency Presets & JSON Databases (WP2):** 120.0 hrs (0.750 PM) = $6,000.00
+- **PWA Service Worker Offline Precache (WP3):** 45.0 hrs (0.281 PM) = $2,250.00
+- **Automated TDD Test Suite (WP4):** 48.0 hrs (0.300 PM) = $2,400.00
+- **Modular SCSS Architecture & Dart Sass (WP10):** 42.0 hrs (0.263 PM) = $2,100.00
+- **Engineering Wiki & Regulatory Documentation (WP11):** 32.0 hrs (0.200 PM) = $1,600.00
+- **Total Specialized Core Audio Engine Engineering:** **774.0 hrs (4.838 PM) = $38,700.00**
 
 ---
 
