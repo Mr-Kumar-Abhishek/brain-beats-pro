@@ -23,12 +23,12 @@ header {
 }
 
 /* ==========================================================================
-   Navigation Bar & Dropdown Hierarchy Enhancements
+   Navigation Bar & Compact Dropdown Styles (Bootstrap Native + SCSS)
    ========================================================================== */
 .navbar {
   .navbar-nav {
     .nav-item {
-      margin-right: 0.15rem;
+      margin-right: 0.1rem;
 
       &:last-child {
         margin-right: 0;
@@ -36,9 +36,10 @@ header {
     }
 
     .nav-link {
-      padding: 0.5rem 0.85rem;
+      padding: 0.4rem 0.65rem;
       font-weight: 500;
-      border-radius: 6px;
+      font-size: 0.95rem;
+      border-radius: 4px;
       transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
 
       &:hover,
@@ -48,40 +49,43 @@ header {
     }
   }
 
+  /* Compact dropdown container across screens */
   .dropdown-menu {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
-    border-radius: 10px;
-    padding: 0.5rem 0;
-    margin-top: 0.35rem;
-    min-width: 15rem;
-    max-width: 24rem;
-    backdrop-filter: blur(8px);
-    background-color: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    padding: 0.25rem 0;
+    margin-top: 0.2rem;
+    min-width: 13.5rem;
+    max-width: 22rem;
+    background-color: #ffffff;
+    animation: dropdownFadeIn 0.12s ease-out;
 
-    /* Smooth elevation styling */
-    animation: dropdownFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+    @media (min-width: 1200px) {
+      max-height: calc(85vh - 4rem);
+      overflow-y: auto;
+    }
   }
 
+  /* Compact dropdown elements with tight padding & margins */
   .dropdown-item {
-    padding: 0.55rem 1.15rem;
-    margin: 0.1rem 0.35rem;
-    border-radius: 6px;
+    padding: 0.28rem 0.75rem;
+    margin: 0.05rem 0.2rem;
+    border-radius: 4px;
     width: auto;
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     font-weight: 450;
-    line-height: 1.4;
-    color: #2c3e50;
+    line-height: 1.35;
+    color: #333333;
     white-space: normal;
     overflow-wrap: break-word;
     word-wrap: break-word;
-    transition: all 0.15s ease-in-out;
+    transition: background-color 0.12s ease-in-out, color 0.12s ease-in-out;
 
     &:hover,
     &:focus {
-      background-color: #f1f5f9;
+      background-color: #f1f3f5;
       color: #0d6efd;
-      transform: translateX(2px);
     }
 
     &:active {
@@ -91,16 +95,17 @@ header {
   }
 
   .dropdown-divider {
-    margin: 0.4rem 0;
-    border-color: rgba(0, 0, 0, 0.08);
+    margin: 0.25rem 0;
+    border-color: rgba(0, 0, 0, 0.06);
   }
 }
 
 @keyframes dropdownFadeIn {
   from {
     opacity: 0;
-    transform: translateY(-6px);
+    transform: translateY(-4px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -108,44 +113,58 @@ header {
 }
 
 .navbar-collapse {
+  /* Mobile & Tablet viewports (<1200px) */
   @media (max-width: 1199.98px) {
     max-height: calc(100vh - 4.5rem);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    padding-top: 0.5rem;
-    padding-bottom: 1.5rem;
+    padding-top: 0.35rem;
+    padding-bottom: 1rem;
 
     .navbar-nav {
       .nav-item {
         margin-right: 0;
-        margin-bottom: 0.15rem;
+        margin-bottom: 0.05rem;
       }
 
       .nav-link {
-        padding: 0.65rem 1rem;
+        padding: 0.45rem 0.75rem;
+        font-size: 0.95rem;
       }
     }
 
     .dropdown-menu {
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02), 0 4px 12px rgba(0, 0, 0, 0.04);
-      border-radius: 8px;
-      margin: 0.3rem 0.5rem 0.6rem 0.5rem;
-      padding: 0.4rem 0.25rem;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: none;
+      border-radius: 6px;
+      margin: 0.15rem 0.35rem 0.4rem 0.35rem;
+      padding: 0.2rem 0.15rem;
       background-color: #f8f9fa;
     }
 
     .dropdown-item {
-      padding: 0.55rem 0.9rem;
-      margin: 0.1rem 0.25rem;
-      font-size: 0.94rem;
-      border-radius: 6px;
+      padding: 0.35rem 0.65rem;
+      margin: 0.05rem 0.15rem;
+      font-size: 0.88rem;
+      border-radius: 4px;
 
       &:hover,
       &:focus {
         background-color: #e9ecef;
-        transform: translateX(3px);
       }
+    }
+  }
+
+  /* Extra small mobile phones (<576px) */
+  @media (max-width: 575.98px) {
+    .dropdown-menu {
+      margin-left: 0.15rem;
+      margin-right: 0.15rem;
+    }
+
+    .dropdown-item {
+      padding: 0.32rem 0.55rem;
+      font-size: 0.85rem;
     }
   }
 }
@@ -235,7 +254,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   border: 1px solid $border-grey;
   text-align: center;
   padding: 12px;
