@@ -1,7 +1,7 @@
 # Web Audio Engine & PWA Test Report (TDD)
 
 **Project:** Brain Beats  
-**Date:** November 7, 2026  
+**Date:** November 15, 2026  
 **Methodology:** Test-Driven Development (TDD)  
 **Status:** All Tests Passing (91/91)
 
@@ -11,7 +11,7 @@
 
 This report documents the Test-Driven Development (TDD) verification and stability testing of the Brain Beats audio synthesis engine ([`js/main.js`](file:///var/www/html/js/main.js)), volume control & gain dynamics algorithm, modular SCSS build pipeline ([`scripts/build-css.js`](file:///var/www/html/scripts/build-css.js)), database schemas, offline Service Worker precaching layer ([`sw-generated.js`](file:///var/www/html/sw-generated.js)), MathJax mathematical typography build infrastructure ([`_includes/mathjax.html`](file:///var/www/html/_includes/mathjax.html)), Node.js 24 deployment runtimes, developer documentation suite ([`README.md`](file:///var/www/html/README.md), [`DEVELOPMENT.md`](file:///var/www/html/DEVELOPMENT.md), [`CONTRIBUTING.md`](file:///var/www/html/CONTRIBUTING.md)), CC BY 4.0 content licensing, web UI license scope integrations, GNU AGPL-3.0 software and configuration licensing scope, and DSP programming patches.
 
-All 63 automated unit and integration tests across 14 evaluation phases execute cleanly with zero runtime failures, confirming offline compliance, browser Autoplay policy compliance, hardware audio context stability, gain scaling accuracy, mathematical calculation rendering integrity, production-ready Node.js 24 deployment environments, and documentation/patch integrity.
+All 91 automated unit and integration tests across 15 evaluation phases execute cleanly with zero runtime failures, confirming offline compliance, browser Autoplay policy compliance, hardware audio context stability, gain scaling accuracy, mathematical calculation rendering integrity, production-ready Node.js 24 deployment environments, full local Jekyll compilation across all `11,178` blog articles, and documentation/patch integrity.
 
 ---
 
@@ -46,6 +46,7 @@ flowchart LR
 | **Cycle 14** | Multi-Language Translation & Responsive Bootstrap UX | Translation shifted body margin down 40px, top iframes overlaid navbar, text nodes orphaned, RTL scripts rendered LTR, and blog images distorted | Added `_includes/google-translate.html` with dynamic RTL script detection, suppressed `.VIpgJd-ZVi9od-ORHb-OEVmcd` iframes, eliminated orphaned text, updated `img { max-width: 100%; }`, and bounded mobile navbar collapse with touch scrolling | Applied Bootstrap 5 logical utility inversions (`.me-*` / `.ms-*`), floating audio dock redesign, and text expansion safeguards across 100+ languages |
 | **Cycle 15** | CI/CD Build Hardening & Simultaneous Runtimes | Blocked on SCSS syntax error in `_sass/_components.scss:233` and serialized `npm run build` crashing primary Jekyll deployments; simultaneous branch pushes caused `gh-pages` rejection | Fixed SCSS syntax error, decoupled Ruby Jekyll and Node builds to run concurrently in background, deprioritized non-critical SW precache, and serialized deployment concurrency | Verified with zero exit-code on GitHub Actions (Run 42336896919), live site verified, documented in `RELEASE_NOTES.md` |
 | **Cycle 16** | Accessible Link Titles & Browser UX Verification | Missing semantic `title` attributes on navigation/post links and unverified post pagination across browser rendering contexts | Added Liquid-rendered `title` attributes across `_layouts/default.html`, `_layouts/post.html`, and `blog/blog/index.html`; integrated `.blog-post-nav` next/prev links | Verified via DevTools/headless browser inspection, AudioContext state transition, modal triggers, and Phase 15 tests (91/91 passing) |
+| **Cycle 17** | openFDA Article Orchestration, Unbounded Sitemap & Local Jekyll Build | `5,649` raw unexpanded stubs, missing JSON preset/directory articles (`indexer.json`, `webring.json`, `angel.json`, `solfeggio.json`, `noise.json`, `puretones.json`, 41 slug collisions), `postDate > today` & `future: false` indexing cap (`1,454` URLs), and unverified local `11,178`-post Jekyll compilation | Extended `generate_posts.py` across all 25 JSON files with `27` openFDA drug benchmark entries, normalized `22` May 2023 `---` YAML delimiters, enabled `future: true` in `_config.yml`, and removed `postDate > today` cap in `scripts/generate-sitemap.js` | Verified idempotency (`0` created on rerun), full PyYAML + coverage audit (`11,014` JSON records / `11,178` `_posts` / `11,224` `sitemap.xml` URLs, `0` errors), full local `bundle exec jekyll build --trace` (`11,178` HTML posts & `_site/blog/search.json`), and `91/91` passing TDD assertions |
 
 ---
 
@@ -228,7 +229,14 @@ Phase 14: Cloud CI/CD & Netlify Zero-Exit-Code Hardening Verification
   [PASS] package.json contains automated sitemap and offline build scripts
   [PASS] sitemap.xml exists and maintains canonical domain integrity (https://brain-beats.in)
   [PASS] .github/workflows/codeql.yml exists and configures automated CodeQL scanning
-   Test Results: 86 Passed, 0 Failed
+
+Phase 15: Liquid Accessible Navigation & Link Title UX Verification
+  [PASS] _layouts/post.html includes Liquid next/previous navigation with title attributes and disclaimer modal
+  [PASS] _layouts/default.html navbar links contain accessible Liquid titles
+  [PASS] _layouts/default.html footer anchors contain descriptive accessible title attributes
+  [PASS] blog/blog/index.html pagination and post links contain dynamic Liquid title attributes
+  [PASS] RELEASE_NOTES.md contains semantic release notes for v1.0.1 and deployment stabilization reports
+   Test Results: 91 Passed, 0 Failed
 ==================================================
 
 ```

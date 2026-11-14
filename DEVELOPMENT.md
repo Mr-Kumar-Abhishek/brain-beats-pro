@@ -198,10 +198,16 @@ Mathematical formulas and calculations across Jekyll pages, blog posts, and esti
 * **Dual CDN & Offline Loader:** Loads primary bundle from CDN (`jsdelivr`) with an instant fallback (`onerror`) to the local precached `/blog/js/tex-mml-chtml.js` for offline PWA operation.
 * **Kramdown Engine:** Configured in `_config.yml` via `kramdown.math_engine: mathjax`.
 
-### 6.3. Generating Posts from Presets
-To regenerate or batch-generate markdown posts from JSON catalogs:
+### 6.3. Generating Posts from Presets (`generate_posts.py`)
+Brain Beats Pro automates blog stub generation and pharmacological benchmark enrichment through [`generate_posts.py`](generate_posts.py):
+- **Phase 1 (Existing Stub Enrichment):** Scans [`_posts/`](_posts) for raw stub articles containing `"This frequency is part of the Brain Beats presets collection."` and upgrades them in place while preserving original dates and filenames (`5,649` stubs upgraded).
+- **Phase 2 (100% Coverage Across All 25 JSON Databases):** Iterates deterministically across all **25 JSON files** in [`json/`](json) (`11,014` total records: `10,979` frequency presets across 23 playable collections + `26` directory records in [`json/indexer.json`](json/indexer.json) + `9` webring entries in [`json/webring.json`](json/webring.json)), disambiguates the `41` intra-file and cross-file slug collisions via `-preset-{occ}` / `(Preset Variant {occ})`, normalizes trailing whitespace on YAML `---` front-matter delimiters (`22` May 2023 posts), and generates chronological markdown articles through `2053-08-14` (`11,178` total posts).
+- **Article Structure & Clinical Grounding:** Each generated post includes biophysical wavelength calculations, an interactive player deep-link, `#instructionModal` Bootstrap disclaimer controls, an ES6 Web Audio API synthesizer reference class, dual **CC BY 4.0** / **GNU AGPLv3** licensing attribution, and `27` verified **openFDA** (`Food and Drug Administration, USA`) clinical drug benchmark entries (`OPENFDA_BENCHMARKS`).
+
+To regenerate or verify idempotency across [`_posts/`](_posts):
 ```bash
 python3 generate_posts.py
+node scripts/generate-sitemap.js
 ```
 
 ---
@@ -562,11 +568,16 @@ curl -I http://127.0.0.1:4000/blog/
 3. **SCSS & Stylesheets:** Edit modular SCSS partials in `_sass/` (`_variables.scss`, `_base.scss`, `_layout.scss`, `_components.scss`, `_footer.scss`) and synchronize compiled production outputs in `css/main.css` and `blog/css/main.css`.
 4. **Interactive Controls:** Ensure touch targets are ≥ 42px on mobile, action buttons support flex-wrapping, and form controls specify proper ARIA labels.
 
-### 18.4. Step 4: Run Automated TDD Test Verification
-Ensure all 86 test assertions pass cleanly with zero failures before committing:
+### 18.4. Step 4: Run Pre-Push Local Jekyll Build & Automated TDD Test Verification
+Ensure all 91 automated test assertions and the full local Jekyll build complete cleanly with zero errors before committing and pushing:
 ```bash
+# 1. Verify Jekyll health and compile full production site into _site/
+bundle exec jekyll doctor
+bundle exec jekyll build --trace
+
+# 2. Run automated TDD test suite (use npm.cmd in restricted PowerShell environments)
 npm test
-# Expected output: Test Results: 86 Passed, 0 Failed
+# Expected output: Test Results: 91 Passed, 0 Failed
 ```
 
 ### 18.5. Step 5: Commit Changes Following Conventional Commits
@@ -723,6 +734,46 @@ $$\text{Cost} = \text{Effort} \times \text{Labor Rate} \quad [\text{USD @ } \$8,
 - **Modular SCSS Architecture & Dart Sass (WP10):** 42.0 hrs (0.263 PM) = $2,100.00
 - **Engineering Wiki & Regulatory Documentation (WP11):** 32.0 hrs (0.200 PM) = $1,600.00
 - **Total Specialized Core Audio Engine Engineering:** **774.0 hrs (4.838 PM) = $38,700.00**
+
+---
+
+## 20. Latest Development Milestone Report: openFDA Article Orchestration, Unbounded 25-JSON Indexing & Local Jekyll Verification
+
+This section documents the engineering changes, coverage metrics, and local build verification executed across commits [`5f324a399`](https://github.com/Mr-Kumar-Abhishek/brain-beats-pro/commit/5f324a399), [`10cdb7c84`](https://github.com/Mr-Kumar-Abhishek/brain-beats-pro/commit/10cdb7c84), and [`856a481b6`](https://github.com/Mr-Kumar-Abhishek/brain-beats-pro/commit/856a481b6).
+
+### 20.1. Executive Summary & Commit Timeline
+
+| Commit | Scope Summary | Diff Scale | Key Deliverables |
+| :--- | :--- | :--- | :--- |
+| **`5f324a399`** | `openfda-database` January 2025 Rife batch | `13 files changed` (`+2,917 / -129`) | Elaborated 12 Rife frequency stub articles (`957 Hz – 982 Hz`) with verified FDA clinical benchmarks, biophysical wave formulas, `#instructionModal` disclaimers, and ES6 Web Audio DSP classes. |
+| **`10cdb7c84`** | Batch raw-stub enrichment & 23 preset files | `10,260 files changed` (`+2,027,503 / -34,307`) | Updated [`generate_posts.py`](generate_posts.py) with `OPENFDA_BENCHMARKS` (`27` verified FDA drug records across NDA/BLA/ANDA labels) and `JSON_PLAYER_MAP`; upgraded all `5,649` existing raw stubs (`"This frequency is part of the Brain Beats presets collection."`) in place (`0` raw stubs remaining), fixed slug substring collision filtering, and generated `4,610` missing JSON preset articles chronologically through `2053-02-23` (`11,006` total posts). |
+| **`856a481b6`** | Unbounded 25-JSON coverage, sitemap & Jekyll future indexing | `198 files changed` (`+93,549 / -165`) | Removed `postDate > today` cutoff in [`scripts/generate-sitemap.js`](scripts/generate-sitemap.js), enabled `future: true` in [`_config.yml`](_config.yml), indexed [`json/indexer.json`](json/indexer.json) (`26`) and [`json/webring.json`](json/webring.json) (`9`), removed skip filters on exact-slug entries (`angel.json`, `noise.json`, `puretones.json`, `solfeggio.json`, `rife3Dfreq.json`), added `-preset-{occ}` / `(Preset Variant {occ})` disambiguation across `41` slug collisions, normalized `22` May 2023 YAML `---` delimiters, generated `172` remaining articles through `2053-08-14` (`11,178` total posts), and rebuilt [`sitemap.xml`](sitemap.xml) (`11,224` URLs). |
+
+### 20.2. 100% Coverage Across All 25 JSON Databases
+
+1. **Full Record Inventory (`11,014` Records Across `25` Files):**
+   - **23 Playable Audio Preset Collections:** `10,979` records (`data_name`, `data_description`, `data_start`, `data_stop`, `data_id`), including previously skipped exact-slug entries across `angel.json` (`7`), `noise.json` (`13`), `puretones.json` (`43`), `solfeggio.json` (`30`), and `rife3Dfreq.json` (`3`), plus `41` duplicate/cross-file slug collisions resolved deterministically via `-preset-{occ}`.
+   - **2 Site & Community Directory Files:** [`json/indexer.json`](json/indexer.json) (`26` directory records) and [`json/webring.json`](json/webring.json) (`9` external research resources), mapped into `JSON_PLAYER_MAP` and `load_all_json_presets()` while bypassing numeric regex frequency parsing on URL paths.
+2. **openFDA Clinical Grounding & Dual Licensing:**
+   - Grounded every generated article via `select_fda_benchmarks()` against `27` verified **Food and Drug Administration (FDA), USA** drug benchmark entries (`Cipro`, `Augmentin ES-600`, `Vibramycin / Doxycycline`, `Zithromax`, `Cleocin Phosphate`, `Keflex`, `Levaquin`, `Rocephin`, `Bactroban`, `Tamiflu`, `Xofluza`, `Valtrex`, `Diflucan`, `Sporanox`, `VFEND`, `Flagyl`, `Fexinidazole`, `Rozerem`, `Lexapro`, `Lyrica`, `Cymbalta`, `Flexeril`, `Nolvadex / Soltamox`, `Herceptin`, `Accutane`, `Spiriva Respimat`, `Kenalog-40`) sourced from openFDA records.
+   - Included interactive `#instructionModal` warning/disclaimer blocks, client-side Web Audio API synthesizer ES6 reference classes (`Preset...Synthesizer`), and mandatory **CC BY 4.0** (content) / **GNU AGPLv3** (code/config) attribution footers.
+
+### 20.3. Unbounded Chronological Sitemap & Jekyll Configuration
+
+- [`_config.yml`](_config.yml): Switched `future: false` $\rightarrow$ `future: true` so Jekyll builds and indexes every post scheduled through `2053-08-14`.
+- [`scripts/generate-sitemap.js`](scripts/generate-sitemap.js): Removed the `postDate > today` skip condition inside `getBlogPostFiles()`, expanding [`sitemap.xml`](sitemap.xml) (`2.27 MB`) from `1,454` URLs to **`11,224` canonical URLs** (`https://brain-beats.in`: `46` root HTML URLs + `11,178` [`_posts/`](_posts) blog URLs).
+
+### 20.4. Pre-Push Local Jekyll Build & Integrity Verification Results
+
+Before and after pushing [`856a481b6`](https://github.com/Mr-Kumar-Abhishek/brain-beats-pro/commit/856a481b6), all build and test gates executed locally with zero errors:
+
+- **Idempotency & PyYAML Audit:**
+  - Second run of `python generate_posts.py`: `0` normalized front matters, `0` raw stubs upgraded, `0` new files created.
+  - Full Python + `yaml.safe_load` verification across [`_posts/`](_posts) (`11,178` files) and [`json/`](json) (`11,014` records): `0` YAML errors, `0` trailing `---` whitespace issues, `0` remaining raw stubs, `0` Liquid token leaks (`{{` / `{%`), `0` JSON records missing from `_posts/`, and `0` posts missing from [`sitemap.xml`](sitemap.xml).
+- **Local Jekyll Validation & Production Site Build (`jekyll 4.4.1`):**
+  - `bundle exec jekyll doctor`: Exit code `0` (`Your test results are in. Everything looks fine.`). *(Note: Bundler execution with `Gemfile`-pinned `json 2.18.0` avoids Windows Application Control blocks against unbundled system gems.)*
+  - `bundle exec jekyll build --trace`: Exit code `0` (`done in 1537.669 seconds.`), outputting [`_site/index.html`](_site/index.html), [`_site/feed.xml`](_site/feed.xml), [`_site/blog/blog/index.html`](_site/blog/blog/index.html) + `2,235` pagination subdirectories (`page2`–`page2236`), **`11,178` rendered HTML post files** inside `_site/blog/`, and valid `_site/blog/search.json` (`11,178` entries, `5,280,179` bytes).
+- **Automated Web Audio & Integrity Test Suite (`npm.cmd test`):** **`91 Passed, 0 Failed`** across all 15 phases ([`tests/audio-engine.test.js`](tests/audio-engine.test.js)).
 
 ---
 
