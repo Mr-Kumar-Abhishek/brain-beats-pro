@@ -9,7 +9,7 @@ tweet-title: Unlocking Your Authentic Voice - The Transformative Power of the 38
 tweet-description: This specific frequency resonates with the throat chakra, the fifth energy center located at the base of the neck. Scientifically, sound waves at 383 Hz stimulate vibrational alignment in this region.
 date: 2023-05-22
 keywords: frequency benefits, Brain Beats, Frequencies, brainwave entrainment, sound therapy, pure tone, 383 Hz, Libra, pure tones, throat chakra, throat, chakra
----       
+---
 
 🗣️ **Awaken Your Truth with the Frequency of Expression**  
 

@@ -404,6 +404,7 @@ JSON_PLAYER_MAP: Dict[str, Tuple[str, str, str]] = {
     "bio-monaural-freq.json": ("/monaural-bio-frequency.html", "Monaural BIO Frequencies", "monaural_array"),
     "cust-freq.json": ("/3d-cust-frequency-presets.html", "3D CUST Frequency Presets", "3d_auto"),
     "dreamachines.json": ("/dreamachine-presets.html", "Dreamachine Presets", "dreamachine"),
+    "indexer.json": ("/index.html", "Brain Beats Pro Directory Index", "pure_tone"),
     "isochronic.json": ("/isochronic-tones.html", "Isochronic Tones", "isochronic"),
     "monaurals.json": ("/monaural-base-beats.html", "Monaural Base Beats", "monaural_pair"),
     "noise.json": ("/noise.html", "Noise Colours", "noise"),
@@ -416,6 +417,7 @@ JSON_PLAYER_MAP: Dict[str, Tuple[str, str, str]] = {
     "solfeggio.json": ("/solfeggio-frequency.html", "Solfeggio Frequency", "pure_tone"),
     "sq_monaurals.json": ("/square-wave-monaural-base-beats.html", "Square Wave Monaural Base Beats", "sq_monaural"),
     "vega-freq.json": ("/3d-vega-frequency-presets.html", "3D VEGA Frequency Presets", "3d_auto"),
+    "webring.json": ("/webring.html", "Sound Healing Webring Directory", "pure_tone"),
     "xtra-freq.json": ("/3d-xtra-frequency-presets.html", "3D XTRA Frequency Presets", "3d_auto"),
 }
 
@@ -479,7 +481,7 @@ def parse_audio_profile(json_file: str, preset: Dict[str, object]) -> Dict[str, 
         json_file, ("/search.html", "Brain Beats Pro Presets", "pure_tone")
     )
     data_start = str(preset.get("data_start", "") or "")
-    freqs = extract_frequencies(data_start)
+    freqs = [] if json_file in ("indexer.json", "webring.json") else extract_frequencies(data_start)
 
     # Determine primary fundamental f0 and audible carrier/entrainment representation
     primary_f0 = freqs[0] if freqs else None
@@ -895,8 +897,27 @@ keywords: "{keywords}"
     return article
 
 
+def normalize_front_matter_delimiters(content: str) -> str:
+    """Normalize trailing spaces on YAML front-matter --- delimiter lines."""
+    lines = content.splitlines(keepends=True)
+    if not lines or not re.match(r"^---[ \t]*\r?\n?$", lines[0]):
+        return content
+    dash_count = 0
+    changed = False
+    for idx in range(min(len(lines), 40)):
+        m = re.match(r"^---[ \t]*(\r?\n?)$", lines[idx])
+        if m:
+            if lines[idx] != f"---{m.group(1)}":
+                lines[idx] = f"---{m.group(1)}"
+                changed = True
+            dash_count += 1
+            if dash_count == 2:
+                break
+    return "".join(lines) if changed else content
+
+
 def load_all_json_presets(json_dir: str = "json") -> Tuple[List[Tuple[str, Dict[str, object]]], Dict[str, Tuple[str, Dict[str, object]]]]:
-    """Load all JSON preset lists in deterministic sorted order."""
+    """Load all JSON preset and directory records across all json/*.json files in sorted order."""
     ordered_presets: List[Tuple[str, Dict[str, object]]] = []
     slug_index: Dict[str, Tuple[str, Dict[str, object]]] = {}
 
@@ -908,7 +929,18 @@ def load_all_json_presets(json_dir: str = "json") -> Tuple[List[Tuple[str, Dict[
             data = json.load(f)
         items = data if isinstance(data, list) else data.get("data", [])
         for item in items:
-            if not isinstance(item, dict) or "data_name" not in item:
+            if not isinstance(item, dict):
+                continue
+            if "data_name" not in item and "section_name" in item:
+                suffix = "Directory Index" if jf == "indexer.json" else "Webring Resource"
+                section_title = strip_html(str(item.get("section_name", "")))
+                item = {
+                    "data_name": f"{section_title} {suffix}".strip(),
+                    "data_description": strip_html(str(item.get("section_description", "") or "")),
+                    "data_start": str(item.get("section_link", "") or ""),
+                    "data_id": str(item.get("data_id", "") or ""),
+                }
+            if "data_name" not in item:
                 continue
             ordered_presets.append((jf, item))
             s = slugify(str(item["data_name"]))
@@ -923,13 +955,13 @@ def main() -> None:
     posts_dir = "_posts"
 
     ordered_presets, slug_index = load_all_json_presets(json_dir)
-    print(f"[generate_posts] Loaded {len(ordered_presets)} presets across {json_dir}/ ({len(slug_index)} unique slugs).")
+    print(f"[generate_posts] Loaded {len(ordered_presets)} entries across {json_dir}/ ({len(slug_index)} unique base slugs).")
 
     existing_posts = sorted(f for f in os.listdir(posts_dir) if f.endswith(".md"))
     existing_slugs = set()
-    handwritten_slugs = set()
     last_date_str = "2023-01-01"
     raw_stubs: List[Tuple[str, str, str]] = []  # (filename, date_str, slug)
+    normalized_fm_count = 0
 
     for post in existing_posts:
         m = re.match(r"^(\d{4}-\d{2}-\d{2})-(.*)\.md$", post)
@@ -937,18 +969,25 @@ def main() -> None:
             continue
         date_str, slug = m.group(1), m.group(2)
         existing_slugs.add(slug)
-        if date_str < "2023-06-24":
-            handwritten_slugs.add(slug)
         if date_str > last_date_str:
             last_date_str = date_str
 
         post_path = os.path.join(posts_dir, post)
         with open(post_path, "r", encoding="utf-8", errors="ignore") as f:
             content = f.read()
+        normalized = normalize_front_matter_delimiters(content)
+        if normalized != content:
+            with open(post_path, "w", encoding="utf-8", newline="\n") as f:
+                f.write(normalized)
+            content = normalized
+            normalized_fm_count += 1
         if STUB_MARKER in content:
             raw_stubs.append((post, date_str, slug))
 
-    print(f"[generate_posts] Existing posts: {len(existing_posts)} | Raw stubs to upgrade: {len(raw_stubs)} | Last date: {last_date_str}")
+    print(
+        f"[generate_posts] Existing posts: {len(existing_posts)} | Normalized FM: {normalized_fm_count} "
+        f"| Raw stubs to upgrade: {len(raw_stubs)} | Last date: {last_date_str}"
+    )
 
     # Phase 1: Upgrade all existing raw stubs containing STUB_MARKER while preserving exact filename & date
     upgraded_count = 0
@@ -966,45 +1005,47 @@ def main() -> None:
 
     print(f"[generate_posts] Phase 1 complete: Upgraded {upgraded_count} existing stub articles with openFDA benchmarks.")
 
-    # Phase 2: Create stub articles for all missing JSON presets chronologically after last_date_str
+    # Phase 2: Create stub articles for all missing or duplicate-slug JSON entries chronologically after last_date_str
     current_date = datetime.strptime(last_date_str, "%Y-%m-%d")
     created_count = 0
+    seen_slug_counts: Dict[str, int] = {}
 
     for jf, preset in ordered_presets:
         raw_name = str(preset["data_name"])
         raw_desc = str(preset.get("data_description", "") or "")
         name = strip_html(raw_name)
-        slug = slugify(name)
-        if not slug:
+        base_slug = slugify(name)
+        if not base_slug:
             continue
 
-        # Skip only if:
-        # 1) Exact slug already exists in _posts/, OR
-        # 2) JSON entry explicitly links via <a href='...'> to a 2023 handwritten post, OR
-        # 3) Pre-generator 2023 handwritten posts (< 2023-06-24) already cover this slug
-        if slug in existing_slugs:
-            continue
-        if "<a " in raw_name.lower() or "<a " in raw_desc.lower():
-            continue
-        if any(slug in hs or hs in slug for hs in handwritten_slugs):
+        occ = seen_slug_counts.get(base_slug, 0) + 1
+        seen_slug_counts[base_slug] = occ
+        if occ == 1:
+            canonical_slug = base_slug
+            canonical_name = name
+        else:
+            canonical_slug = f"{base_slug}-preset-{occ}"
+            canonical_name = f"{name} (Preset Variant {occ})"
+
+        if canonical_slug in existing_slugs:
             continue
 
-        desc = strip_html(raw_desc) or name
+        desc = strip_html(raw_desc) or canonical_name
         current_date += timedelta(days=1)
         date_str = current_date.strftime("%Y-%m-%d")
 
-        post_filename = f"{date_str}-{slug}.md"
+        post_filename = f"{date_str}-{canonical_slug}.md"
         post_path = os.path.join(posts_dir, post_filename)
-        content = render_article(name, desc, date_str, jf, preset)
+        content = render_article(canonical_name, desc, date_str, jf, preset)
 
         with open(post_path, "w", encoding="utf-8", newline="\n") as f:
             f.write(content)
 
-        existing_slugs.add(slug)
+        existing_slugs.add(canonical_slug)
         created_count += 1
 
     print(
-        f"[generate_posts] Phase 2 complete: Created {created_count} new JSON preset articles "
+        f"[generate_posts] Phase 2 complete: Created {created_count} new JSON articles "
         f"(last date: {current_date.strftime('%Y-%m-%d')})."
     )
     print(f"[generate_posts] Total articles now in {posts_dir}/: {len(existing_posts) + created_count}")

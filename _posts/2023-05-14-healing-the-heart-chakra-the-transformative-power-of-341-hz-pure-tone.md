@@ -9,7 +9,7 @@ tweet-title: Healing the Heart Chakra - The Transformative Power of 341 Hz Pure 
 tweet-description: 341 Hz is a pure tone frequency specifically tuned to activate and cleanse the Anahata chakra, or heart chakra.
 date: 2023-05-14
 keywords: frequency benefits, Brain Beats, Frequencies, brainwave entrainment, sound therapy, pure tone, 341 Hz, Heart Chakra
----    
+---
 
 ## What is 341 Hz?  
 341 Hz is a **pure tone frequency** specifically tuned to activate and cleanse the **Anahata chakra**, or heart chakra. This vibrational frequency works to dissolve emotional blockages and physical imbalances tied to the heart center. As the bridge between the lower and upper chakras, the Anahata governs love, compassion, and harmony—qualities that 341 Hz seeks to restore through its resonant energy.

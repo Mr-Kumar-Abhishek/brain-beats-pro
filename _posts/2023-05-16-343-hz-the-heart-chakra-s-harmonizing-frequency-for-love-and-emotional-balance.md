@@ -9,7 +9,7 @@ tweet-title: 343 Hz - The Heart Chakra’s Harmonizing Frequency for Love and Em
 tweet-description: 343 Hz is a pure tone frequency intricately linked to the Anahata chakra, or heart chakra. Nestled between the lower physical chakras and the higher spiritual ones, the heart chakra governs love, compassion, and emotional harmony.
 date: 2023-05-16
 keywords: frequency benefits, Brain Beats, Frequencies, brainwave entrainment, sound therapy, pure tone, 343 Hz, Heart Chakra
----    
+---
 
 
 ## What is 343 Hz?  

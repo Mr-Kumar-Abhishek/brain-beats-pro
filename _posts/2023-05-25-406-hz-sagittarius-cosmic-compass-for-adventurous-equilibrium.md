@@ -9,7 +9,7 @@ tweet-title: 🌌🏹 406 Hz - Sagittarius’ Cosmic Compass for Adventurous Equ
 tweet-description: The 406 Hz pure tone (V2) emerges as a celestial tuning fork for Sagittarians—a frequency that harmonizes their thirst for adventure with grounding serenity.
 date: 2023-05-25
 keywords: frequency benefits, Brain Beats, Frequencies, brainwave entrainment, sound therapy, pure tone, 406 Hz, pure tones, Sagittarius, astrology, horoscope
----         
+---
 
 **Fuel Your Wanderlust While Anchoring Your Spirit**  
 

@@ -9,7 +9,7 @@ tweet-title: Investigating the Efficacy of Rife 3D Frequencies in Alleviating Me
 tweet-description: This article explores the potential application of Rife 3D frequencies as a non-invasive therapy for mental relief in individuals suffering from abdominal inflammation. 
 date: 2023-05-10
 keywords: frequency benefits, Brain Beats, Frequencies, brainwave entrainment, sound therapy, 3D rife frequencies, cognition, abdominal inflammation, rife frequency
----  
+---
 
 
 ## Abstract  

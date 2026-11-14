@@ -9,7 +9,7 @@ tweet-title: 341.3 Hz -The Heart Chakra’s Second Flavor for Deep Emotional Ren
 tweet-description: 341.3 Hz is a precision-tuned pure tone frequency designed as a complementary vibration for the Anahata chakra (heart chakra)
 date: 2023-05-15
 keywords: frequency benefits, Brain Beats, Frequencies, brainwave entrainment, sound therapy, pure tone, 341.3 Hz, Heart Chakra
----    
+---
 
 ## What is 341.3 Hz?  
 341.3 Hz is a **precision-tuned pure tone frequency** designed as a complementary vibration for the **Anahata chakra (heart chakra)**. Slightly higher than the standard 341 Hz, this “second flavor” frequency offers a nuanced approach to heart-centered healing. It works to dissolve stubborn emotional blockages while reinforcing physical resilience, making it ideal for those seeking deeper or sustained transformation.
