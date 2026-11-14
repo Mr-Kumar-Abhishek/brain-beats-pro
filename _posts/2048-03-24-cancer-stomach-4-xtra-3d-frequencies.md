@@ -1,0 +1,206 @@
+---
+layout: post
+title: "Cancer Stomach 4 XTRA 3D frequencies"
+description: "This is XTRA 3D frequencies healing preset for Cancer Stomach 4. The frequencies in this preset are: 0.2 hz, 0.4 hz, 0.59 hz, 0.8 hz, 695 hz, 705 hz, 728 hz, 880 hz, 2167 hz, 2779 hz, 2819 hz, 2950 hz"
+subject: "Cancer Stomach 4 XTRA 3D frequencies"
+apple-title: "Cancer Stomach 4 XTRA 3D frequencies"
+app-name: "Cancer Stomach 4 XTRA 3D frequencies"
+tweet-title: "Cancer Stomach 4 XTRA 3D frequencies"
+tweet-description: "This is XTRA 3D frequencies healing preset for Cancer Stomach 4. The frequencies in this preset are: 0.2 hz, 0.4 hz, 0.59 hz, 0.8 hz, 695 hz, 705 hz, 728 hz, 880 hz, 2167 hz, 2779 hz, 2819 hz, 2950 hz"
+date: 2048-03-24
+keywords: "frequency benefits, Brain Beats Pro, Frequencies, brainwave entrainment, sound therapy, cancer stomach 4 xtra 3d frequencies, 3d xtra frequency presets, openfda, Food and Drug Administration USA, flagyl, metronidazole, lexapro, escitalopram oxalate, nolvadex / soltamox, tamoxifen citrate"
+---
+
+**Cancer Stomach 4 XTRA 3D frequencies** is a curated acoustic research preset in the Brain Beats Pro **3D XTRA Frequency Presets** archive (`json/xtra-freq.json`). This is XTRA 3D frequencies healing preset for Cancer Stomach 4. The frequencies in this preset are: 0.2 hz, 0.4 hz, 0.59 hz, 0.8 hz, 695 hz, 705 hz, 728 hz, 880 hz, 2167 hz, 2779 hz, 2819 hz, 2950 hz
+
+<div class="alert alert-warning my-4" role="alert">
+  <h4 class="alert-heading h5">Introductory Overview &amp; Section Scope Disclaimer</h4>
+  <p class="mb-1"><strong>Section Use Case:</strong> Historical frequency cataloging, psychoacoustic classification, and educational indexing.</p>
+  <p class="mb-1"><strong>Disclaimer:</strong> These healing frequencies are not a substitute for professional medical care. Use them at your own risk and discretion.</p>
+  <p class="mb-0 small text-secondary">The vibrational presets and acoustic synthesis parameters documented on this page are provided strictly for experimental psychoacoustics, mindfulness relaxation, and educational reference. They do not diagnose, treat, cure, or prevent any medical disorder.</p>
+  <div class="mt-3">
+    <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" data-bs-target="#instructionModal">
+      <i class="fa-solid fa-triangle-exclamation me-1"></i> Open Disclaimer Modal
+    </button>
+  </div>
+</div>
+
+---
+
+### 1. Acoustic Catalog Profile & openFDA Clinical Pharmacology Benchmarks
+
+- **Collection & Signal Classification**: Indexed under **3D XTRA Frequency Presets** (`play_XTRA_3d_auto([0.2, 0.4, 0.59, 0.8, 695, 705, 728, 880, 2167, 2779, 2819, 2950]);`), this preset deploys `0.2 Hz`, `0.4 Hz`, `0.59 Hz`, `0.8 Hz`, `695 Hz`, `705 Hz`, `728 Hz`, `880 Hz`, `2167 Hz`, `2779 Hz`, `2819 Hz`, `2950 Hz`. Its primary frequency component sits in the **sub-audible / infrasound range** ($< 20\text{ Hz}$), rendered cleanly via dichotic binaural beating or octave harmonic carrier modulation in standard speakers/headphones.
+- **Clinical Standards Verified via openFDA (Food and Drug Administration, USA)**: In accordance with evidence-based medicine, all pathophysiological, infectious, neurological, and inflammatory conditions referenced across complementary frequency catalogs are governed by validated pharmaceuticals evaluated by the **Food and Drug Administration (FDA), USA** (Flagyl (`NDA 020334`), Lexapro (`NDA 021323`), Nolvadex / Soltamox (`NDA 017970 / NDA 021807`)):
+  - **Flagyl** (*Metronidazole*, Pfizer Laboratories Div Pfizer Inc, FDA `NDA 020334`): nitroimidazole bactericidal and antiprotozoal agent active against obligate anaerobes, *Entamoeba histolytica*, *Giardia*, and *Trichomonas*.
+  - **Lexapro** (*Escitalopram oxalate*, Allergan, Inc., FDA `NDA 021323`): selective serotonin reuptake inhibitor (SSRI) indicated for major depressive disorder and generalized anxiety disorder.
+  - **Nolvadex / Soltamox** (*Tamoxifen citrate*, AstraZeneca / Mayne Pharma, FDA `NDA 017970 / NDA 021807`): selective estrogen receptor modulator (SERM) approved for risk reduction and endocrine therapy in estrogen-receptor-positive breast neoplasia.
+
+<div class="alert alert-info my-4" role="alert">
+  <h4 class="alert-heading h5">Section 1 Use Case &amp; openFDA Clinical Benchmark Disclaimer</h4>
+  <p class="mb-1"><strong>Section Use Case:</strong> Comparative overview contrasting historical sound-frequency cataloging with verified Food and Drug Administration (FDA), USA pharmacotherapy standards.</p>
+  <p class="mb-1"><strong>Disclaimer:</strong> These healing frequencies are not a substitute for professional medical care. Use them at your own risk and discretion.</p>
+  <p class="mb-0 small text-secondary">Verified openFDA drug records (Flagyl (`NDA 020334`), Lexapro (`NDA 021323`), Nolvadex / Soltamox (`NDA 017970 / NDA 021807`)) define evidence-based clinical care. Acoustic tones exert zero bactericidal, antiviral, antifungal, hormonal, or antineoplastic activity and must never replace licensed medical evaluation or prescribed medication.</p>
+  <div class="mt-3">
+    <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" data-bs-target="#instructionModal">
+      <i class="fa-solid fa-circle-info me-1"></i> Open Disclaimer Modal
+    </button>
+  </div>
+</div>
+
+---
+
+### 2. Biophysical Wave Modeling & Harmonic Structure
+
+1. **Primary Carrier Wave Dynamics ($f_0 = 0.2\text{ Hz}$)**: An oscillation at $f_0 = 0.2\text{ Hz}$ has a temporal period of:
+   \[
+   T = \frac{1}{0.2} \approx 5\text{ s}
+   \]
+   In biological soft tissue ($c \approx 1540\text{ m/s}$) and ambient air ($c \approx 343\text{ m/s}$), the fundamental acoustic wavelengths are $\lambda_{\text{tissue}} \approx 7700\text{ m}$ and $\lambda_{\text{air}} \approx 1715\text{ m}$.
+
+#### Harmonic Hierarchy & Resonance Scaling (`0.2 Hz` Anchor)
+
+```
+[0.05 Hz] <--- [0.1 Hz] <--- [0.2 Hz] ---> [0.4 Hz] ---> [0.6 Hz] ---> [0.8 Hz]
+ Sub-Octave 2      Sub-Octave 1       Fundamental      2nd Harmonic     3rd Harmonic     4th Harmonic
+```
+
+- **Spatial & Auditory Entrainment Mechanics**: In multi-frequency 3D presets, Brain Beats Pro applies `deoctave_to_human()` to fold high-frequency harmonics down by powers of 2 and uses `distributePoints()` with Web Audio `PannerNode` coordinates so simultaneous tones occupy distinct spatial loci without destructive phase beating.
+
+<div class="alert alert-secondary my-4" role="alert">
+  <h4 class="alert-heading h5">Section 2 Use Case &amp; Biophysical Modeling Disclaimer</h4>
+  <p class="mb-1"><strong>Section Use Case:</strong> Acoustic wavelength calculation, octave transposition, and harmonic series derivation.</p>
+  <p class="mb-1"><strong>Disclaimer:</strong> These healing frequencies are not a substitute for professional medical care. Use them at your own risk and discretion.</p>
+  <p class="mb-0 small text-secondary">Wavelength and harmonic ratios describe mathematical acoustic wave propagation for audio engineering research and do not imply physiological cytolysis or organ-level medical therapy.</p>
+  <div class="mt-3">
+    <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" data-bs-target="#instructionModal">
+      <i class="fa-solid fa-wave-square me-1"></i> Open Disclaimer Modal
+    </button>
+  </div>
+</div>
+
+---
+
+### 3. Practical Listening Parameters & Interactive Laboratory
+
+| Parameter | Recommended Configuration | Research Objective |
+| :--- | :--- | :--- |
+| **Catalog Source** | `3D XTRA Frequency Presets` (`json/xtra-freq.json`) | Standardized JSON preset lookup |
+| **Playback Medium** | Stereo headphones or balanced near-field speakers ($\le 65\text{ dB SPL}$) | Comfortable dichotic / spatial listening |
+| **Session Cadence** | 15 to 25 minutes during restful relaxation or focused reflection | Supportive mindfulness and auditory relaxation |
+| **Clinical Guidance** | Qualified physician diagnosis and FDA-approved therapeutics | Primary evidence-based healthcare |
+
+> **Interactive Sound Laboratory:** Launch this preset live in the **[Brain Beats Pro — 3D XTRA Frequency Presets](/3d-xtra-frequency-presets.html)** player, browse related entries on **[Search Frequencies & Presets](/search.html)**, or verify historical listings in the **[Rife CAFL Directory](/rife-frequencies-cafl-xref.html)**.
+
+<div class="alert alert-warning my-4" role="alert">
+  <h4 class="alert-heading h5">Section 3 Use Case &amp; Safe Listening Disclaimer</h4>
+  <p class="mb-1"><strong>Section Use Case:</strong> Auditory comfort levels, playback duration, and safe headphone guidance.</p>
+  <p class="mb-1"><strong>Disclaimer:</strong> These healing frequencies are not a substitute for professional medical care. Use them at your own risk and discretion.</p>
+  <p class="mb-0 small text-secondary">Avoid listening at high speaker volumes, discontinue immediately if dizziness or tinnitus discomfort occurs, and do not operate vehicles or heavy machinery during deep relaxation or entrainment sessions.</p>
+  <div class="mt-3">
+    <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" data-bs-target="#instructionModal">
+      <i class="fa-solid fa-headphones me-1"></i> Open Disclaimer Modal
+    </button>
+  </div>
+</div>
+
+---
+
+### 4. Programmatic Web Audio API Reference
+
+```javascript
+/**
+ * PresetCancerStomach4Xtra3DFrequenciesSynthesizer - Web Audio API DSP Reference
+ * Mode: Audible de-octaved bank: [0.2, 0.4, 0.59, 0.8, 695.0, 705.0, 728.0, 880.0]
+ * Uses smooth exponential gain ramps and Nyquist clamping for distortion-free playback.
+ */
+class PresetCancerStomach4Xtra3DFrequenciesSynthesizer {
+    constructor(audioCtx = null) {
+        this.ctx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+        this.frequencies = [0.2, 0.4, 0.59, 0.8, 695.0, 705.0, 728.0, 880.0];
+        this.nodes = [];
+        this.masterGain = null;
+        this.isPlaying = false;
+    }
+
+    start(volume = 0.35) {
+        if (this.isPlaying) return;
+        if (this.ctx.state === 'suspended') this.ctx.resume();
+        const now = this.ctx.currentTime;
+        const nyquist = this.ctx.sampleRate * 0.45;
+        this.masterGain = this.ctx.createGain();
+        this.masterGain.gain.setValueAtTime(0.001, now);
+        const safeVol = Math.max(0.005, volume / Math.max(1, this.frequencies.length));
+        this.masterGain.gain.exponentialRampToValueAtTime(safeVol, now + 0.08);
+        this.masterGain.connect(this.ctx.destination);
+        this.frequencies.forEach((rawHz, idx) => {
+            let hz = Number(rawHz) || 432;
+            while (hz > 20000) hz /= 2;
+            if (hz < 20) hz = 174 + hz;
+            const osc = this.ctx.createOscillator();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(Math.min(hz, nyquist), now);
+            const panner = this.ctx.createStereoPanner();
+            const angle = (idx / Math.max(1, this.frequencies.length)) * Math.PI * 2;
+            panner.pan.setValueAtTime(Math.cos(angle) * 0.7, now);
+            osc.connect(panner);
+            panner.connect(this.masterGain);
+            osc.start(now);
+            this.nodes.push(osc);
+        });
+        this.isPlaying = true;
+    }
+
+    stop() {
+        if (!this.isPlaying || !this.masterGain) return;
+        const now = this.ctx.currentTime;
+        this.masterGain.gain.setValueAtTime(Math.max(0.001, this.masterGain.gain.value), now);
+        this.masterGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.06);
+        setTimeout(() => {
+            this.nodes.forEach((n) => { try { n.stop(); n.disconnect(); } catch (e) {} });
+            this.nodes = [];
+            this.isPlaying = false;
+        }, 75);
+    }
+}
+```
+
+<div class="alert alert-secondary my-4" role="alert">
+  <h4 class="alert-heading h5">Section 4 Use Case &amp; Web Audio DSP Disclaimer</h4>
+  <p class="mb-1"><strong>Section Use Case:</strong> Client-side Web Audio API oscillator synthesis, panning, and soft gain ramping.</p>
+  <p class="mb-1"><strong>Disclaimer:</strong> These healing frequencies are not a substitute for professional medical care. Use them at your own risk and discretion.</p>
+  <p class="mb-0 small text-secondary">The JavaScript synthesis class is educational open-source DSP software and is not certified or cleared as a medical device.</p>
+  <div class="mt-3">
+    <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" data-bs-target="#instructionModal">
+      <i class="fa-solid fa-code me-1"></i> Open Disclaimer Modal
+    </button>
+  </div>
+</div>
+
+---
+
+### 5. Summary & Verified FDA Citations
+
+**Cancer Stomach 4 XTRA 3D frequencies** (`json/xtra-freq.json`) is documented as an interactive psychoacoustic research entry in the Brain Beats Pro catalog, clearly separated from FDA-regulated pharmacology:
+
+1. U.S. Food and Drug Administration. FDA Approved Drug Products: Flagyl (metronidazole) NDA 020334.
+2. U.S. Food and Drug Administration. FDA Approved Drug Products: Lexapro (escitalopram oxalate) NDA 021323.
+3. U.S. Food and Drug Administration. FDA Approved Drug Products: Nolvadex (tamoxifen citrate) NDA 017970 and Soltamox NDA 021807.
+4. Brain Beats Pro Preset Archive (`json/xtra-freq.json`). Creative Commons Attribution 4.0 International (CC BY 4.0) / GNU AGPLv3.
+
+<div class="alert alert-warning my-4" role="alert">
+  <h4 class="alert-heading h5">Section 5 Use Case &amp; Citation Verification Disclaimer</h4>
+  <p class="mb-1"><strong>Section Use Case:</strong> Regulatory provenance via openFDA (Food and Drug Administration, USA) and open-source licensing attribution.</p>
+  <p class="mb-1"><strong>Disclaimer:</strong> These healing frequencies are not a substitute for professional medical care. Use them at your own risk and discretion.</p>
+  <p class="mb-0 small text-secondary">Citations to FDA Approved Drug Products reflect official regulatory records from the Food and Drug Administration (USA) and are included purely to distinguish approved clinical care from experimental sound catalogs.</p>
+  <div class="mt-3">
+    <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" data-bs-target="#instructionModal">
+      <i class="fa-solid fa-book-medical me-1"></i> Open Disclaimer Modal
+    </button>
+  </div>
+</div>
+
+---
+
+<div align="center">
+<sub>&copy; Brain Beats Pro. Written content, documentation, and preset catalogs are licensed under <a href="/licenses.html" rel="license">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> by the Creative Commons organization (commercial use permitted with compulsory attribution). Web Audio synthesis mechanics and source code are copyleft protected under <a href="/licenses.html">GNU AGPLv3</a>.</sub>
+</div>
