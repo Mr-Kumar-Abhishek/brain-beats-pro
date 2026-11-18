@@ -42,7 +42,7 @@ This release finalizes the end-to-end verification of Phase 15 accessible Liquid
   - Added explicit test gates validating:
     1. `_layouts/post.html` next/previous post navigation markup with Liquid `title` attributes, `rel="prev"`, `rel="next"`, and `#instructionModal` inclusion.
     2. `_layouts/default.html` accessible Liquid titles across all primary navigation anchors (`Brand`, `Home`, `Web App`, `Blog Posts`, `Blog Search`, `Licenses`, `COCOMO`, `Chat`).
-    3. `_layouts/default.html` accessible footer link titles (`support@brain-beats.in`, Atom RSS, CC BY 4.0, AGPLv3).
+    3. `_layouts/default.html` accessible footer link titles (Atom RSS, CC BY 4.0, AGPLv3).
     4. `blog/blog/index.html` dynamic Liquid pagination titles (`title="Go to Page {{ paginator.next_page }}"`).
     5. `RELEASE_NOTES.md` semantic version documentation and deployment reports integrity.
 - **Interactive In-Browser UX Verification via Headless/DevTools Automation:**
@@ -71,7 +71,7 @@ This release implements accessible, SEO-optimized, and screen-reader-compliant `
     - `<a href="{{ page.next.url | relative_url }}" title="{{ page.next.title | escape }}" rel="next">`
 - **Liquid Navbar & Footer Anchor Titles in `_layouts/default.html`:**
   - Integrated descriptive Liquid-compatible `title` attributes on all navigation bar links (`Home`, `Brain Beats Pro Web App`, `Blog Posts`, `Blog Search`, `Licenses`, `COCOMO Estimation`, `Chat`).
-  - Added descriptive `title` attributes on footer contact and licensing links (`support@brain-beats.in`, Atom RSS, CC BY 4.0, and GNU AGPLv3).
+  - Added descriptive `title` attributes on footer feed and licensing links (Atom RSS, CC BY 4.0, and GNU AGPLv3).
 - **Blog Archive & Pagination Titles:**
   - Enriched blog archive and pagination controls in `blog/index.html` and `blog/blog/index.html` with descriptive `title` attributes for pagination steps (`title="Go to Page {{ paginator.next_page }}"`).
 - **Test Suite Verification:**

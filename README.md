@@ -264,8 +264,7 @@ Contributions are welcome! Please review the comprehensive **[Contribution Guide
 * **Author & Maintainer:** Abhishek Kumar
 * **Official Website:** [brain-beats-pro.netlify.app](https://brain-beats-pro.netlify.app)
 * **Research Blog:** [brain-beats-pro.netlify.app/blog/](https://brain-beats-pro.netlify.app/blog/)
-* **Support Email:** `support@brain-beats.in`
-* **Discord Community:** [Join Discord Server](https://discord.gg/JNRPJDFWdY)
+* **Support & Community (Chat Only):** [Join Discord Server](https://discord.gg/JNRPJDFWdY)
 
 ---
 

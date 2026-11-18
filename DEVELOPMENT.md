@@ -223,7 +223,7 @@ flowchart TD
         Base["_base.scss\n(Resets, Headings, Code Blocks & Print)"]
         Layout["_layout.scss\n(Fixed Header, .fluidaner, Tables, CSE)"]
         Comp["_components.scss\n(Cards, .volume-box, Favs, Yin-Yang, Search)"]
-        Foot["_footer.scss\n(Centered Footer, .footnotes, Mail/RSS Icons)"]
+        Foot["_footer.scss\n(Centered Footer, .footnotes, RSS Icons)"]
     end
 
     subgraph Entrypoints ["SCSS Entrypoints"]
@@ -251,7 +251,7 @@ flowchart TD
 * **`_base.scss`:** Enforces global boundary rules (`html, body { overflow-x: hidden; max-width: 100vw; }`), typography scale (`h1`–`h6`), dark-themed syntax highlighting code blocks (`pre.highlight` with copy buttons), styled blockquotes, and `@media print` rules.
 * **`_layout.scss`:** Glassmorphic fixed navigation header, `.fluidaner` container responsive margins/paddings, responsive table containers (`.table-wrapper`), and Google Custom Search Engine wrappers.
 * **`_components.scss`:** Standardized action buttons (`.btn-play-stop`: 80px × 40px), preset cards with viewport-specific padding, floating volume dock (`.volume-box`), favorite toggle hearts (`.fav` / `.faved`), animated rotating Yin-Yang canvas, expandable search bar, and post listings.
-* **`_footer.scss`:** Centered footer layout, centered licensing and contact paragraphs, centered Kramdown `.footnotes` section, and responsive FontAwesome email (`.fa-envelope`) and RSS (`.fa-square-rss`) icons.
+* **`_footer.scss`:** Centered footer layout, centered licensing and contact paragraphs, centered Kramdown `.footnotes` section, and responsive FontAwesome RSS (`.fa-square-rss`) feed icons (with support provided via Discord community chat).
 
 ### 7.2. Dart Sass Build Pipeline (`scripts/build-css.js`)
 The transpilation script compiles the SCSS entrypoint into production CSS for both the main web application and the research blog:
@@ -283,7 +283,7 @@ The build pipeline is wired directly into `npm run build`:
   * `.volume-box` floats centered (`600px` / `640px` / `680px`, `bottom: 20px`).
 * **Centered Blog Footnotes & Touch Targets:**
   * Footnotes are centered horizontally via `.footnotes { text-align: center; margin: 2rem auto; border-top: 1px solid #d5d5d5; }` while maintaining left-aligned ordered list items via `ol { display: inline-block; text-align: left; }`.
-  * Footer email and RSS feed icons scale responsively (`2rem` mobile with >44px touch targets, `2.35rem` tablet, `2.65rem` desktop with `1.12×` hover expansion).
+  * Footer social and RSS feed icons scale responsively (`2rem` mobile with >44px touch targets, `2.35rem` tablet, `2.65rem` desktop with `1.12×` hover expansion).
 
 ---
 

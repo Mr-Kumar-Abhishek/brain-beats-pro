@@ -85,7 +85,7 @@ The test suite is automated via Node.js in [`tests/audio-engine.test.js`](file:/
 12. **Phase 12: Deployment Runtime & Node.js 24 Environment Verification**
     * Validates `.node-version` (24), `.nvmrc` (24), `netlify.toml` (`NODE_VERSION = "24"`), `package.json` (`engines.node >= 24.0.0`), and `.github/workflows/pages.yml` deployment workflow linkage.
 13. **Phase 13: Developer Documentation, README & Patch Integrity Verification**
-    * Validates `README.md` (complete feature & developer guide index), `DEVELOPMENT.md` (including multi-remote topology and upstream push restrictions), `TEST_REPORT.md`, `CONTRIBUTING.md`, `cocomo-cost-estimate.md`, dual licensing scopes, contact email (`support@brain-beats.in`), core DSP synthesis patches (`js/main.js`), polarity engine & channel swap functions, generator polarity/channel swap controls, preset master settings/swap buttons, and Google Translate plugin layout integration.
+    * Validates `README.md` (complete feature & developer guide index), `DEVELOPMENT.md` (including multi-remote topology and upstream push restrictions), `TEST_REPORT.md`, `CONTRIBUTING.md`, `cocomo-cost-estimate.md`, dual licensing scopes, core DSP synthesis patches (`js/main.js`), polarity engine & channel swap functions, generator polarity/channel swap controls, preset master settings/swap buttons, and Google Translate plugin layout integration.
 14. **Phase 14: Cloud CI/CD & Netlify Zero-Exit-Code Hardening Verification**
     * Validates exclusion of `jekyll-github-metadata` (Exit Code 1), exclusion of `@netlify/plugin-sitemap` (Exit Code 10), dual-mode conditional build command in `netlify.toml`, `[context.gh-pages]` static build fallback, automated sitemap generator script, canonical domain integrity (`https://brain-beats.in`), and CodeQL scanning workflow configuration.
 15. **Phase 15: Liquid Accessible Navigation & Link Title UX Verification**
@@ -212,7 +212,7 @@ Phase 13: Developer Documentation, README & Patch Integrity Verification
   [PASS] LICENSE.txt specifies Creative Commons Attribution 4.0 International (CC BY 4.0)
   [PASS] Licenses and documentation specify GNU AGPL-3.0 strictly covers code, configuration files, and server configurations
   [PASS] Web UI templates and pages include Creative Commons content license scope and clean navigation without raw links
-  [PASS] Web UI templates and layouts include support@brain-beats.in contact email
+  [PASS] Web UI templates and layouts include community chat and footer links
   [PASS] js/main.js contains yellow noise, violet noise, and volume dynamics patches
   [PASS] js/main.js contains binaural polarity engine and channel swap functions
   [PASS] Binaural generator and mind machine generator pages include polarity and channel swap UX controls
