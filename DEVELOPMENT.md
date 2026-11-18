@@ -703,15 +703,15 @@ git pushall
 For complete mathematical derivations, effort adjustment factors (EAF), and work breakdown structures, consult the formal [COCOMO Cost Estimate Report](cocomo-cost-estimate.md) and the interactive visual dashboard at [`cocomo.html`](file:///d:/big-projects/brain-beats/cocomo.html).
 
 ### 19.1. Project Sizing Summary
-Based on static analysis of the active tracked source tree at commit `16b97b6a5` (excluding `node_modules`, `.git`, `.jekyll-cache`, `_site`, binary media, and build artifacts):
+Based on static analysis of the active tracked source tree at commit `f4f11b45f` (excluding `node_modules`, `.git`, `.jekyll-cache`, `_site`, binary media, and build artifacts):
 - **Total Clean Source Files:** 11,561 files
-- **Total Physical Source Lines (SLOC):** 2,660,558 lines (**2,660.558 KLOC**)
-  - *Markdown Knowledge Base & Wiki:* 2,240,448 SLOC (84.2%)
+- **Total Physical Source Lines (SLOC):** 2,660,624 lines (**2,660.624 KLOC**)
+  - *Markdown Knowledge Base & Wiki:* 2,240,461 SLOC (84.2%)
   - *JSON Presets & Matrices:* 188,685 SLOC (7.1%)
   - *Text Manifests & XML:* 108,846 SLOC (4.1%)
   - *JavaScript Audio DSP, Python & Build Tooling:* 48,525 SLOC (1.8%)
   - *Modular SCSS & CSS Stylesheets:* 48,068 SLOC (1.8%)
-  - *HTML UI Generators & Layouts:* 22,137 SLOC (0.8%)
+  - *HTML UI Generators & Layouts:* 22,190 SLOC (0.8%)
   - *Vector Media (`SVG`):* 2,386 SLOC (0.1%)
   - *Automated Testing Harness (`tests/`):* 615 SLOC (<0.1%)
   - *YAML, TOML & Meta Configs:* 552 SLOC (<0.1%)
@@ -725,9 +725,9 @@ $$\text{Cost} = \text{Effort} \times \text{Labor Rate} \quad [\text{USD @ } \$8,
 
 | Deployment Mode | Complexity & Architecture Scope | Coefficients ($a, b, c, d$) | Nominal Effort | Dev Duration (TDEV) | Avg Dev Staff | Total Dev Valuation (USD) | 5-Year TCO (Dev + Maint) |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Organic Mode** | Reusable web framework, stable PWA requirements | $a=2.4, b=1.05$<br>$c=2.5, d=0.38$ | **9,471.80 PM** | **81.09 mos** (6.76 yrs) | **116.80 devs** | **$75,774,415.70** | **$132,605,227.48** |
-| **Semi-Detached Mode** | Real-time Web Audio DSP, AudioWorklets, 25 JSON catalogs | $a=3.0, b=1.12$<br>$c=2.5, d=0.35$ | **20,563.20 PM** | **80.82 mos** (6.74 yrs) | **254.43 devs** | **$164,505,605.25** | **$329,011,210.50** |
-| **Embedded Mode** | Strict real-time buffer synchronization, offline PWA cache | $a=3.6, b=1.20$<br>$c=2.5, d=0.32$ | **46,373.49 PM** | **77.83 mos** (6.49 yrs) | **595.83 devs** | **$370,987,916.95** | **$834,722,813.14** |
+| **Organic Mode** | Reusable web framework, stable PWA requirements | $a=2.4, b=1.05$<br>$c=2.5, d=0.38$ | **9,472.05 PM** | **81.09 mos** (6.76 yrs) | **116.80 devs** | **$75,776,389.41** | **$132,608,681.47** |
+| **Semi-Detached Mode** | Real-time Web Audio DSP, AudioWorklets, 25 JSON catalogs | $a=3.0, b=1.12$<br>$c=2.5, d=0.35$ | **20,563.77 PM** | **80.82 mos** (6.74 yrs) | **254.43 devs** | **$164,510,175.82** | **$329,020,351.64** |
+| **Embedded Mode** | Strict real-time buffer synchronization, offline PWA cache | $a=3.6, b=1.20$<br>$c=2.5, d=0.32$ | **46,374.87 PM** | **77.83 mos** (6.49 yrs) | **595.84 devs** | **$370,998,960.62** | **$834,747,661.39** |
 
 ### 19.3. Specialized Work Breakdown Structure (WBS)
 - **Audio DSP Engine & AudioWorklet Processors (WP1):** 140.0 hrs (0.875 PM) = $7,000.00
@@ -736,7 +736,8 @@ $$\text{Cost} = \text{Effort} \times \text{Labor Rate} \quad [\text{USD @ } \$8,
 - **Automated TDD Test Suite (WP4):** 48.0 hrs (0.300 PM) = $2,400.00
 - **Modular SCSS Architecture & Dart Sass (WP10):** 42.0 hrs (0.263 PM) = $2,100.00
 - **Engineering Wiki & Regulatory Documentation (WP11):** 32.0 hrs (0.200 PM) = $1,600.00
-- **Total Specialized Core Audio Engine Engineering:** **774.0 hrs (4.838 PM) = $38,700.00**
+- **openFDA Orchestration, Unbounded 25-JSON Indexing, Blog Liquid Heading UX & Chat-Only Docs (WP12):** 36.0 hrs (0.225 PM) = $1,800.00
+- **Total Specialized Core Audio Engine Engineering:** **810.0 hrs (5.063 PM) = $40,500.00**
 
 ---
 

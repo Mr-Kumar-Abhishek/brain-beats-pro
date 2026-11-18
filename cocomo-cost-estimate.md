@@ -6,28 +6,28 @@ This document provides a comprehensive software engineering cost and maintenance
 
 ## 1. Project Sizing & Language Breakdown
 
-Based on full static analysis of the active tracked source tree at commit `16b97b6a5` (excluding `node_modules`, `.git`, `.jekyll-cache`, `_site`, binary media, and sourcemap artifacts), the active codebase comprises **11,561 clean source files** totaling **2,660,558 Source Lines of Code (2,660.558 KLOC)**:
+Based on full static analysis of the active tracked source tree at commit `f4f11b45f` (excluding `node_modules`, `.git`, `.jekyll-cache`, `_site`, binary media, and sourcemap artifacts), the active codebase comprises **11,561 clean source files** totaling **2,660,624 Source Lines of Code (2,660.624 KLOC)**:
 
 | Language / Format | Files | Source Lines (SLOC) | Percentage | Role in Architecture |
 | :--- | :---: | :---: | :---: | :--- |
-| **Markdown Knowledge Base** | 11,248 | 2,240,448 | 84.2% | 11,178 research blog posts (openFDA benchmarks), engineering wiki, frequency references, guides |
+| **Markdown Knowledge Base** | 11,248 | 2,240,461 | 84.2% | 11,178 research blog posts (openFDA benchmarks), engineering wiki, frequency references, guides |
 | **JSON Data Schemas** | 49 | 188,685 | 7.1% | 25 Frequency preset databases (`11,014` records), laboratory matrices, Rife CAFL presets |
 | **Text Data & Manifests** | 31 | 108,846 | 4.1% | Ads configuration, manifests, license matrices, `sitemap.xml` (`11,224` URLs), edge redirects |
 | **JavaScript (Engine, UI & Build)** | 119 | 48,525 | 1.8% | Web Audio DSP synthesis, singleton AudioContext, PWA Service Worker, build & generator scripts |
 | **CSS & SCSS Styling** | 26 | 48,068 | 1.8% | Modular SCSS partials, responsive design, dark/light theme, layout animations |
-| **HTML UI & Jekyll Layouts** | 61 | 22,137 | 0.8% | Tone generators, mind machines, DRY Liquid layouts, meta tags, COCOMO report |
+| **HTML UI & Jekyll Layouts** | 61 | 22,190 | 0.8% | Tone generators, mind machines, DRY Liquid layouts (`.fluidaner` heading clearance), meta tags, COCOMO report |
 | **SVG Visual Assets** | 1 | 2,386 | 0.1% | Vector diagrams, mandala visualizers, UI iconography |
 | **Testing Harness** | 1 | 615 | <0.1% | Automated TDD Web Audio verification suite (91 unit & integration tests across 15 phases) |
 | **YAML, TOML & Meta Configs** | 11 | 552 | <0.1% | Jekyll configs (`future: true`), Netlify headers, GitHub Actions workflows, Bundler lockfile, root licenses |
 | **AudioWorklets (ES Modules)** | 14 | 296 | <0.1% | Real-time multi-color noise generators (White, Pink, Brown, Green, Blue, Violet) |
-| **Total Clean Source Code** | **11,561** | **2,660,558** | **100.0%** | **2,660.558 KLOC** |
+| **Total Clean Source Code** | **11,561** | **2,660,624** | **100.0%** | **2,660.624 KLOC** |
 
 ---
 
 ## 2. COCOMO Model Assumptions & Mathematical Formulations
 
 ### 2.1 Baseline Parameters
-- **Codebase Scale ($KLOC$):** $2,660.558$ KLOC ($2,660,558$ physical source lines)
+- **Codebase Scale ($KLOC$):** $2,660.624$ KLOC ($2,660,624$ physical source lines)
 - **Standard Labor Rate:** $\$8,000$ USD per person-month ($\$96,000$ USD / year fully burdened base)
 - **Full-Time Equivalent Team Size:** $\text{Team} = \frac{\text{Effort (PM)}}{\text{TDEV (Months)}}$
 
@@ -91,9 +91,9 @@ $$
 
 | Model Variant | Initial Dev Effort | Schedule (TDEV) | Dev Staff Size | Initial Dev Cost | Annual Change Traffic (ACT) | Annual Maint Effort (AME) | Annual Maint Staff (FTE) | Annual Maint Cost (AMC) | 5-Year Total Cost of Ownership (TCO) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Organic** | **9,471.80 PM** | **81.09 mos** | **116.80 devs** | **$75,774,415.70** | **15%** | **1,420.77 PM/yr** | **118.40 FTE** | **$11,366,162.36/yr** | **$132,605,227.48** |
-| **Semi-Detached** | **20,563.20 PM** | **80.82 mos** | **254.43 devs** | **$164,505,605.25** | **20%** | **4,112.64 PM/yr** | **342.72 FTE** | **$32,901,121.05/yr** | **$329,011,210.50** |
-| **Embedded** | **46,373.49 PM** | **77.83 mos** | **595.83 devs** | **$370,987,916.95** | **25%** | **11,593.37 PM/yr** | **966.11 FTE** | **$92,746,979.24/yr** | **$834,722,813.14** |
+| **Organic** | **9,472.05 PM** | **81.09 mos** | **116.80 devs** | **$75,776,389.41** | **15%** | **1,420.81 PM/yr** | **118.40 FTE** | **$11,366,458.41/yr** | **$132,608,681.47** |
+| **Semi-Detached** | **20,563.77 PM** | **80.82 mos** | **254.43 devs** | **$164,510,175.82** | **20%** | **4,112.75 PM/yr** | **342.73 FTE** | **$32,902,035.16/yr** | **$329,020,351.64** |
+| **Embedded** | **46,374.87 PM** | **77.83 mos** | **595.84 devs** | **$370,998,960.62** | **25%** | **11,593.72 PM/yr** | **966.14 FTE** | **$92,749,740.15/yr** | **$834,747,661.39** |
 
 ---
 
@@ -114,7 +114,8 @@ The table below delineates the specialized engineering work packages spanning hi
 | **WP9: Ongoing Annual Maintenance Operations** | Continuous browser Web Audio API deprecation handling, dependency security patching, Service Worker cache invalidation, and multi-remote git maintenance. | 219.0 hrs/yr | 1.369 PM/yr | $10,950.00/yr |
 | **WP10: Modular SCSS & Glassmorphic UI/UX** | Restructured CSS into modular `_sass/` partials (`variables`, `base`, `layout`, `components`, `footer`), engineered Dart Sass build script, glassmorphic blur filters, card elevations, and touch micro-interactions. | 42.0 hrs | 0.263 PM | $2,100.00 |
 | **WP11: Engineering Wiki & Architecture Documentation** | Authored comprehensive 7-part engineering wiki knowledge base covering development workflows, DSP audio architecture, UI/UX systems, static constant optimization, and QA standards. | 32.0 hrs | 0.200 PM | $1,600.00 |
-| **Total Specialized Engineering** | **Core Audio Platform, Modular SCSS Pipeline, Wiki & Maintenance** | **774.0 hrs** | **4.838 PM** | **$38,700.00** |
+| **WP12: openFDA Orchestration, Unbounded 25-JSON Indexing & Liquid UX** | Executed automated 2-phase `generate_posts.py` enrichment (`5,649` stubs upgraded + `4,782` new articles through `2053-08-14` with 27 openFDA benchmarks), removed sitemap/Jekyll future-date caps (`11,224` URLs), fixed `.fluidaner` blog heading clearance via `/browser`, and aligned chat-only support docs. | 36.0 hrs | 0.225 PM | $1,800.00 |
+| **Total Specialized Engineering** | **Core Audio Platform, Modular SCSS Pipeline, openFDA Content, Wiki & Maintenance** | **810.0 hrs** | **5.063 PM** | **$40,500.00** |
 
 ---
 
@@ -154,9 +155,9 @@ $$
 
 | Deployment Mode | Nominal Effort | Adjusted Effort (EAF 0.672) | Adjusted Dev Cost ($8k/PM) |
 | :--- | :---: | :---: | :---: |
-| **Organic Mode** | 9,471.80 PM | **6,365.05 PM** | **$50,920,407.35 USD** |
-| **Semi-Detached Mode (Baseline)** | 20,563.20 PM | **13,818.47 PM** | **$110,547,766.73 USD** |
-| **Embedded Mode** | 46,373.49 PM | **31,162.99 PM** | **$249,303,880.19 USD** |
+| **Organic Mode** | 9,472.05 PM | **6,365.22 PM** | **$50,921,733.69 USD** |
+| **Semi-Detached Mode (Baseline)** | 20,563.77 PM | **13,818.85 PM** | **$110,550,838.15 USD** |
+| **Embedded Mode** | 46,374.87 PM | **31,163.91 PM** | **$249,311,301.54 USD** |
 
 ---
 
@@ -168,15 +169,15 @@ The WBS below reorganizes the specialized engineering estimate from Section 4. I
 
 | Supply-chain stream | Included scope / dependencies | WBS mapping | Estimated labor | Labor valuation |
 | :--- | :--- | :---: | :---: | :---: |
-| **Product engineering** | Web Audio DSP, frequency catalogs, Jekyll layouts, modular SCSS | WP1, WP2, WP8, WP10 | 362 hrs (2.263 PM) | $18,100 one-time |
+| **Product engineering** | Web Audio DSP, frequency catalogs, Jekyll layouts, modular SCSS, openFDA/Liquid orchestration | WP1, WP2, WP8, WP10, WP12 | 398 hrs (2.488 PM) | $19,900 one-time |
 | **Quality assurance** | Automated TDD and integration verification | WP4 | 48 hrs (0.300 PM) | $2,400 one-time |
 | **Build, CI/CD & release** | Workbox/PWA build, GitHub Pages pipeline, Netlify configuration, branch/release hygiene | WP3, WP5, WP6, WP7 | 113 hrs (0.706 PM) | $5,650 one-time |
 | **Engineering documentation** | Developer wiki and architecture documentation | WP11 | 32 hrs (0.200 PM) | $1,600 one-time |
 | **AI-assisted development tools** | Gemini (Google One subscription), Anthropic Claude (Claude Code), Qwen, DeepSeek R1, and GitHub Copilot using selected OpenAI model(s) | Not separately estimated in WBS | Not provided | $0 direct spend (Gemini included in Google One annual subscription without overages; others covered by free quota / credits) |
 | **Ongoing maintenance** | Browser/API updates, dependency patches, cache and repository maintenance | WP9 | 219 hrs/year (1.369 PM/year) | $10,950/year |
-| **Specialized WBS subtotal** | One-time work above plus one year of WP9 maintenance | WP1–WP11 | 774 hrs in year one | $38,700 in year one |
+| **Specialized WBS subtotal** | One-time work above plus one year of WP9 maintenance | WP1–WP12 | 810 hrs in year one | $40,500 in year one |
 
-The year-one subtotal combines one-time work ($27,750) with one year of estimated maintenance ($10,950). For later years, use the annual maintenance line rather than repeating the one-time WBS work.
+The year-one subtotal combines one-time work ($29,550) with one year of estimated maintenance ($10,950). For later years, use the annual maintenance line rather than repeating the one-time WBS work.
 
 ### External supplier and service cost ledger
 
@@ -211,28 +212,29 @@ To calculate the specific project cost of utilizing Google Gemini (via the Googl
 
 ### Lifetime Git Patch and Dependency Add-On Totals
 
-Patch totals cover all history reachable from the analyzed source commit (`16b97b6a5`), computed with `git log --no-merges --no-renames --numstat`. They include text changes to all tracked paths, exclude binary line counts and merge commits, and count renamed files as deletions plus additions.
+Patch totals cover all history reachable from the analyzed source commit (`f4f11b45f`), computed with `git log --no-merges --no-renames --numstat`. They include text changes to all tracked paths, exclude binary line counts and merge commits, and count renamed files as deletions plus additions.
 
 | Lifetime patch scope | Non-merge commits | File-change rows | Added patch lines | Deleted patch lines | Gross patch churn |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| **All history through `16b97b6a5`** | 9,924 | 321,659 | 30,053,527 | 6,863,139 | 36,916,666 |
+| **All history through `f4f11b45f`** | 9,927 | 321,673 | 30,055,750 | 6,865,296 | 36,921,046 |
 
-Using the report's 2,660,558-SLOC baseline, lifetime gross patch churn is `36,916,666 / 2,660,558 = 13.88x` (1,387.55%). These are cumulative patch operations, not unique source lines or COCOMO Annual Change Traffic (ACT): repeated edits count repeatedly, and a modified line can appear as both an addition and a deletion. Do not substitute this measure for the scenario ACT assumptions in Section 3.
+Using the report's 2,660,624-SLOC baseline, lifetime gross patch churn is `36,921,046 / 2,660,624 = 13.88x` (1,387.68%). These are cumulative patch operations, not unique source lines or COCOMO Annual Change Traffic (ACT): repeated edits count repeatedly, and a modified line can appear as both an addition and a deletion. Do not substitute this measure for the scenario ACT assumptions in Section 3.
 
-#### Recent Git Patch Activity Since the Previous COCOMO Baseline (`05301b31b` & `2cc4ba6`)
+#### Today's Work & Recent Git Patch Activity Through `f4f11b45f`
 
-Between previous report commit `2cc4ba6` and analyzed source commit `16b97b6a5`, 467 non-merge commits produced 148,211 file-change rows, 15,143,761 added lines, 2,875,227 deleted lines, and 18,018,988 gross patch lines. Against the previous analyzed snapshot `05301b31b` through `16b97b6a5` (`git log --no-merges --no-renames --numstat 05301b31b..16b97b6a5`), summed counts are shown below; repeated edits to a path across commits are counted repeatedly, intentionally differing from a net tree diff.
+Against the previous analyzed snapshots (`05301b31b`, `2cc4ba6`, and the pre-openFDA baseline `6c80be11f`) through `f4f11b45f` (`git log --no-merges --no-renames --numstat`), summed patch counts are shown below; repeated edits to a path across commits are counted repeatedly, intentionally differing from a net tree diff.
 
 | Recent patch scope | Non-merge commits | File-change rows | Added patch lines | Deleted patch lines | Gross patch churn |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| **Since `05301b31b` (`05301b31b..16b97b6a5`)** | 455 | 147,909 | 15,135,505 | 2,873,455 | 18,008,960 |
-| **Latest 4 commits (`6c80be11f..16b97b6a5`)** | 4 | 10,474 | 2,125,136 | 35,684 | 2,160,820 |
+| **Since `05301b31b` (`05301b31b..f4f11b45f`)** | 458 | 147,923 | 15,137,728 | 2,875,612 | 18,013,340 |
+| **Today's 7-commit milestone (`6c80be11f..f4f11b45f`)** | 7 | 10,488 | 2,127,359 | 37,841 | 2,165,200 |
+| **Latest 2-commit add-on (`40e8311cd..f4f11b45f`)** | 2 | 10 | 421 | 416 | 837 |
 
-Against the 2,660,558-SLOC baseline, cumulative gross patch churn since `05301b31b` is `18,008,960 / 2,660,558 = 6.77x` (676.89%), while the latest 4-commit openFDA & unbounded-sitemap milestone (`5f324a399`, `10cdb7c84`, `856a481b6`, `16b97b6a5`) represents `2,160,820 / 2,660,558 = 81.22%` gross patch volume.
+Against the 2,660,624-SLOC baseline, cumulative gross patch churn since `05301b31b` is `18,013,340 / 2,660,624 = 6.77x` (677.03%), today's full 7-commit work window (`6c80be11f..f4f11b45f`: commits `5f324a399`, `10cdb7c84`, `856a481b6`, `16b97b6a5`, `40e8311cd`, `80ce62db4`, `f4f11b45f`) represents `2,165,200 / 2,660,624 = 81.38%`, and the latest 2-commit incremental add-on after `40e8311cd` (`80ce62db4` and `f4f11b45f`) represents `837 / 2,660,624 = 0.0315%`.
 
-#### Latest Milestone Delta (`6c80be11f..16b97b6a5`)
+#### Latest Milestone Delta (`6c80be11f..f4f11b45f`)
 
-Across the latest 4 commits (`5f324a399`, `10cdb7c84`, `856a481b6`, `16b97b6a5`), the pipeline upgraded all `5,649` existing raw blog stubs in place (`0` remaining), generated `4,782` new `openfda-database`-enriched JSON articles (`4,610` in `10cdb7c84` + `172` in `856a481b6`, reaching `11,178` `_posts/*.md` articles across all `25` JSON files / `11,014` records through `2053-08-14`), enabled `future: true` in `_config.yml`, removed the `postDate > today` cutoff in `scripts/generate-sitemap.js` (expanding `sitemap.xml` to `11,224` canonical URLs), verified full local `bundle exec jekyll build --trace` (`11,178` rendered HTML posts), and updated `DEVELOPMENT.md`, `RELEASE_NOTES.md`, and `TEST_REPORT.md`.
+Across today's 7 commits (`6c80be11f..f4f11b45f`), the pipeline upgraded all `5,649` existing raw blog stubs in place (`0` remaining), generated `4,782` new `openfda-database`-enriched JSON articles (`4,610` in `10cdb7c84` + `172` in `856a481b6`, reaching `11,178` `_posts/*.md` articles across all `25` JSON files / `11,014` records through `2053-08-14`), enabled `future: true` in `_config.yml`, removed the `postDate > today` cutoff in `scripts/generate-sitemap.js` (expanding `sitemap.xml` to `11,224` canonical URLs), verified full local `bundle exec jekyll build --trace` (`11,178` rendered HTML posts), recalculated COCOMO reports (`40e8311cd`), added `.fluidaner` and top heading spacing across `_layouts/default.html`, `_layouts/post.html`, and `blog/` verified live via `/browser` (`80ce62db4`), and updated docs for chat-only Discord support (`f4f11b45f`).
 
 Current dependency add-ons are counted from the committed npm and Ruby lockfiles. Lockfile entries include transitive dependencies and platform-specific variants; the unique-name total counts names separately by ecosystem. These are locked dependency records, not a claim that every package is currently installed or used at runtime.
 
@@ -246,35 +248,43 @@ Under the report's existing assumption that these dependencies have no license f
 
 ### Lifetime Patch-Volume-Equivalent COCOMO Cost
 
-For a volume-based comparison only, the 30,053,527 added patch lines through `16b97b6a5` are treated as if they were 30,053.527 KLOC of newly developed, unique source code. The resulting figures are **not actual historical spend or a valuation of unique surviving code**: Git counts repeated additions across commits, including revisions to the same lines. Do not add these alternative estimates to the current-codebase valuation or the WBS/TCO.
+For a volume-based comparison only, the 30,055,750 added patch lines through `f4f11b45f` are treated as if they were 30,055.750 KLOC of newly developed, unique source code. The resulting figures are **not actual historical spend or a valuation of unique surviving code**: Git counts repeated additions across commits, including revisions to the same lines. Do not add these alternative estimates to the current-codebase valuation or the WBS/TCO.
 
 | COCOMO mode | Nominal effort | Nominal cost (@ $8,000/PM) | EAF-adjusted effort (0.672) | EAF-adjusted cost |
 | :--- | ---: | ---: | ---: | ---: |
-| **Organic** | 120,781.79 PM | $966,254,318.65 | 81,165.36 PM | $649,322,902.13 |
-| **Semi-Detached** | 310,716.38 PM | $2,485,731,078.85 | 208,801.41 PM | $1,670,411,284.99 |
-| **Embedded** | 850,701.18 PM | $6,805,609,469.64 | 571,671.20 PM | $4,573,369,563.60 |
+| **Organic** | 120,791.17 PM | $966,329,364.30 | 81,171.67 PM | $649,373,332.81 |
+| **Semi-Detached** | 310,742.13 PM | $2,485,937,008.14 | 208,818.71 PM | $1,670,549,669.47 |
+| **Embedded** | 850,776.69 PM | $6,806,213,551.09 | 571,721.94 PM | $4,573,775,506.33 |
 
-### Recent Patch-Volume-Equivalent COCOMO Cost
+### Today's & Recent Patch-Volume-Equivalent COCOMO Cost
 
-For comparison only, both recent commit windows—the 4-commit openFDA & sitemap orchestration delta (`6c80be11f..16b97b6a5`: 2,125,136 added lines / `2,125.136 KLOC`) and the full post-`05301b31b` delta (`05301b31b..16b97b6a5`: 15,135,505 added lines / `15,135.505 KLOC`)—are evaluated below. These estimates count repeated patch additions and are not actual historical spend, unique surviving code, or a cost to add to the lifetime valuation, WBS, or TCO.
+For comparison only, today's 7-commit full milestone window (`6c80be11f..f4f11b45f`: 2,127,359 added lines / `2,127.359 KLOC`), the latest 2-commit delta since `40e8311cd` (`40e8311cd..f4f11b45f`: 421 added lines / `0.421 KLOC`), and the cumulative post-`05301b31b` delta (`05301b31b..f4f11b45f`: 15,137,728 added lines / `15,137.728 KLOC`) are evaluated below. These estimates count repeated patch additions and are not actual historical spend, unique surviving code, or a cost to add to the lifetime valuation, WBS, or TCO.
 
-#### Latest 4-Commit Milestone Window (`6c80be11f..16b97b6a5` — `2,125.136 KLOC` Added)
-
-| COCOMO mode | Nominal effort | Nominal cost (@ $8,000/PM) | EAF-adjusted effort (0.672) | EAF-adjusted cost |
-| :--- | ---: | ---: | ---: | ---: |
-| **Organic** | 7,481.13 PM | $59,849,054.46 | 5,027.32 PM | $40,218,564.59 |
-| **Semi-Detached** | 15,988.01 PM | $127,904,073.89 | 10,743.94 PM | $85,951,537.65 |
-| **Embedded** | 35,413.31 PM | $283,306,514.98 | 23,797.75 PM | $190,381,978.07 |
-
-#### Cumulative Window Since `05301b31b` (`05301b31b..16b97b6a5` — `15,135.505 KLOC` Added)
+#### Today's 7-Commit Full Milestone Window (`6c80be11f..f4f11b45f` — `2,127.359 KLOC` Added)
 
 | COCOMO mode | Nominal effort | Nominal cost (@ $8,000/PM) | EAF-adjusted effort (0.672) | EAF-adjusted cost |
 | :--- | ---: | ---: | ---: | ---: |
-| **Organic** | 58,777.08 PM | $470,216,636.24 | 39,498.20 PM | $315,985,579.55 |
-| **Semi-Detached** | 144,117.86 PM | $1,152,942,868.93 | 96,847.20 PM | $774,777,607.92 |
-| **Embedded** | 373,507.05 PM | $2,988,056,374.02 | 250,996.74 PM | $2,007,973,883.34 |
+| **Organic** | 7,489.35 PM | $59,914,791.58 | 5,032.84 PM | $40,262,739.94 |
+| **Semi-Detached** | 16,006.74 PM | $128,053,932.73 | 10,756.53 PM | $86,052,242.80 |
+| **Embedded** | 35,457.77 PM | $283,662,175.75 | 23,827.62 PM | $190,620,982.10 |
 
-**Deployment record (2026-11-18):** Source commit `16b97b6a5` is synchronized across `main`, `master`, `dev`, `debug`, and `claude` on `base-stream`, `org`, and `origin`. GitHub Actions builds and deploys `gh-pages` automatically from pushed source branches.
+#### Latest 2-Commit Add-On Window (`40e8311cd..f4f11b45f` — `0.421 KLOC` Added)
+
+| COCOMO mode | Nominal effort | Nominal cost (@ $8,000/PM) | EAF-adjusted effort (0.672) | EAF-adjusted cost |
+| :--- | ---: | ---: | ---: | ---: |
+| **Organic** | 0.97 PM | $7,741.01 | 0.65 PM | $5,201.96 |
+| **Semi-Detached** | 1.14 PM | $9,107.67 | 0.77 PM | $6,120.35 |
+| **Embedded** | 1.27 PM | $10,198.38 | 0.86 PM | $6,853.31 |
+
+#### Cumulative Window Since `05301b31b` (`05301b31b..f4f11b45f` — `15,137.728 KLOC` Added)
+
+| COCOMO mode | Nominal effort | Nominal cost (@ $8,000/PM) | EAF-adjusted effort (0.672) | EAF-adjusted cost |
+| :--- | ---: | ---: | ---: | ---: |
+| **Organic** | 58,786.14 PM | $470,289,151.84 | 39,504.29 PM | $316,034,310.04 |
+| **Semi-Detached** | 144,141.57 PM | $1,153,132,527.37 | 96,863.13 PM | $774,905,058.39 |
+| **Embedded** | 373,572.88 PM | $2,988,583,020.22 | 251,040.97 PM | $2,008,327,789.59 |
+
+**Deployment record (2026-11-19):** Source commit `f4f11b45f` is synchronized across `main`, `master`, `dev`, `debug`, and `claude` on `base-stream`, `org`, and `origin`. GitHub Actions builds and deploys `gh-pages` automatically from pushed source branches.
 
 **Fully loaded five-year TCO (constant annual run rate):**
 
