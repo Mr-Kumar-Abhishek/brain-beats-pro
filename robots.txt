@@ -36,4 +36,4 @@ Disallow:
 Allow: /
 
 
-Sitemap: https://brain-beats.in/sitemap.xml
+Sitemap: https://brain-beats-pro.netlify.app/sitemap.xml

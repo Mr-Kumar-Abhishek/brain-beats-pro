@@ -4,6 +4,31 @@ This document tracks all version releases, deployment stabilization reports, CI/
 
 ---
 
+## [1.0.3] - 2026-11-15
+
+### 🚀 Milestone: openFDA Article Stub Orchestration, Unbounded 25-JSON Indexing & Local Jekyll Verification
+
+#### 1. Executive Summary
+Completed end-to-end orchestration of the [`openfda-database`](DEVELOPMENT.md#20-latest-development-milestone-report-openfda-article-orchestration-unbounded-25-json-indexing--local-jekyll-verification) article pipeline across all **25 JSON files** (`11,014` total records), removed the today's-date cutoff across Jekyll and sitemap generation so every chronological article through `2053-08-14` (`11,178` total posts, `11,224` canonical sitemap URLs) is indexed, and verified the full local Jekyll build (`bundle exec jekyll build --trace`) and TDD suite (`91/91` passing) prior to pushing commits.
+
+#### 2. Key Changes & Commit History
+- **5f324a399** (`13 files changed, 2,917 insertions(+), 129 deletions(-)`):
+  - Elaborated 12 Rife stub articles (`957 Hz – 982 Hz`) completing the January 2025 archive with openFDA drug benchmarks.
+- **10cdb7c84** (`10,260 files changed, 2,027,503 insertions(+), 34,307 deletions(-)`):
+  - Extended [`generate_posts.py`](generate_posts.py) with `OPENFDA_BENCHMARKS` (`27` verified FDA drug records from NDA/BLA/ANDA labels) and `JSON_PLAYER_MAP` across all 23 playable preset JSON files.
+  - Upgraded `5,649` existing raw stubs in [`_posts/`](_posts) in place (`0` raw stubs remaining), fixed slug substring collision filtering, and generated `4,610` missing JSON preset articles chronologically through `2053-02-23` (`11,006` total articles).
+- **856a481b6** (`198 files changed, 93,549 insertions(+), 165 deletions(-)`):
+  - Updated [`_config.yml`](_config.yml) (`future: false` -> `future: true`) and [`scripts/generate-sitemap.js`](scripts/generate-sitemap.js) (removed `if (postDate > today) continue;`) so all future-dated posts are indexed by Jekyll and included in [`sitemap.xml`](sitemap.xml).
+  - Extended [`generate_posts.py`](generate_posts.py) to index [`json/indexer.json`](json/indexer.json) (`26` items) and [`json/webring.json`](json/webring.json) (`9` items), remove skip filters on `angel.json` / `solfeggio.json` / `noise.json` / `puretones.json`, disambiguate `41` intra-file and cross-file slug collisions via `-preset-{occ}`, and strip trailing whitespace from `22` May 2023 YAML front-matter `---` delimiters.
+  - Generated `172` remaining JSON stub articles (`2053-02-24` to `2053-08-14`), bringing [`_posts/`](_posts) to `11,178` articles and rebuilding [`sitemap.xml`](sitemap.xml) (`2.27 MB`, `11,224` URLs: `46` root HTML URLs + `11,178` blog URLs).
+
+#### 3. Verification & Pre-Push Local Jekyll Status
+- **Local Jekyll Health & Build:** `bundle exec jekyll doctor` passed (`Your test results are in. Everything looks fine.`), and `bundle exec jekyll build --trace` (`jekyll 4.4.1`) succeeded with exit code `0` (`done in 1537.669 seconds.`), rendering all `11,178` HTML post pages, `2,235` pagination subdirectories (`page2`–`page2236`), and a valid `_site/blog/search.json` (`11,178` entries, `5,280,179` bytes). *(Note: on Windows environments with Application Control policies blocking unbundled `json-2.18.1` C extensions, invoke Jekyll via Bundler `bundle exec jekyll ...` using the pinned `Gemfile` gems and invoke npm via `npm.cmd` when `.ps1` execution policies apply.)*
+- **PyYAML & Coverage Audit:** Confirmed `0` YAML front-matter errors, `0` trailing delimiter spaces, `0` raw stubs, `0` Liquid token leaks in generated posts, and `0` JSON records or blog posts missing from `_posts/` or `sitemap.xml`.
+- **Automated TDD Suite (`npm.cmd test`):** `91 Passed, 0 Failed` across all 15 phases (`tests/audio-engine.test.js`).
+
+---
+
 ## [1.0.2] - 2026-11-07
 
 ### 🧭 Semantic Release: Unit Test Hardening, Interactive Browser UX Validation & Deployment Synchronization
@@ -17,7 +42,7 @@ This release finalizes the end-to-end verification of Phase 15 accessible Liquid
   - Added explicit test gates validating:
     1. `_layouts/post.html` next/previous post navigation markup with Liquid `title` attributes, `rel="prev"`, `rel="next"`, and `#instructionModal` inclusion.
     2. `_layouts/default.html` accessible Liquid titles across all primary navigation anchors (`Brand`, `Home`, `Web App`, `Blog Posts`, `Blog Search`, `Licenses`, `COCOMO`, `Chat`).
-    3. `_layouts/default.html` accessible footer link titles (`support@brain-beats.in`, Atom RSS, CC BY 4.0, AGPLv3).
+    3. `_layouts/default.html` accessible footer link titles (Atom RSS, CC BY 4.0, AGPLv3).
     4. `blog/blog/index.html` dynamic Liquid pagination titles (`title="Go to Page {{ paginator.next_page }}"`).
     5. `RELEASE_NOTES.md` semantic version documentation and deployment reports integrity.
 - **Interactive In-Browser UX Verification via Headless/DevTools Automation:**
@@ -46,7 +71,7 @@ This release implements accessible, SEO-optimized, and screen-reader-compliant `
     - `<a href="{{ page.next.url | relative_url }}" title="{{ page.next.title | escape }}" rel="next">`
 - **Liquid Navbar & Footer Anchor Titles in `_layouts/default.html`:**
   - Integrated descriptive Liquid-compatible `title` attributes on all navigation bar links (`Home`, `Brain Beats Pro Web App`, `Blog Posts`, `Blog Search`, `Licenses`, `COCOMO Estimation`, `Chat`).
-  - Added descriptive `title` attributes on footer contact and licensing links (`support@brain-beats.in`, Atom RSS, CC BY 4.0, and GNU AGPLv3).
+  - Added descriptive `title` attributes on footer feed and licensing links (Atom RSS, CC BY 4.0, and GNU AGPLv3).
 - **Blog Archive & Pagination Titles:**
   - Enriched blog archive and pagination controls in `blog/index.html` and `blog/blog/index.html` with descriptive `title` attributes for pagination steps (`title="Go to Page {{ paginator.next_page }}"`).
 - **Test Suite Verification:**
@@ -73,7 +98,7 @@ This release resolves CI/CD build pipeline failures, decouples non-critical offl
 - **Legacy Pages Builder Deactivation:**
   - Migrated GitHub Pages repository build source from `legacy` to `workflow`, eliminating dynamic `pages-build-deployment` timeout failures (10m+ on file sync).
 - **Automated Sitemap & Content Expansion:**
-  - Regenerated `sitemap.xml` with 1,447 canonical URLs (`https://brain-beats.in/`) covering all 46 root audio tools and 1,401 published blog posts through November 2026.
+  - Regenerated `sitemap.xml` with 1,447 canonical URLs (`https://brain-beats-pro.netlify.app/`) covering all 46 root audio tools and 1,401 published blog posts through November 2026.
 - **Audio Engine & TDD Verification:**
   - All 86 automated test assertions pass with 100% success across all 14 evaluation phases (`tests/audio-engine.test.js`).
 

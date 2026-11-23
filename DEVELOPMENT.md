@@ -1,0 +1,786 @@
+# Developer Guide & Architecture Reference
+
+Welcome to the developer documentation for **Brain Beats**. This guide provides an in-depth reference for understanding the architecture, setting up the local development environment, testing with the TDD suite, building the PWA and Jekyll blog, and contributing to the codebase.
+
+---
+
+## 1. System Architecture Overview
+
+Brain Beats is an offline-first, client-side Progressive Web Application (PWA) designed for brainwave entrainment, sound therapy, and acoustic research. It pairs a high-performance Web Audio synthesis engine with an extensive research blog powered by Jekyll.
+
+```mermaid
+flowchart TD
+    subgraph Browser ["Client Browser / PWA"]
+        SW["Service Worker (sw.js / sw-generated.js)"]
+        Cache[("Workbox Cache Storage\n(~200 core URLs, ~11.1MB)")]
+        UI["UI Layer (HTML5, CSS3, Bootstrap 5, FontAwesome)"]
+        Engine["Web Audio Engine (js/main.js)"]
+        Worklet["AudioWorklets & ScriptProcessors\n(noise-processor/)"]
+        Presets[("Preset Catalogs (json/*.json)\n25 Databases")]
+    end
+
+    subgraph AudioNodes ["Web Audio Pipeline"]
+        Ctx["Singleton AudioContext (getAudioContext)"]
+        Osc["OscillatorNodes / Noise Generators"]
+        Pan["StereoPannerNode / PannerNode (3D Matrix)"]
+        Gain["GainNodes (Master & Channel Volume)"]
+        Dest["AudioContext Destination (Speakers / Headphones)"]
+    end
+
+    subgraph BlogEngine ["Jekyll Blog System"]
+        LayoutCompress["_layouts/compress.html\n(HTML Minification)"]
+        LayoutDefault["_layouts/default.html\n(DRY Metadata Fallbacks, Nav, MathJax)"]
+        LayoutPost["_layouts/post.html\n(Articles + Disqus Comments)"]
+        BlogPages["blog/index.html\nblog/blog/index.html\nblog/search/index.html"]
+    end
+
+    UI --> Engine
+    Engine --> Ctx
+    Ctx --> Osc --> Pan --> Gain --> Dest
+    Engine --> Presets
+    SW <--> Cache
+    SW --> UI
+    LayoutCompress --> LayoutDefault --> LayoutPost
+    LayoutDefault --> BlogPages
+```
+
+### Core Architecture Pillars:
+1. **Zero-Backend Audio Synthesis:** All frequency generation, binaural beat processing, monaural modulation, and noise shaping runs entirely client-side inside the browser using the **Web Audio API**. It functions 100% offline without needing an active internet connection.
+2. **Offline-First PWA:** Service Worker precaches all core assets, application scripts, styles, audio processors, and 25 JSON preset databases.
+3. **DRY Jekyll Architecture:** Clean Liquid layout inheritance with automatic fallback chains for SEO/meta tags across thousands of research articles.
+4. **FDA Regulatory & Medical Reference Standards:** All clinical pharmaceutical benchmarks, pathogen associations, and medical drug cross-references across research articles and frequency documentation are sourced directly from official public health datasets and registries maintained by the **Food and Drug Administration (FDA), USA** (including openFDA API datasets, FDA Approved Drug Products with Therapeutic Equivalence Evaluations [Orange Book], NDA/BLA application monographs, and 510(k) device clearances).
+5. **DRY Multi-Remote Git Workflow & Isolated Deployment:** Strict adherence to "Don't Repeat Yourself" (DRY) in branch management and deployment automation. The `gh-pages` branch is strictly designated as an automated, compiled static deployment target built by CI/CD. It must never be checked out into local working directories or treated as source code.
+6. **Strict Dual Licensing & International Copyright Protection:**
+   - **Content & Documentation:** Creative Commons Attribution 4.0 International (CC BY 4.0) published by the **Creative Commons organization** (`https://creativecommons.org/`). Allows commercial use with **compulsory attribution/credit** to Brain Beats and reference authors.
+   - **Software & Configuration:** GNU Affero General Public License v3.0 (GNU AGPLv3) strictly covering all code, DSP algorithms, mechanics, configuration files, and server infrastructure.
+   - **Prohibition of License Theft:** Stripping licenses or violating dual-licensing terms is strictly prohibited under international copyright laws and WIPO treaties.
+7. **Automated TDD Test Suite:** Node.js-based test suite (`npm test`) validating syntax, audio lifecycle, DSP functions, JSON database integrity, and precache completeness.
+
+---
+
+## 2. Prerequisites & Tooling
+
+| Requirement | Recommended Version | Purpose |
+| :--- | :--- | :--- |
+| **Node.js & npm** | Node v24+ / npm v10+ | Running the TDD test suite, Workbox CLI, and build tools |
+| **Ruby & Bundler** | Ruby v3.0+ / Bundler v2.3+ | Building and serving the Jekyll blog engine |
+| **Git** | v2.30+ | Source control and multi-remote branch synchronization |
+
+---
+
+## 3. Local Development Setup
+
+### 3.1. Clone and Install Dependencies
+```bash
+# Clone the repository
+git clone https://github.com/Mr-Kumar-Abhishek/brain-beats.git
+cd brain-beats
+
+# Install Node dependencies
+npm install
+
+# Install Ruby gems for Jekyll
+bundle install
+```
+
+### 3.2. Running the Development Server
+Because Brain Beats combines the main web application with the Jekyll blog engine, run the unified Jekyll development server:
+```bash
+npm run serve:jekyll
+# or: bundle exec jekyll serve
+```
+- Main Application: `http://localhost:4000/`
+- Blog Home: `http://localhost:4000/blog/`
+- Blog Post Listing: `http://localhost:4000/blog/blog/`
+- Instant Search: `http://localhost:4000/blog/search/`
+
+---
+
+## 4. Web Audio Engine (`js/main.js`)
+
+### 4.1. Singleton AudioContext Lifecycle
+Modern browsers restrict autoplaying audio until a user gesture occurs. The audio engine manages state gracefully via a singleton accessor:
+
+```javascript
+// Access the shared AudioContext, creating it if necessary
+function getAudioContext() {
+    if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+            audioCtx = new AudioContextClass();
+        }
+    }
+    if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+    return audioCtx;
+}
+```
+All user interaction triggers (`click`, `touchstart`, `keydown`) automatically invoke `getAudioContext()` to ensure seamless audio playback without browser autoplay warnings.
+
+### 4.2. Sound Generation Modes
+* **Pure Tones (`play_pure_tone(freq)`):** Single sine-wave oscillator synthesized at target frequency.
+* **Solfeggio & Angel Tones (`play_solfeggio(freq)`, `play_angel(freq)`):** Sacred geometry and resonant frequency synthesis with smooth attack/decay envelope.
+* **Binaural Beats (`play_binaural(leftFreq, rightFreq)`):** Two independent sine oscillators panned hard left (`pan: -1`) and hard right (`pan: +1`), producing phase-shift entrainment in the brain's superior olivary complex.
+* **Monaural Beats (`play_monaural(carrier, beat)`):** Two distinct frequencies summed into a single acoustic channel before output, creating physical amplitude modulation.
+* **3D Spatial Audio (`play_sine_3d_auto`, `play_XTRA_3d_auto`):** Multi-point coordinate matrix utilizing `PannerNode` / `StereoPannerNode` with periodic spatial oscillation around the listener.
+* **13 Calibrated Noise Synthesizers:**
+  - White, Pink, Brown, Green, Blue, Violet, Grey, Velvet, Black, Red, Yellow, Orange, and Custom noise profiles.
+  - Multi-tier fallback: AudioWorklet (`noise-processor/`) -> ScriptProcessorNode -> Generated AudioBuffer.
+
+### 4.3. Octave Range Shifting (`adjustFrequency`)
+Prevents hardware clipping or silence by shifting frequencies outside human hearing range (20 Hz - 20,000 Hz) by octaves ($2^n$):
+```javascript
+function adjustFrequency(freq) {
+    if (freq <= 0) return 440;
+    while (freq < 20) freq *= 2;
+    while (freq > 20000) freq /= 2;
+    return freq;
+}
+```
+
+---
+
+## 5. Preset Database Architecture (`json/`)
+
+Brain Beats includes 25 structured JSON preset collections:
+
+| Collection | Path | Description |
+| :--- | :--- | :--- |
+| **Solfeggio** | `json/solfeggio.json` | Traditional 9-tone Solfeggio frequencies (174Hz - 963Hz) |
+| **Binaural** | `json/binaural.json` | Delta, Theta, Alpha, Beta, Gamma brainwave states |
+| **Isochronic** | `json/isochronic.json` | Isochronic pulsed amplitude rhythm presets |
+| **Chakras** | `json/chakras.json` | 7 physical & higher spiritual chakra resonances |
+| **Planetary** | `json/planetary.json` | Hans Cousto Cosmic Octave planetary calculations |
+| **Rife** | `json/rife.json` | Royal Rife research frequencies |
+| **VEGA** | `json/vega.json` | VEGA bioresonance frequency matrix |
+| **XTRA** | `json/xtra.json` | Extra / Experimental laboratory frequencies |
+| **PROV** | `json/prov.json` | Provocative / Proving experimental frequencies |
+| **CUST** | `json/cust.json` | Custom blended frequency sets |
+| **Angel** | `json/angel.json` | Numerological & angel harmonic frequencies |
+| **Nogier** | `json/nogier.json` | Dr. Paul Nogier auriculo-medicine frequencies |
+| **Brain** | `json/brain.json` | Neural oscillation targeting presets |
+
+All presets are dynamically indexed by `js/search.js` and cached by the Service Worker for offline instant search.
+
+---
+
+## 6. Blog System & DRY Layout Hierarchy
+
+The Jekyll blog system follows the **DRY (Don't Repeat Yourself)** layout design pattern:
+
+```
+_layouts/compress.html
+  └── _layouts/default.html
+        ├── _layouts/post.html
+        ├── blog/index.html
+        ├── blog/blog/index.html
+        └── blog/search/index.html
+```
+
+### 6.1. Metadata Fallback Chains (`_layouts/default.html`)
+Posts and pages only need to define unique frontmatter properties (`title`, `description`, `keywords`). Meta tags automatically fall back to parent or site values:
+```html
+<title>{{ page.title | default: site.name }}</title>
+<meta name="keywords" content="{{ page.keywords | default: 'pure tones, solfeggio frequency, brainwave entrainment, binaural beats, isochronic tones' }}" >
+<meta name="description" content="{{ page.description | default: site.description | default: page.title }}">
+<meta name='subject' content="{{ page.subject | default: page.title | default: site.name }}">
+<meta name="apple-mobile-web-app-title" content="{{ page.apple-title | default: page.title | default: site.name }}">
+<meta name='application-name' content="{{ page.app-name | default: site.name }}">
+<meta name="twitter:title" content="{{ page.tweet-title | default: page.title | default: site.name }}" >
+<meta name="twitter:description" content="{{ page.tweet-description | default: page.description | default: site.description }}" >
+<meta property="og:title" content="{{ page.og-title | default: page.title | default: site.name }}" >
+```
+
+### 6.2. MathJax 3 Typography Configuration (`_includes/mathjax.html`)
+Mathematical formulas and calculations across Jekyll pages, blog posts, and estimation reports (e.g. [`cocomo.html`](file:///var/www/html/cocomo.html)) are rendered via MathJax 3 with support for both TeX inline `\(` `\)` and display `\[` `\]` / `$$` `$$` delimiters:
+* **Configuration:** Defined modularly in [`_includes/mathjax.html`](file:///var/www/html/_includes/mathjax.html) and included across all layout chains.
+* **Dual CDN & Offline Loader:** Loads primary bundle from CDN (`jsdelivr`) with an instant fallback (`onerror`) to the local precached `/blog/js/tex-mml-chtml.js` for offline PWA operation.
+* **Kramdown Engine:** Configured in `_config.yml` via `kramdown.math_engine: mathjax`.
+
+### 6.3. Generating Posts from Presets (`generate_posts.py`)
+Brain Beats Pro automates blog stub generation and pharmacological benchmark enrichment through [`generate_posts.py`](generate_posts.py):
+- **Phase 1 (Existing Stub Enrichment):** Scans [`_posts/`](_posts) for raw stub articles containing `"This frequency is part of the Brain Beats presets collection."` and upgrades them in place while preserving original dates and filenames (`5,649` stubs upgraded).
+- **Phase 2 (100% Coverage Across All 25 JSON Databases):** Iterates deterministically across all **25 JSON files** in [`json/`](json) (`11,014` total records: `10,979` frequency presets across 23 playable collections + `26` directory records in [`json/indexer.json`](json/indexer.json) + `9` webring entries in [`json/webring.json`](json/webring.json)), disambiguates the `41` intra-file and cross-file slug collisions via `-preset-{occ}` / `(Preset Variant {occ})`, normalizes trailing whitespace on YAML `---` front-matter delimiters (`22` May 2023 posts), and generates chronological markdown articles through `2053-08-14` (`11,178` total posts).
+- **Article Structure & Clinical Grounding:** Each generated post includes biophysical wavelength calculations, an interactive player deep-link, `#instructionModal` Bootstrap disclaimer controls, an ES6 Web Audio API synthesizer reference class, dual **CC BY 4.0** / **GNU AGPLv3** licensing attribution, and `27` verified **openFDA** (`Food and Drug Administration, USA`) clinical drug benchmark entries (`OPENFDA_BENCHMARKS`).
+
+To regenerate or verify idempotency across [`_posts/`](_posts):
+```bash
+python3 generate_posts.py
+node scripts/generate-sitemap.js
+```
+
+---
+
+## 7. Modular SCSS Architecture & Dart Sass Transpiler Subsystem
+
+Brain Beats consolidates all styling across the web audio application and the Jekyll research blog into a unified, modular SCSS architecture located in [`_sass/`](_sass).
+
+```mermaid
+flowchart TD
+    subgraph Partials ["_sass/ (Modular SCSS Partials)"]
+        Vars["_variables.scss\n(Color Tokens, Typography & Breakpoints)"]
+        Base["_base.scss\n(Resets, Headings, Code Blocks & Print)"]
+        Layout["_layout.scss\n(Fixed Header, .fluidaner, Tables, CSE)"]
+        Comp["_components.scss\n(Cards, .volume-box, Favs, Yin-Yang, Search)"]
+        Foot["_footer.scss\n(Centered Footer, .footnotes, RSS Icons)"]
+    end
+
+    subgraph Entrypoints ["SCSS Entrypoints"]
+        MainSCSS["css/main.scss"]
+        BlogSCSS["blog/css/main.scss"]
+    end
+
+    subgraph Transpiler ["Dart Sass Transpiler (scripts/build-css.js)"]
+        NodeSass["sass.compileString()\n(LoadPaths: [_sass, projectRoot])"]
+    end
+
+    subgraph Targets ["Production CSS Outputs"]
+        AppCSS["css/main.css\n(Audio Generator App)"]
+        BlogCSS["blog/css/main.css\n(Research Blog)"]
+    end
+
+    Vars --> Base & Layout & Comp & Foot
+    Base & Layout & Comp & Foot --> MainSCSS & BlogSCSS
+    MainSCSS & BlogSCSS --> NodeSass
+    NodeSass --> AppCSS & BlogCSS
+```
+
+### 7.1. SCSS Partials Breakdown (`_sass/`)
+* **`_variables.scss`:** Defines global color tokens (`$primary-blue: #0000FF`, `$primary-white`, `$primary-black`, `$dark-grey`, `$fav-pink: rgb(233, 48, 94)`), base font stacks, and responsive breakpoint variables (`$breakpoint-sm: 576px`, `$breakpoint-md: 768px`, `$breakpoint-lg: 992px`, `$breakpoint-xl: 1200px`, `$breakpoint-xxl: 1400px`).
+* **`_base.scss`:** Enforces global boundary rules (`html, body { overflow-x: hidden; max-width: 100vw; }`), typography scale (`h1`–`h6`), dark-themed syntax highlighting code blocks (`pre.highlight` with copy buttons), styled blockquotes, and `@media print` rules.
+* **`_layout.scss`:** Glassmorphic fixed navigation header, `.fluidaner` container responsive margins/paddings, responsive table containers (`.table-wrapper`), and Google Custom Search Engine wrappers.
+* **`_components.scss`:** Standardized action buttons (`.btn-play-stop`: 80px × 40px), preset cards with viewport-specific padding, floating volume dock (`.volume-box`), favorite toggle hearts (`.fav` / `.faved`), animated rotating Yin-Yang canvas, expandable search bar, and post listings.
+* **`_footer.scss`:** Centered footer layout, centered licensing and contact paragraphs, centered Kramdown `.footnotes` section, and responsive FontAwesome RSS (`.fa-square-rss`) feed icons (with support provided via Discord community chat).
+
+### 7.2. Dart Sass Build Pipeline (`scripts/build-css.js`)
+The transpilation script compiles the SCSS entrypoint into production CSS for both the main web application and the research blog:
+```bash
+# Transpile SCSS to css/main.css and blog/css/main.css
+npm run build:css
+# or: node scripts/build-css.js
+```
+The build pipeline is wired directly into `npm run build`:
+```json
+"scripts": {
+  "build:css": "node scripts/build-css.js",
+  "build:sitemap": "node scripts/generate-sitemap.js",
+  "build:sw": "workbox injectManifest workbox-config.js",
+  "build": "npm run build:css && npm run build:sitemap && npm run build:sw"
+}
+```
+
+### 7.3. Responsive Layout & Viewport Scaling Specifications
+* **Mobile Viewports (< 576px):**
+  * `.fluidaner` container applies `margin-top: 80px` and compact `0.25rem` side padding to maximize screen utilization.
+  * Cards span full-width `col-12` with reduced internal padding (`0.85rem 0.75rem`).
+  * `.volume-box` docks as a full-width bottom bar (`width: 100%; bottom: 0; border-radius: 10px 10px 0 0;`).
+* **Tablet Viewports (576px – 991px):**
+  * Cards scale to `col-sm-11` (~495px) and `col-md-10` (~600px) with auto-centering margins (`mx-auto mx-sm-auto mx-md-auto mx-lg-auto mx-xl-auto mx-xxl-auto`).
+  * `.volume-box` elevates into a floating pill (`500px` at 576px / `540px` at 768px, `bottom: 12px`/`15px`, `border-radius: 10px`).
+* **Desktop & Ultrawide Viewports (≥ 992px, ≥ 1200px, ≥ 1400px):**
+  * Proportional layout expansion via `col-*-10` to ~800px (at 992px), ~950px (at 1200px), and ~1100px (at 1400px+).
+  * `.volume-box` floats centered (`600px` / `640px` / `680px`, `bottom: 20px`).
+* **Centered Blog Footnotes & Touch Targets:**
+  * Footnotes are centered horizontally via `.footnotes { text-align: center; margin: 2rem auto; border-top: 1px solid #d5d5d5; }` while maintaining left-aligned ordered list items via `ol { display: inline-block; text-align: left; }`.
+  * Footer social and RSS feed icons scale responsively (`2rem` mobile with >44px touch targets, `2.35rem` tablet, `2.65rem` desktop with `1.12×` hover expansion).
+
+---
+
+## 8. Service Worker & PWA Offline Pipeline
+
+### 8.1. Workbox Configuration & Caching Boundaries (`workbox-config.js` & `sw.js`)
+Service Worker generation uses `injectManifest` with precise glob patterns and routing policies:
+* **Precached Offline Scope:** All preset pages (`3d-*-presets.html`, `*frequency*.html`, `pure-tones.html`, `favorites.html`, `search.html`, etc.), generator pages (`*-generator.html`, `*machine*.html`, `index.html`), audio synthesis processors (`noise-processor/*.js`), styles, scripts, icons, manifest, and all 25 `json/*.json` database files (209 URLs, ~11.2MB).
+* **Strict Non-Caching Policy for Blog Posts:** Dynamic markdown posts (`_posts/**/*`), compiled blog archives (`blog/**/*`, `_site/blog/**/*`), and post permalinks are strictly excluded from the precache via `globIgnores` in [`workbox-config.js`](workbox-config.js). Furthermore, [`sw.js`](sw.js) registers an explicit `workbox.strategies.NetworkOnly()` routing handler for `/blog/*` and date-based article paths to guarantee blog posts are never stored in PWA offline cache.
+
+### 8.2. PWA Cache Completion Notification System
+When all preset and generator pages are successfully cached into the browser's Cache Storage:
+1. **Service Worker Activation (`sw.js`):** The Service Worker enters the `activate` phase, claims all clients (`clients.claim()`), issues a native Web Notification (`self.registration.showNotification`) if granted, and broadcasts a `PRECACHE_COMPLETE` message to all active client windows.
+2. **Client-Side Notification Coordinator (`js/serviceLoader.js`):**
+   * Automatically requests desktop notification permissions on load (`requestNotificationPermission()`).
+   * Listens for `PRECACHE_COMPLETE` messages and lifecycle transitions (`updatefound`, `installed`, `activated`).
+   * Displays both native system notifications and an animated in-app toast banner (`#bb-cache-toast`) confirming: *"All preset and generator pages are cached and ready for offline use."*
+
+### 8.3. Regenerating the Service Worker
+Whenever you update static assets or audio processors, recompile the Service Worker manifest:
+```bash
+npm run build:sw
+# or: npx workbox-cli injectManifest workbox-config.js
+```
+
+
+---
+
+## 9. Automated Testing & TDD Suite
+
+Brain Beats utilizes a custom Test-Driven Development (TDD) automated test harness in [`tests/audio-engine.test.js`](tests/audio-engine.test.js).
+
+### 9.1. Running Tests
+```bash
+npm test
+```
+
+### 9.2. Test Suite Phases (63 Automated Tests):
+1. **Phase 1: Code Parsing & Evaluation** - Syntax checks and mock Web Audio environment evaluation.
+2. **Phase 2: Autoplay & AudioContext Lifecycle** - Singleton instancing, state transitions (`suspended` -> `running`).
+3. **Phase 3: Single Tone Synthesis & Parameter Safety** - Pure tone, Solfeggio, and Angel tone verification.
+4. **Phase 4: Double Tone Synthesis** - Binaural & Monaural beat stereo separation and teardown.
+5. **Phase 5: 3D Spatial Audio & Multi-Frequency Matrices** - PannerNode and 3-point matrix coordination.
+6. **Phase 6: Noise Synthesizers & Worklet Fallbacks** - 13 calibrated noise profiles without hardware context exhaustion.
+7. **Phase 7: Volume Control & Gain Dynamics Algorithm** - Dynamic `live_volume_set()`, `toggle_volume()` modulation, and volume box controls across all 38 generator pages.
+8. **Phase 8: Frequency Calculation & Octave Shifting** - Boundary conditions (infrasound <20Hz, ultrasound >20kHz).
+9. **Phase 9: Preset Database Schema & File Integrity** - Parsing and validating all 25 JSON catalogs.
+10. **Phase 10: Service Worker Offline Precache Verification** - Verifying that every URL precached in the service worker physically exists on disk (209 URLs).
+11. **Phase 11: MathJax Configuration & Rendering Verification** - TeX configuration, dynamic CDN/local fallback loader, and COCOMO LaTeX markup.
+12. **Phase 12: Deployment Runtime & Node.js 24 Environment Verification** - `.node-version`, `.nvmrc`, `netlify.toml`, `package.json`, and GitHub Pages CI/CD workflow verification.
+13. **Phase 13: Developer Documentation, README & Patch Integrity Verification** - Verification of `README.md`, `DEVELOPMENT.md`, `TEST_REPORT.md`, `CONTRIBUTING.md`, `cocomo-cost-estimate.md`, dual licensing scopes, and DSP synthesis programming patches.
+14. **Phase 14: Cloud CI/CD & Netlify Zero-Exit-Code Hardening Verification** - Netlify multi-branch build commands, sitemap generator, canonical domain integrity, and CodeQL scanning.
+
+For complete test logs and historical metrics, see [`TEST_REPORT.md`](TEST_REPORT.md).
+
+---
+
+## 10. Code Style & Security Guidelines
+
+* **XSS Prevention:** Never use `innerHTML` when interpolating user input or JSON attributes. Use `textContent` or `DOMParser` for safe rendering.
+* **Safe External Links:** Always ensure external hyperlinks specify `rel="noopener noreferrer"`.
+* **Resource Cleanup:** Ensure all Web Audio oscillators, panners, and gain nodes call `.stop()` and `.disconnect()` upon termination to prevent audio buffer leaks.
+
+---
+
+## 11. Netlify & Cloud Deployment (`netlify.toml`)
+
+The application is configured for automated Continuous Deployment via Netlify (backed by AWS infrastructure):
+
+* **Build Command:** `bundle exec jekyll build && npm test && npm run build:sw`
+* **Publish Directory:** `_site`
+* **Runtime Versions:** Controlled via `.ruby-version` (Ruby 3.3.8) and `.node-version` (Node 24).
+* **Caching & Header Policies:**
+  - `sw.js` and `sw-generated.js` are served with `Cache-Control: no-cache, no-store, must-revalidate` to ensure instant client updates.
+  - Audio worklets, static icons, and fonts use immutable caching (`max-age=31536000, immutable`).
+  - Strict security headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`) applied globally.
+  - Domain canonicalization rules map `https://brain-beats.netlify.app/*` $\to$ `https://brain-beats-pro.netlify.app/:splat`.
+
+---
+
+## 12. GitHub Pages Automated CI/CD Workflow (`.github/workflows/pages.yml`)
+
+The project includes an automated GitHub Pages deployment workflow using official GitHub Actions (`actions/deploy-pages@v4`):
+
+* **Trigger:** Push to `master`, `main`, or `doctor/master`, and manual dispatch (`workflow_dispatch`).
+* **Dual Deployment Pipeline:**
+  1. Sets up Node.js 24 (via `.node-version`) and Ruby 3.3.
+  2. Runs `npm test` (TDD verification of the Web Audio engine and JSON presets).
+  3. Precompiles Workbox service worker precache (`npm run build:sw`).
+  4. Builds Jekyll production site into `_site` via Bundler.
+  5. Bypasses Jekyll backend reprocessing (`.nojekyll`) and publishes artifact directly to GitHub Pages (`actions/deploy-pages@v4`).
+  6. Automatically syncs and pushes compiled production assets to the `gh-pages` branch (`peaceiris/actions-gh-pages@v4`).
+* **Canonical Production Domain:** Hosted on Netlify at `https://brain-beats-pro.netlify.app` (legacy custom TLD `CNAME` permanently removed).
+
+---
+
+## 13. Multi-Remote Synchronization Workflow
+
+This project maintains synchronized branches across three designated remotes:
+
+| Remote Name | Repository URL | Purpose & Synchronization Role |
+| :--- | :--- | :--- |
+| **`origin`** | `git@github.com:Mr-Kumar-Abhishek/brain-beats.git` | **Primary Development & Deployment Remote**: Triggers automated GitHub Pages CI/CD workflows and hosts public releases across branches (`main`, `master`, `dev`, `debug`, `claude`, `gh-pages`). |
+| **`base-stream`** | `git@github.com:Mr-Kumar-Abhishek/brain-beats-pro.git` | **Pro Distribution & Mirror Remote**: Secondary distribution and backup upstream mirror tracking aligned development branches (`main`, `master`, `dev`, `debug`, `claude`, `gh-pages`). |
+| **`upstream`** | `git@github.com:cybernetics-decentral/brain-beats.git` | **Organization Source Remote**: Canonical organizational upstream repository for core cybernetics-decentral community tracking and integration. |
+
+### Synchronization Rules & Push Policies
+
+> [!IMPORTANT]
+> **Push Restrictions**:
+> - **`origin`** & **`base-stream`**: Standard targets for routine multi-branch pushes (`main`, `master`, `dev`, `debug`, `claude`).
+> - **`upstream`**: **Pull/Fetch-Only by default**. Do **not** push to `upstream` unless explicitly instructed or requested by the maintainer.
+
+### Synchronization Commands
+
+```bash
+# 1. Fast-forward all local tracking branches to current HEAD / main:
+git branch -f master main
+git branch -f dev main
+git branch -f debug main
+git branch -f claude main
+
+# 2. Push unified branches to origin:
+git push origin main master dev debug claude
+
+# 3. Synchronize with base-stream mirror:
+git push base-stream main master dev debug claude
+
+# Note: Push to upstream is strictly reserved and executed ONLY when explicitly indicated.
+```
+
+---
+
+## 14. Dual Licensing Model & Governance
+
+Brain Beats Pro enforces a strict boundary between software engineering, configuration, and server infrastructure logic versus creative/educational content:
+
+* **Software, Programming Mechanics, Configuration Files & Server Configurations ([`LICENSE`](LICENSE)):**
+  - All application code, DSP algorithms, AudioWorklet processors, Web Audio synthesis nodes, generative mechanics, build scripts, configuration files (`package.json`, `.node-version`, `.nvmrc`, `_config.yml`, Workbox configs, CI/CD workflows), and server configurations (`netlify.toml`, web server headers, redirects, proxy rules) are copyleft protected under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.
+* **Content, Documentation & Presets ([`LICENSE-CONTENT.txt`](LICENSE-CONTENT.txt)):**
+  - &copy; Brain Beats Pro. &copy; Brain Beats Pro. All written documentation, research guides, blog articles, and frequency preset catalogs are licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license.
+  - *The CC BY 4.0 license applies strictly to content and documentation, and expressly does not license the underlying software, programming, audio synthesis mechanics, configuration files, or server configurations.*
+
+---
+
+## 15. Framework Migration & Liquid Templating Continuity Guidelines
+
+When evaluating or executing future framework migrations (e.g., modern SSGs, hybridized frontend architectures, or SSR frameworks):
+
+1. **Liquid Template Preservation:** All HTML/JS program files and views that interface with the content or blog engine must preserve and implement standard **Liquid templates** (`_layouts/`, `_includes/`, and front matter bindings).
+2. **Template Modularization:** Shared site headers, navigation bars, footers, MathJax equations (`_includes/mathjax.html`), Schema.org JSON-LD SEO structured data (`_includes/seo-schema.html`), SEO metadata tags, and volume control matrices must remain modularized via Liquid includes (`{% raw %}{% include filename.html %}{% endraw %}`) to uphold the DRY (Don't Repeat Yourself) architectural principle.
+3. **Dynamic Pagination & Post Routing:** Blog listings, pagination (`paginator.posts`), search indices, and category permalinks must maintain seamless compatibility with Liquid variables and loop constructs across all target framework environments.
+4. **Client-Side Synthesis & Service Worker Decoupling:** Any migration must keep the Web Audio API synthesis engine (`js/main.js`), audio worklets, preset JSON catalogs, and PWA service worker precaching completely decoupled from server-rendering layers to preserve 100% offline functionality.
+
+---
+
+## 16. Internationalization (i18n), Google Translate & Multi-Language UX Architecture
+
+Brain Beats provides native, seamless translation across 100+ global languages using a modular Google Translate integration combined with automated script detection, Right-to-Left (RTL) directional layout flipping, and language text expansion resilience.
+
+### 16.1. Modular Include & Client-Side Initializer (`_includes/google-translate.html`)
+The translation engine is encapsulated as a DRY Liquid template included in `_layouts/default.html` (covering all research blog posts and documentation) and in the fixed header of all 45 web app preset catalogs and audio generators:
+
+```html
+<div id="google_translate_element" class="google-translate-box my-2 my-xl-0 me-xl-2"></div>
+<script type="text/javascript">
+(function() {
+  var rtlLanguages = {
+    'ar': true, 'arc': true, 'bcc': true, 'bqi': true, 'ckb': true,
+    'dv': true, 'fa': true, 'glk': true, 'he': true, 'iw': true,
+    'khw': true, 'ks': true, 'ku': true, 'mzn': true, 'pnb': true,
+    'ps': true, 'sd': true, 'ug': true, 'ur': true, 'yi': true
+  };
+  // Dynamic language detection & RTL switching logic
+})();
+
+function googleTranslateElementInit() {
+  if (typeof google !== 'undefined' && google.translate && google.translate.TranslateElement) {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+}
+</script>
+<script type="text/javascript" async src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+```
+
+### 16.2. Modern Banner Frame Suppression & Orphaned Text Elimination
+Standard Google Translate widgets inject top banner iframes (`.goog-te-banner-frame` and modern `.VIpgJd-ZVi9od-ORHb-OEVmcd`) that displace fixed-position headers by modifying `document.body.style.top = "40px"`. Furthermore, the widget inserts an unstyled text node `"Powered by "` after the select box.
+* **Iframe Suppression:** All legacy and modern translation iframe selectors are suppressed via CSS (`display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important;`).
+* **Header Displacement Lock:** Forced `body { top: 0px !important; }` prevents top offset shifts on fixed-top headers.
+* **Orphaned Text Removal:** Setting `.goog-te-gadget { font-size: 0 !important; color: transparent !important; }` and restoring `font-size: 0.8125rem` on `.goog-te-combo` cleanly hides the orphaned `"Powered by "` text node without affecting the combobox.
+* **Hover Popup Suppression:** Translation tooltips and text highlights (`#goog-gt-tt`, `.goog-te-balloon-frame`, `.goog-text-highlight`) are suppressed to preserve pristine Bootstrap styling.
+
+### 16.3. Dynamic Right-to-Left (RTL) Layout Engine
+When an RTL language (e.g. Arabic, Hebrew, Persian/Farsi, Urdu, Pashto, Sindhi, Uyghur, Yiddish, Kurdish) is selected:
+1. **Automated Detection:** The client-side script parses the selected language code from `.goog-te-combo` or the `googtrans` cookie, immediately setting `document.documentElement.dir = 'rtl'` and toggling `.rtl-mode`.
+2. **Event Dispatching:** A custom DOM event `bb:languagechange` with payload `{ language, isRtl }` is broadcasted on `document`.
+3. **Bootstrap Utility Flipping:** CSS rules dynamically invert directional spacing:
+   - Margins: `.me-*` flips to `margin-left`, `.ms-*` flips to `margin-right`.
+   - Text Alignments: `.text-start` aligns right, `.text-end` aligns left.
+   - Navbar: `navbar-nav.me-auto` aligns to the right; dropdown menus open right-to-left (`right: 0; left: auto; text-align: right`).
+   - Forms & Selects: Form controls align right, with `.form-select` indicators repositioned to `left: 0.75rem`.
+   - Preset Cards: Favorite bookmark icons (`.fav`) mirror to the right; audio action buttons (*Swap*, *Play*, *Stop*) anchor to the left.
+   - Modals: Close button (`.btn-close`) floats to the left; footer buttons align to the right edge.
+
+### 16.4. Text Expansion & Script Safeguards
+* **Text Expansion:** Translations in German, Russian, Finnish, Spanish, and Greek can expand text length by 30-50%. The UI safeguards against breaking layouts via:
+  - `overflow-wrap: break-word` and `hyphens: auto` on card titles, descriptions, and dropdown items.
+  - Action buttons (`.btn-play-stop`) enforce `white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px;`.
+  - Preset action container utilizes flex wrapping (`display: flex; flex-wrap: wrap; gap: 0.35rem;`), ensuring buttons stack cleanly rather than clipping on narrow screens.
+* **Universal Multi-Script Font Stack:** Upgraded `$font-family-base` to a comprehensive international system stack (`-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", ...`), guaranteeing crisp native typography across Latin, Cyrillic, Greek, Arabic, Hebrew, Devanagari, Thai, and CJK ideographs.
+
+---
+
+## 17. Responsive Bootstrap 5 UX & Cross-Device Engineering
+
+Brain Beats enforces ergonomic, mobile-first responsive design across all viewports:
+
+| Viewport | Range | Layout & UX Behavior |
+| :--- | :--- | :--- |
+| **Extra Small (xs)** | `< 576px` | Compact `.fluidaner` (`margin-top: 76px; margin-bottom: 140px`), sleek floating audio dock (height: `4.25rem`, radius: `16px`, bottom: `10px`), touch targets ≥ 42px, narrow mobile buttons (`36px` height, `58px` min-width on `< 420px`). |
+| **Small (sm)** | `576px – 767px` | Centered preset cards (`col-sm-11`), floating audio pill (`480px` width, bottom: `12px`), responsive card padding. |
+| **Medium (md)** | `768px – 991px` | Tablet grid layout (`col-md-10`), floating audio pill (`520px` width, bottom: `15px`), expanded search bar (`max-width: 580px`). |
+| **Large (lg)** | `992px – 1199px` | Desktop card expansion (~800px), floating audio dock (`560px` width, bottom: `18px`). |
+| **Extra Large (xl / xxl)** | `≥ 1200px` | Full navbar expansion, floating audio dock (`600px` / `640px` width, bottom: `20px`), proportional container breathing room. |
+
+### 17.1. Bounded Navigation Collapse with Touch Scrolling
+On mobile and tablet viewports (`< 1200px`), the navigation header collapses into a Bootstrap hamburger toggler. To prevent long dropdown lists (such as the 13-item *Generators* menu or 11-item *Beats* menu) from extending beyond the visible screen:
+```scss
+@media (max-width: 1199.98px) {
+  .navbar-collapse {
+    max-height: calc(100vh - 4.5rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+```
+
+### 17.2. Ergonomic Floating Audio Dock (`.volume-box`)
+Replaced the legacy 128px (`8rem`) full-width block with a floating audio dock:
+- Reclaims over 30% of usable vertical viewport space on mobile devices.
+- Uses glassmorphic backdrop blurring (`backdrop-filter: blur(10px)`), smooth 16px corner radii, and subtle elevation shadows (`0 4px 20px rgba(0,0,0,0.14)`).
+- Features uppercase micro-label typography (`font-size: 0.75rem; letter-spacing: 0.08em; font-weight: 600; text-transform: uppercase; color: #6c757d`).
+
+### 17.3. Standardized Responsive Image Scaling
+Replaced legacy global `img { width: 99%; }` rules with modern responsive scaling (`img { max-width: 100%; height: auto; }`). Fixed-dimension inline images and Google Translate branding icons specify `width: auto !important; max-width: none !important;` to eliminate stretched image distortions in blog articles and navigation headers.
+
+---
+
+## 18. Step-by-Step Development & Multi-Remote Synchronization Procedures
+
+Follow these established procedures when developing, testing, and synchronizing changes across the Brain Beats ecosystem:
+
+### 18.1. Step 1: Pull and Synchronize from Remote
+Before starting any local development task, fetch and fast-forward the working tree to the latest remote state:
+```bash
+# Fetch all branches and prune obsolete references
+git fetch --all --prune
+
+# Pull and rebase current branch against origin/main
+git pull --rebase origin main
+```
+
+### 18.2. Step 2: Start Local Development Server
+Brain Beats utilizes Jekyll to transpile Sass, bind Liquid layouts, and serve both the web application and the research blog:
+```bash
+# Start incremental local Jekyll development daemon
+bundle exec jekyll serve --host 127.0.0.1 --port 4000 --incremental
+
+# In a separate terminal or background task, inspect local endpoints:
+curl -I http://127.0.0.1:4000/
+curl -I http://127.0.0.1:4000/blog/
+```
+
+### 18.3. Step 3: Implement Code & UX Enhancements
+1. **Audio Synthesis & DSP:** Modify `js/main.js` using defensive null-checks, singleton AudioContext lifecycle methods, and proper node `.disconnect()` disposal.
+2. **Liquid Includes & Views:** Place reusable components in `_includes/` and include them via `{% raw %}{% include filename.html %}{% endraw %}`.
+3. **SCSS & Stylesheets:** Edit modular SCSS partials in `_sass/` (`_variables.scss`, `_base.scss`, `_layout.scss`, `_components.scss`, `_footer.scss`) and synchronize compiled production outputs in `css/main.css` and `blog/css/main.css`.
+4. **Interactive Controls:** Ensure touch targets are ≥ 42px on mobile, action buttons support flex-wrapping, and form controls specify proper ARIA labels.
+
+### 18.4. Step 4: Run Pre-Push Local Jekyll Build & Automated TDD Test Verification
+Ensure all 91 automated test assertions and the full local Jekyll build complete cleanly with zero errors before committing and pushing:
+```bash
+# 1. Verify Jekyll health and compile full production site into _site/
+bundle exec jekyll doctor
+bundle exec jekyll build --trace
+
+# 2. Run automated TDD test suite (use npm.cmd in restricted PowerShell environments)
+npm test
+# Expected output: Test Results: 91 Passed, 0 Failed
+```
+
+### 18.5. Step 5: Commit Changes Following Conventional Commits
+Stage changes and format commits according to Conventional Commits:
+```bash
+git add -A
+git commit -m "feat(scope): concise description of enhancements"
+```
+
+### 18.6. Step 6: Multi-Remote Branch Synchronization & Push Policies
+Synchronize local tracking branches (`main`, `master`, `dev`, `debug`, `claude`) and push strictly to authorized distribution remotes adhering to DRY standards:
+
+#### 18.6.1. Branch & Distribution Architecture Topology
+```mermaid
+flowchart TD
+    subgraph LocalWorkspace ["Local Working Directory (Source of Truth)"]
+        Main["main (Primary development)"]
+        Master["master (Mirror / release tracking)"]
+        Dev["dev (Feature staging)"]
+        Debug["debug (Diagnostic & regression)"]
+        Claude["claude (AI pair programming)"]
+    end
+
+    subgraph Priority1 ["Primary Target Remotes (1st Priority)"]
+        BaseStream["base-stream\n(Mr-Kumar-Abhishek/brain-beats-pro)\nBranches: main, master, dev, debug, claude, gh-pages"]
+        OrgRemote["org\n(cybernetics-decentral/brain-beats-pro)\nBranches: main, master, dev, debug, claude"]
+    end
+
+    subgraph Priority2 ["Secondary Mirror Remote (2nd Priority)"]
+        Origin["origin\n(Mr-Kumar-Abhishek/brain-beats)\nBranches: main, master, dev, debug, claude, gh-pages"]
+    end
+
+    subgraph Restricted ["Restricted / Archive Remote (Do NOT Push)"]
+        Upstream["upstream\n(cybernetics-decentral/brain-beats)\nRestricted: avoid automated pushes"]
+    end
+
+    Main --> Master
+    Main --> Dev
+    Main --> Debug
+    Main --> Claude
+
+    Master -->|Push Priority 1| BaseStream
+    Main -->|Push Priority 1| BaseStream
+    Dev -->|Push Priority 1| BaseStream
+    Debug -->|Push Priority 1| BaseStream
+    Claude -->|Push Priority 1| BaseStream
+
+    Master -->|Push Priority 1| OrgRemote
+    Main -->|Push Priority 1| OrgRemote
+    Dev -->|Push Priority 1| OrgRemote
+    Debug -->|Push Priority 1| OrgRemote
+    Claude -->|Push Priority 1| OrgRemote
+
+    Master -->|Push Priority 2| Origin
+    Main -->|Push Priority 2| Origin
+    Dev -->|Push Priority 2| Origin
+    Debug -->|Push Priority 2| Origin
+    Claude -->|Push Priority 2| Origin
+```
+
+#### 18.6.2. Configured Distribution Topology (`base-stream` & `org` Priority)
+Brain Beats distributes source code and releases across four designated remotes:
+- **`base-stream`** (`git@github.com:Mr-Kumar-Abhishek/brain-beats-pro.git`): **Priority 1 Personal Pro Canonical Distribution Remote**. Holds all active branch heads (`main`, `master`, `dev`, `debug`, `claude`) and static release deployment (`gh-pages`).
+- **`org`** (`git@github.com:cybernetics-decentral/brain-beats-pro.git`): **Priority 1 Organization Repository**. Designated for the Cybernetics Decentral organization publication. Tracks all core source branches (`main`, `master`, `dev`, `debug`, `claude`).
+- **`origin`** (`git@github.com:Mr-Kumar-Abhishek/brain-beats.git`): **Priority 2 Personal Fork Remote**. Serves as the continuous integration build mirror and primary Pages CI/CD builder.
+- **`upstream`** (`git@github.com:cybernetics-decentral/brain-beats.git`): **Restricted Remote**. Retained as a historical community archive; avoid routine pushes unless explicitly approved.
+
+#### 18.6.3. DRY Git Aliases for Pipeline Execution
+To eliminate repetitive commands and error-prone branch hopping, use the following DRY git aliases:
+```bash
+# Multi-branch merge synchronization alias (DRY branch alignment):
+git config alias.syncbranch '!f() { git checkout master && git merge main && git checkout dev && git merge main && git checkout debug && git merge main && git checkout claude && git merge main && git checkout main; }; f'
+
+# Primary distribution push alias (pushes all 5 branches to base-stream, org, and origin):
+git config alias.pushall '!git push base-stream main master dev debug claude && git push org main master dev debug claude && git push origin main master dev debug claude'
+
+# Single-branch push alias (for rapid hotfixes on main):
+git config alias.pushmain '!git push base-stream main && git push org main && git push origin main'
+```
+
+#### 18.6.4. Multi-Remote Push Sequence & Pipeline Execution
+When pushing source branches, execute in the standardized priority sequence:
+```bash
+# 1. Fast-forward and align all local tracking branches to main:
+git branch -f master main
+git branch -f dev main
+git branch -f debug main
+git branch -f claude main
+
+# 2. Pipeline Step 1: Push to base-stream (Primary personal Pro distribution):
+git push base-stream main master dev debug claude
+
+# 3. Pipeline Step 2: Push to org (Cybernetics Decentral Organization repository):
+git push org main master dev debug claude
+
+# 4. Pipeline Step 3: Push to origin (Repository CI/CD mirror):
+git push origin main master dev debug claude
+
+# OR simply run the DRY alias:
+git pushall
+```
+
+#### 18.6.5. GitHub Pages Deployment Isolation (`gh-pages`)
+- **`gh-pages` is strictly an automated deployment artifact branch**, compiled by GitHub Actions from source branches (`main`/`master`).
+- **NEVER checkout `gh-pages` locally** into the source tree working directory. Checking out `gh-pages` unpacks thousands of compiled HTML build artifacts and destroys the local source git index.
+- To synchronize `gh-pages` across mirrors (`origin`, `base-stream`), compile or synchronize via direct remote refspec without checkout:
+  ```bash
+  git push origin gh-pages --force
+  git push base-stream gh-pages --force
+  ```
+
+> [!IMPORTANT]
+> **Licensing & Regulatory Compliance Mandate**:
+> 1. All medical and drug reference benchmarks must strictly cite the **Food and Drug Administration (FDA), USA**.
+> 2. Content & documentation are licensed under **CC BY 4.0** by the **Creative Commons organization**, permitting commercial use with compulsory attribution/credit.
+> 3. Software DSP code and configuration files are licensed under **GNU AGPLv3**.
+> 4. License theft or unauthorized license stripping is strictly prohibited under international copyright law.
+
+---
+
+## 19. COCOMO II Software Economic Valuation & Cost Calculation Summary
+
+For complete mathematical derivations, effort adjustment factors (EAF), and work breakdown structures, consult the formal [COCOMO Cost Estimate Report](cocomo-cost-estimate.md) and the interactive visual dashboard at [`cocomo.html`](file:///d:/big-projects/brain-beats/cocomo.html).
+
+### 19.1. Project Sizing Summary
+Based on static analysis of the active tracked source tree at commit `f4f11b45f` (excluding `node_modules`, `.git`, `.jekyll-cache`, `_site`, binary media, and build artifacts):
+- **Total Clean Source Files:** 11,561 files
+- **Total Physical Source Lines (SLOC):** 2,660,624 lines (**2,660.624 KLOC**)
+  - *Markdown Knowledge Base & Wiki:* 2,240,461 SLOC (84.2%)
+  - *JSON Presets & Matrices:* 188,685 SLOC (7.1%)
+  - *Text Manifests & XML:* 108,846 SLOC (4.1%)
+  - *JavaScript Audio DSP, Python & Build Tooling:* 48,525 SLOC (1.8%)
+  - *Modular SCSS & CSS Stylesheets:* 48,068 SLOC (1.8%)
+  - *HTML UI Generators & Layouts:* 22,190 SLOC (0.8%)
+  - *Vector Media (`SVG`):* 2,386 SLOC (0.1%)
+  - *Automated Testing Harness (`tests/`):* 615 SLOC (<0.1%)
+  - *YAML, TOML & Meta Configs:* 552 SLOC (<0.1%)
+  - *AudioWorklets (`noise-processor/`):* 296 SLOC (<0.1%)
+
+### 19.2. COCOMO Mathematical Formulations & Valuation Metrics
+
+$$\text{Effort} = a \times (KLOC)^b \quad [\text{Person-Months}]$$
+$$\text{Schedule (TDEV)} = c \times (\text{Effort})^d \quad [\text{Months}]$$
+$$\text{Cost} = \text{Effort} \times \text{Labor Rate} \quad [\text{USD @ } \$8,000/\text{PM}]$$
+
+| Deployment Mode | Complexity & Architecture Scope | Coefficients ($a, b, c, d$) | Nominal Effort | Dev Duration (TDEV) | Avg Dev Staff | Total Dev Valuation (USD) | 5-Year TCO (Dev + Maint) |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Organic Mode** | Reusable web framework, stable PWA requirements | $a=2.4, b=1.05$<br>$c=2.5, d=0.38$ | **9,472.05 PM** | **81.09 mos** (6.76 yrs) | **116.80 devs** | **$75,776,389.41** | **$132,608,681.47** |
+| **Semi-Detached Mode** | Real-time Web Audio DSP, AudioWorklets, 25 JSON catalogs | $a=3.0, b=1.12$<br>$c=2.5, d=0.35$ | **20,563.77 PM** | **80.82 mos** (6.74 yrs) | **254.43 devs** | **$164,510,175.82** | **$329,020,351.64** |
+| **Embedded Mode** | Strict real-time buffer synchronization, offline PWA cache | $a=3.6, b=1.20$<br>$c=2.5, d=0.32$ | **46,374.87 PM** | **77.83 mos** (6.49 yrs) | **595.84 devs** | **$370,998,960.62** | **$834,747,661.39** |
+
+### 19.3. Specialized Work Breakdown Structure (WBS)
+- **Audio DSP Engine & AudioWorklet Processors (WP1):** 140.0 hrs (0.875 PM) = $7,000.00
+- **CAFL Frequency Presets & JSON Databases (WP2):** 120.0 hrs (0.750 PM) = $6,000.00
+- **PWA Service Worker Offline Precache (WP3):** 45.0 hrs (0.281 PM) = $2,250.00
+- **Automated TDD Test Suite (WP4):** 48.0 hrs (0.300 PM) = $2,400.00
+- **Modular SCSS Architecture & Dart Sass (WP10):** 42.0 hrs (0.263 PM) = $2,100.00
+- **Engineering Wiki & Regulatory Documentation (WP11):** 32.0 hrs (0.200 PM) = $1,600.00
+- **openFDA Orchestration, Unbounded 25-JSON Indexing, Blog Liquid Heading UX & Chat-Only Docs (WP12):** 36.0 hrs (0.225 PM) = $1,800.00
+- **Total Specialized Core Audio Engine Engineering:** **810.0 hrs (5.063 PM) = $40,500.00**
+
+---
+
+## 20. Latest Development Milestone Report: openFDA Article Orchestration, Unbounded 25-JSON Indexing & Local Jekyll Verification
+
+This section documents the engineering changes, coverage metrics, and local build verification executed across commits [`5f324a399`](https://github.com/Mr-Kumar-Abhishek/brain-beats-pro/commit/5f324a399), [`10cdb7c84`](https://github.com/Mr-Kumar-Abhishek/brain-beats-pro/commit/10cdb7c84), and [`856a481b6`](https://github.com/Mr-Kumar-Abhishek/brain-beats-pro/commit/856a481b6).
+
+### 20.1. Executive Summary & Commit Timeline
+
+| Commit | Scope Summary | Diff Scale | Key Deliverables |
+| :--- | :--- | :--- | :--- |
+| **`5f324a399`** | `openfda-database` January 2025 Rife batch | `13 files changed` (`+2,917 / -129`) | Elaborated 12 Rife frequency stub articles (`957 Hz – 982 Hz`) with verified FDA clinical benchmarks, biophysical wave formulas, `#instructionModal` disclaimers, and ES6 Web Audio DSP classes. |
+| **`10cdb7c84`** | Batch raw-stub enrichment & 23 preset files | `10,260 files changed` (`+2,027,503 / -34,307`) | Updated [`generate_posts.py`](generate_posts.py) with `OPENFDA_BENCHMARKS` (`27` verified FDA drug records across NDA/BLA/ANDA labels) and `JSON_PLAYER_MAP`; upgraded all `5,649` existing raw stubs (`"This frequency is part of the Brain Beats presets collection."`) in place (`0` raw stubs remaining), fixed slug substring collision filtering, and generated `4,610` missing JSON preset articles chronologically through `2053-02-23` (`11,006` total posts). |
+| **`856a481b6`** | Unbounded 25-JSON coverage, sitemap & Jekyll future indexing | `198 files changed` (`+93,549 / -165`) | Removed `postDate > today` cutoff in [`scripts/generate-sitemap.js`](scripts/generate-sitemap.js), enabled `future: true` in [`_config.yml`](_config.yml), indexed [`json/indexer.json`](json/indexer.json) (`26`) and [`json/webring.json`](json/webring.json) (`9`), removed skip filters on exact-slug entries (`angel.json`, `noise.json`, `puretones.json`, `solfeggio.json`, `rife3Dfreq.json`), added `-preset-{occ}` / `(Preset Variant {occ})` disambiguation across `41` slug collisions, normalized `22` May 2023 YAML `---` delimiters, generated `172` remaining articles through `2053-08-14` (`11,178` total posts), and rebuilt [`sitemap.xml`](sitemap.xml) (`11,224` URLs). |
+
+### 20.2. 100% Coverage Across All 25 JSON Databases
+
+1. **Full Record Inventory (`11,014` Records Across `25` Files):**
+   - **23 Playable Audio Preset Collections:** `10,979` records (`data_name`, `data_description`, `data_start`, `data_stop`, `data_id`), including previously skipped exact-slug entries across `angel.json` (`7`), `noise.json` (`13`), `puretones.json` (`43`), `solfeggio.json` (`30`), and `rife3Dfreq.json` (`3`), plus `41` duplicate/cross-file slug collisions resolved deterministically via `-preset-{occ}`.
+   - **2 Site & Community Directory Files:** [`json/indexer.json`](json/indexer.json) (`26` directory records) and [`json/webring.json`](json/webring.json) (`9` external research resources), mapped into `JSON_PLAYER_MAP` and `load_all_json_presets()` while bypassing numeric regex frequency parsing on URL paths.
+2. **openFDA Clinical Grounding & Dual Licensing:**
+   - Grounded every generated article via `select_fda_benchmarks()` against `27` verified **Food and Drug Administration (FDA), USA** drug benchmark entries (`Cipro`, `Augmentin ES-600`, `Vibramycin / Doxycycline`, `Zithromax`, `Cleocin Phosphate`, `Keflex`, `Levaquin`, `Rocephin`, `Bactroban`, `Tamiflu`, `Xofluza`, `Valtrex`, `Diflucan`, `Sporanox`, `VFEND`, `Flagyl`, `Fexinidazole`, `Rozerem`, `Lexapro`, `Lyrica`, `Cymbalta`, `Flexeril`, `Nolvadex / Soltamox`, `Herceptin`, `Accutane`, `Spiriva Respimat`, `Kenalog-40`) sourced from openFDA records.
+   - Included interactive `#instructionModal` warning/disclaimer blocks, client-side Web Audio API synthesizer ES6 reference classes (`Preset...Synthesizer`), and mandatory **CC BY 4.0** (content) / **GNU AGPLv3** (code/config) attribution footers.
+
+### 20.3. Unbounded Chronological Sitemap & Jekyll Configuration
+
+- [`_config.yml`](_config.yml): Switched `future: false` $\rightarrow$ `future: true` so Jekyll builds and indexes every post scheduled through `2053-08-14`.
+- [`scripts/generate-sitemap.js`](scripts/generate-sitemap.js): Removed the `postDate > today` skip condition inside `getBlogPostFiles()`, expanding [`sitemap.xml`](sitemap.xml) (`2.27 MB`) from `1,454` URLs to **`11,224` canonical URLs** (`https://brain-beats-pro.netlify.app`: `46` root HTML URLs + `11,178` [`_posts/`](_posts) blog URLs).
+
+### 20.4. Pre-Push Local Jekyll Build & Integrity Verification Results
+
+Before and after pushing [`856a481b6`](https://github.com/Mr-Kumar-Abhishek/brain-beats-pro/commit/856a481b6), all build and test gates executed locally with zero errors:
+
+- **Idempotency & PyYAML Audit:**
+  - Second run of `python generate_posts.py`: `0` normalized front matters, `0` raw stubs upgraded, `0` new files created.
+  - Full Python + `yaml.safe_load` verification across [`_posts/`](_posts) (`11,178` files) and [`json/`](json) (`11,014` records): `0` YAML errors, `0` trailing `---` whitespace issues, `0` remaining raw stubs, `0` Liquid token leaks (`{{` / `{%`), `0` JSON records missing from `_posts/`, and `0` posts missing from [`sitemap.xml`](sitemap.xml).
+- **Local Jekyll Validation & Production Site Build (`jekyll 4.4.1`):**
+  - `bundle exec jekyll doctor`: Exit code `0` (`Your test results are in. Everything looks fine.`). *(Note: Bundler execution with `Gemfile`-pinned `json 2.18.0` avoids Windows Application Control blocks against unbundled system gems.)*
+  - `bundle exec jekyll build --trace`: Exit code `0` (`done in 1537.669 seconds.`), outputting [`_site/index.html`](_site/index.html), [`_site/feed.xml`](_site/feed.xml), [`_site/blog/blog/index.html`](_site/blog/blog/index.html) + `2,235` pagination subdirectories (`page2`–`page2236`), **`11,178` rendered HTML post files** inside `_site/blog/`, and valid `_site/blog/search.json` (`11,178` entries, `5,280,179` bytes).
+- **Automated Web Audio & Integrity Test Suite (`npm.cmd test`):** **`91 Passed, 0 Failed`** across all 15 phases ([`tests/audio-engine.test.js`](tests/audio-engine.test.js)).
+
+---
+
+<div align="center">
+<sub>&copy; Brain Beats Pro. Written content and documentation are licensed under <a href="LICENSE-CONTENT.txt">CC BY 4.0</a>. Software code, synthesis mechanics, and configuration files are copyleft protected under <a href="LICENSE">GNU AGPLv3</a>.</sub>
+</div>
