@@ -23,6 +23,7 @@ module.exports = {
     	'CONTRIBUTING.md',
     	'LICENSE*',
     	'cocomo-cost-estimate.md',
+    	'reports/**/*',
     	'brain/**/*',
     	'.github/**/*',
     	'.git/**/*'
