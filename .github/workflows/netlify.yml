@@ -1,6 +1,10 @@
 name: Deploy Built _site to Netlify
 
 on:
+  workflow_run:
+    workflows: ["Deploy to GitHub Pages"]
+    types:
+      - completed
   push:
     branches:
       - gh-pages
@@ -18,10 +22,11 @@ concurrency:
 
 jobs:
   deploy:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Prebuilt gh-pages Artifact into _site
-        if: github.event_name == 'push' || inputs.build_from_source != true
+        if: github.event_name != 'workflow_dispatch' || inputs.build_from_source != true
         uses: actions/checkout@v4
         with:
           ref: gh-pages
@@ -29,7 +34,7 @@ jobs:
           fetch-depth: 1
 
       - name: Strip .git Metadata from _site Artifact
-        if: github.event_name == 'push' || inputs.build_from_source != true
+        if: github.event_name != 'workflow_dispatch' || inputs.build_from_source != true
         run: rm -rf _site/.git
 
       - name: Checkout Source Repository (Manual Build Mode)
