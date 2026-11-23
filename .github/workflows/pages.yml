@@ -44,6 +44,7 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+        continue-on-error: true
 
       - name: Cache Jekyll Build Incremental State
         uses: actions/cache@v4
