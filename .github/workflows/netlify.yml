@@ -1,0 +1,88 @@
+name: Deploy Built _site to Netlify
+
+on:
+  push:
+    branches:
+      - gh-pages
+  workflow_dispatch:
+    inputs:
+      build_from_source:
+        description: "Build _site from main before pushing directly to Netlify (false deploys latest gh-pages artifact)"
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: "netlify-deploy"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Prebuilt gh-pages Artifact into _site
+        if: github.event_name == 'push' || inputs.build_from_source != true
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: _site
+          fetch-depth: 1
+
+      - name: Strip .git Metadata from _site Artifact
+        if: github.event_name == 'push' || inputs.build_from_source != true
+        run: rm -rf _site/.git
+
+      - name: Checkout Source Repository (Manual Build Mode)
+        if: github.event_name == 'workflow_dispatch' && inputs.build_from_source == true
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (Manual Build Mode)
+        if: github.event_name == 'workflow_dispatch' && inputs.build_from_source == true
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.node-version'
+          cache: 'npm'
+
+      - name: Setup Ruby (Manual Build Mode)
+        if: github.event_name == 'workflow_dispatch' && inputs.build_from_source == true
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Cache Jekyll Build Incremental State (Manual Build Mode)
+        if: github.event_name == 'workflow_dispatch' && inputs.build_from_source == true
+        uses: actions/cache@v4
+        with:
+          path: .jekyll-cache
+          key: ${{ runner.os }}-jekyll-cache-${{ hashFiles('_config.yml', '_config.fast.yml', '_layouts/**', '_includes/**') }}
+          restore-keys: |
+            ${{ runner.os }}-jekyll-cache-
+
+      - name: Build & Verify Full Unbounded _site (Manual Build Mode)
+        if: github.event_name == 'workflow_dispatch' && inputs.build_from_source == true
+        env:
+          JEKYLL_ENV: production
+        run: |
+          npm ci || npm install
+          npm test
+          npm run build:css
+          npm run build:sitemap && npm run verify:sitemap
+          bundle exec jekyll build --config _config.yml,_config.fast.yml --incremental
+          cp sitemap.xml _site/sitemap.xml || true
+          cp sw-generated.js _site/sw-generated.js || true
+          mkdir -p _site/.well-known
+          cp .well-known/assetlinks.json _site/.well-known/assetlinks.json || true
+          cp _redirects _site/_redirects || true
+          touch _site/.nojekyll
+
+      - name: Push Built _site Directly to Netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
+            echo "::warning::NETLIFY_AUTH_TOKEN or NETLIFY_SITE_ID repository secret is not configured; skipping direct Netlify CLI deploy."
+            exit 0
+          fi
+          npx --yes netlify-cli@17 deploy --prod --dir=_site --message "CI deploy from ${{ github.sha }}"

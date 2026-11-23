@@ -1,0 +1,6 @@
+# Fast CI / Node-enabled Jekyll override:
+# Skips redundant Ruby jekyll-sitemap generation when scripts/generate-sitemap.js produces sitemap.xml.
+# Standard `_config.yml` retains `jekyll-sitemap` as a Ruby-only fallback.
+plugins:
+  - jekyll-paginate
+  - jekyll-feed

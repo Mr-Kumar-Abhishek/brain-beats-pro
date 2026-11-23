@@ -15,8 +15,9 @@
     "verify:sha256": "node scripts/verify-sha256.js",
     "build": "npm run build:css && npm run build:sitemap && npm run verify:sitemap && npm run build:sw",
     "build:offline": "npm run build && npm test",
-    "build:jekyll": "bundle exec jekyll build",
-    "serve:jekyll": "bundle exec jekyll serve"
+    "build:jekyll": "bundle exec jekyll build --config _config.yml,_config.fast.yml --incremental",
+    "serve:jekyll": "bundle exec jekyll serve --config _config.yml,_config.fast.yml --host 127.0.0.1 --port 4000 --incremental --no-watch",
+    "deploy:netlify:preview": "npx --yes netlify-cli deploy --dir=_site"
   },
   "dependencies": {
     "glob": "^13.0.6"

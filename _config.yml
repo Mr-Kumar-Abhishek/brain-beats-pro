@@ -14,8 +14,11 @@ baseurl: ""
 repository: Mr-Kumar-Abhishek/brain-beats-blog
 
 paginate_path: "/blog/blog/page:num/"
-paginate: 5
+paginate: 50
 future: true
+compress_html:
+  ignore:
+    envs: [development, production]
 plugins:
   - jekyll-paginate
   - jekyll-feed
@@ -23,4 +26,4 @@ plugins:
 
 include: [".well-known", "_redirects"]
 
-exclude: ["node_modules", "package-lock.json", "css/main.scss", "blog/css/main.scss", "scratch", "Gemfile", "Gemfile.lock", "tests", "reports", "workbox-config.js", ".github", ".agents", "DEVELOPMENT.md", "TEST_REPORT.md", "CONTRIBUTING.md", "cocomo-cost-estimate.md", "README.md", "LICENSE.txt", "LICENSE-CONTENT.txt"]
+exclude: ["node_modules", "package-lock.json", "css/main.scss", "blog/css/main.scss", "scratch", "Gemfile", "Gemfile.lock", "tests", "reports", "lab", "wiki", "sitemap-old.xml", "fileList.js", "generate_posts.py", "_config.fast.yml", "workbox-config.js", ".github", ".agents", "DEVELOPMENT.md", "TEST_REPORT.md", "RELEASE_NOTES.md", "CONTRIBUTING.md", "cocomo-cost-estimate.md", "README.md", "LICENSE.txt", "LICENSE-CONTENT.txt"]

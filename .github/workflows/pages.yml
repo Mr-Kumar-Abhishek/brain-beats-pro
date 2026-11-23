@@ -45,6 +45,14 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
+      - name: Cache Jekyll Build Incremental State
+        uses: actions/cache@v4
+        with:
+          path: .jekyll-cache
+          key: ${{ runner.os }}-jekyll-cache-${{ hashFiles('_config.yml', '_config.fast.yml', '_layouts/**', '_includes/**') }}
+          restore-keys: |
+            ${{ runner.os }}-jekyll-cache-
+
       - name: Run Audio Engine Test Suite (TDD)
         run: npm test
 
@@ -57,13 +65,12 @@ jobs:
         run: |
           echo "Starting Ruby Jekyll site build and Node asset/SW build simultaneously..."
           
-          # Start Ruby Jekyll build in the background
-          bundle exec jekyll build &
+          # Start fast unbounded Ruby Jekyll build in the background (JS sitemap replaces Ruby jekyll-sitemap)
+          bundle exec jekyll build --config _config.yml,_config.fast.yml --incremental &
           JEKYLL_PID=$!
           
-          # Start Node build (CSS transpilation, Sitemap generation, Service Worker precache) in the background
-          # Low-priority: service worker precache does not block or fail the primary Ruby site build
-          (npm run build || echo "::warning::Non-critical: npm/service worker build finished with warnings.") &
+          # Start Node asset/SW build in the background (sitemap already generated & verified above)
+          (npm run build:css && npm run build:sw || echo "::warning::Non-critical: npm/service worker build finished with warnings.") &
           NODE_PID=$!
           
           # Wait for primary Jekyll build and simultaneous Node asset build

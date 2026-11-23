@@ -76,9 +76,9 @@
       "sha256": "a7ad27cdf441bd4488cfe511332685a319d3cd135204b0c9bd088f7a7db5edb3"
     },
     "_config.yml": {
-      "bytes": 1124,
-      "md5": "68555cf6ca779d2c7f2f03d9fab41624",
-      "sha256": "5359492ca11ffc9a20d4e672a7585e7bf5fdb60f20942bed6a493258f98a95d0"
+      "bytes": 1299,
+      "md5": "a556625e78cfd9198f5491db10ac1d25",
+      "sha256": "cd112a58a30d93d1734795f97cd220b6af9efe69f1e41925ba996584aa305f48"
     },
     "_includes/seo-schema.html": {
       "bytes": 5407,
@@ -911,9 +911,9 @@
       "sha256": "4a05f854bf8894dd03ad931f0a552c66e9be33898b206042b2efe55d3c103945"
     },
     "netlify.toml": {
-      "bytes": 4243,
-      "md5": "4714793962f413fc1de3bab087d2bf42",
-      "sha256": "24251d866dea626bfb3a6eaf7971ce590165b90cf56e5dff6c4bb06730467ae9"
+      "bytes": 6003,
+      "md5": "205f34909d65258015e2b499ad80197d",
+      "sha256": "4e908b02c8dcba857ad712fc60b12753794cf41b0e80282dfa58ef7f7ac5c0a4"
     },
     "noise-processor/black-noise-processor.js": {
       "bytes": 537,
@@ -996,9 +996,9 @@
       "sha256": "3675e8186a4c91f5ed4cae6b7cd6a63b47cf20303badf0af4b6e3e3221e1e9b8"
     },
     "package.json": {
-      "bytes": 1173,
-      "md5": "ef91d9448e52cacd22c3881a5c0f7518",
-      "sha256": "9ff3ccbd7a140f435686f07e5554a1fae868fa6529ffbf4d20b3def11177bb9f"
+      "bytes": 1392,
+      "md5": "3220e2e62d8b4dc973902cb114ea10d8",
+      "sha256": "62f9ffa6fe60fac16c094a1a228951763ded47ae5ac1e75a45f006bff108fdf7"
     },
     "privacy-policy.html": {
       "bytes": 19895,
@@ -1097,8 +1097,8 @@
     },
     "sw-generated.js": {
       "bytes": 24143,
-      "md5": "cde0c1030e7153fa5af8c381a4354bfe",
-      "sha256": "676159f8f79a08b8e9891794f8bd65a0fca9a2ecb82fb1d701279847f388db46"
+      "md5": "97f6c9b18c14db671b6f36d575e2a3ae",
+      "sha256": "0031311f8c00b1bf8be1d14c4e5bb519c3bda025146660928c00d813ea589e0f"
     },
     "sw.js": {
       "bytes": 5686,
@@ -1106,9 +1106,9 @@
       "sha256": "2d7c7b6171725035cc0e6f5d1fa81a72d38c8274dbba06120a3b6a7309f121f6"
     },
     "tests/audio-engine.test.js": {
-      "bytes": 34632,
-      "md5": "a0fc5370fe28c8440dbe2e5a1b41a9b9",
-      "sha256": "9fa1eb62a93e36542e73c93fd32ce74911dde4074101018991d9650feacdf69d"
+      "bytes": 35632,
+      "md5": "0e4d2961cdb6c2365a660c92b5f43500",
+      "sha256": "32c0d306cc5c4ba38527d8ebb1b8e92ee014bbe8b67291999bea8960adf4feb5"
     },
     "webring.html": {
       "bytes": 12800,

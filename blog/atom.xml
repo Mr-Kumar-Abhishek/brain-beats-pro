@@ -14,7 +14,7 @@ layout: feed
 		<uri>https://discord.gg/JNRPJDFWdY</uri>
 	</author>
 
-	{% for post in site.posts %}
+	{% for post in site.posts limit:50 %}
 		<entry>
 			<title>{{ post.title }}</title>
 			<link href="{{site.url}}{{ post.url }}"/>

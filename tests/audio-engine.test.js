@@ -607,6 +607,26 @@ async function runTestSuite() {
     "DevOps flows run standalone JavaScript sitemap generator while retaining Ruby jekyll-sitemap backup"
   );
 
+  const fastConfigPath = path.join(__dirname, '../_config.fast.yml');
+  const atomFeedXml = fs.readFileSync(path.join(__dirname, '../blog/atom.xml'), 'utf8');
+  assert(
+    fs.existsSync(fastConfigPath) &&
+    configYml.includes("compress_html:") &&
+    configYml.includes("jekyll-sitemap") &&
+    atomFeedXml.includes("limit:50") &&
+    pagesWorkflow.includes(".jekyll-cache") &&
+    pagesWorkflow.includes("--incremental"),
+    "Build speed optimizations configure fast override, compress_html bypass, bounded Atom feed, and .jekyll-cache incremental CI builds"
+  );
+
+  const netlifyWorkflowPath = path.join(__dirname, '../.github/workflows/netlify.yml');
+  const netlifyWorkflow = fs.existsSync(netlifyWorkflowPath) ? fs.readFileSync(netlifyWorkflowPath, 'utf8') : '';
+  assert(
+    netlifyWorkflow.includes("--dir=_site") &&
+    netlifyWorkflow.includes("NETLIFY_AUTH_TOKEN"),
+    ".github/workflows/netlify.yml configures direct _site deployment to Netlify from CI/CD"
+  );
+
   const sitemapGenerator = require('../scripts/generate-sitemap.js');
   const sitemapCheck = sitemapGenerator.verifySitemap();
   assert(
