@@ -360,7 +360,7 @@ The application is configured for automated Continuous Deployment via Netlify (b
   - `sw.js` and `sw-generated.js` are served with `Cache-Control: no-cache, no-store, must-revalidate` to ensure instant client updates.
   - Audio worklets, static icons, and fonts use immutable caching (`max-age=31536000, immutable`).
   - Strict security headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`) applied globally.
-  - Domain canonicalization rules map `https://brain-beats.netlify.app/*` $\to$ `https://brain-beats.in/:splat`.
+  - Domain canonicalization rules map `https://brain-beats.netlify.app/*` $\to$ `https://brain-beats-pro.netlify.app/:splat`.
 
 ---
 
@@ -376,7 +376,7 @@ The project includes an automated GitHub Pages deployment workflow using officia
   4. Builds Jekyll production site into `_site` via Bundler.
   5. Bypasses Jekyll backend reprocessing (`.nojekyll`) and publishes artifact directly to GitHub Pages (`actions/deploy-pages@v4`).
   6. Automatically syncs and pushes compiled production assets to the `gh-pages` branch (`peaceiris/actions-gh-pages@v4`).
-* **Custom Domain:** Configured via root [`CNAME`](CNAME) (`brain-beats.in`).
+* **Canonical Production Domain:** Hosted on Netlify at `https://brain-beats-pro.netlify.app` (legacy custom TLD `CNAME` permanently removed).
 
 ---
 
@@ -765,7 +765,7 @@ This section documents the engineering changes, coverage metrics, and local buil
 ### 20.3. Unbounded Chronological Sitemap & Jekyll Configuration
 
 - [`_config.yml`](_config.yml): Switched `future: false` $\rightarrow$ `future: true` so Jekyll builds and indexes every post scheduled through `2053-08-14`.
-- [`scripts/generate-sitemap.js`](scripts/generate-sitemap.js): Removed the `postDate > today` skip condition inside `getBlogPostFiles()`, expanding [`sitemap.xml`](sitemap.xml) (`2.27 MB`) from `1,454` URLs to **`11,224` canonical URLs** (`https://brain-beats.in`: `46` root HTML URLs + `11,178` [`_posts/`](_posts) blog URLs).
+- [`scripts/generate-sitemap.js`](scripts/generate-sitemap.js): Removed the `postDate > today` skip condition inside `getBlogPostFiles()`, expanding [`sitemap.xml`](sitemap.xml) (`2.27 MB`) from `1,454` URLs to **`11,224` canonical URLs** (`https://brain-beats-pro.netlify.app`: `46` root HTML URLs + `11,178` [`_posts/`](_posts) blog URLs).
 
 ### 20.4. Pre-Push Local Jekyll Build & Integrity Verification Results
 

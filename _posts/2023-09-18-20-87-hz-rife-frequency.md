@@ -141,4 +141,4 @@ To maximize the therapeutic benefits of 20.87 Hz on Brain Beats:
 
 The **20.87 Hz Rife Frequency** stands as a sophisticated acoustic tool from the True Rife research legacy, combining mucosal ciliary activation, sinus biofilm clearance, peripheral nerve support, and high-beta cognitive awakening. By tuning the body and mind to **20.87 Hz**, you support natural respiratory drainage, calm peripheral nerve pathways, and restore vibrant daily health.
 
-*Experience the 20.87 Hz preset and explore the Cold 2005 TR and Sinusitis suites on [Brain Beats](https://brain-beats.in) to enhance your respiratory clarity and neural resilience.*
+*Experience the 20.87 Hz preset and explore the Cold 2005 TR and Sinusitis suites on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your respiratory clarity and neural resilience.*

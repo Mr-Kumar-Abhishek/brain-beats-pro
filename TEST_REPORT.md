@@ -87,7 +87,7 @@ The test suite is automated via Node.js in [`tests/audio-engine.test.js`](file:/
 13. **Phase 13: Developer Documentation, README & Patch Integrity Verification**
     * Validates `README.md` (complete feature & developer guide index), `DEVELOPMENT.md` (including multi-remote topology and upstream push restrictions), `TEST_REPORT.md`, `CONTRIBUTING.md`, `cocomo-cost-estimate.md`, dual licensing scopes, core DSP synthesis patches (`js/main.js`), polarity engine & channel swap functions, generator polarity/channel swap controls, preset master settings/swap buttons, and Google Translate plugin layout integration.
 14. **Phase 14: Cloud CI/CD & Netlify Zero-Exit-Code Hardening Verification**
-    * Validates exclusion of `jekyll-github-metadata` (Exit Code 1), exclusion of `@netlify/plugin-sitemap` (Exit Code 10), dual-mode conditional build command in `netlify.toml`, `[context.gh-pages]` static build fallback, automated sitemap generator script, canonical domain integrity (`https://brain-beats.in`), and CodeQL scanning workflow configuration.
+    * Validates exclusion of `jekyll-github-metadata` (Exit Code 1), exclusion of `@netlify/plugin-sitemap` (Exit Code 10), dual-mode conditional build command in `netlify.toml`, `[context.gh-pages]` static build fallback, automated sitemap generator script, canonical domain integrity (`https://brain-beats-pro.netlify.app`), and CodeQL scanning workflow configuration.
 15. **Phase 15: Liquid Accessible Navigation & Link Title UX Verification**
     * Validates Liquid next/previous navigation and disclaimer modal integration in `_layouts/post.html`.
     * Validates descriptive accessible Liquid `title` attributes on all navbar anchors in `_layouts/default.html`.
@@ -227,7 +227,7 @@ Phase 14: Cloud CI/CD & Netlify Zero-Exit-Code Hardening Verification
   [PASS] netlify.toml implements conditional build logic for source vs deployment branches
   [PASS] netlify.toml configures explicit static build context for gh-pages
   [PASS] package.json contains automated sitemap and offline build scripts
-  [PASS] sitemap.xml exists and maintains canonical domain integrity (https://brain-beats.in)
+  [PASS] sitemap.xml exists and maintains canonical domain integrity (https://brain-beats-pro.netlify.app)
   [PASS] .github/workflows/codeql.yml exists and configures automated CodeQL scanning
 
 Phase 15: Liquid Accessible Navigation & Link Title UX Verification

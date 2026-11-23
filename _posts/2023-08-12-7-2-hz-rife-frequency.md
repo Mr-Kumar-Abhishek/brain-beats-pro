@@ -138,4 +138,4 @@ To optimize your sessions with the 7.2 Hz preset on Brain Beats:
 
 The **7.2 Hz Rife Frequency** serves as an indispensable acoustic bridge for mental clarity, hemispheric synchronization, and neuro-inflammatory relief. By entraining the brain at the **Theta-Alpha cusp**, 7.2 Hz unifies neural communication across both cerebral hemispheres, dispels cognitive fatigue, and cultivates lasting central nervous system harmony.
 
-*Experience the 7.2 Hz preset and the Central Nervous System & Brain Harmony suite on [Brain Beats](https://brain-beats.in) to elevate your cognitive clarity and restorative wellness.*
+*Experience the 7.2 Hz preset and the Central Nervous System & Brain Harmony suite on [Brain Beats](https://brain-beats-pro.netlify.app) to elevate your cognitive clarity and restorative wellness.*

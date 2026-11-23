@@ -148,4 +148,4 @@ To maximize the neuro-supportive benefits of the 11.3 Hz preset on Brain Beats:
 
 The **11.3 Hz Rife Frequency** offers a focused neuro-acoustic frequency designed to support central nervous system resilience, neuro-immune balance, and mental clarity. By guiding brainwaves into **Upper-Alpha / SMR harmony**, 11.3 Hz helps quiet inflammatory noise, supports microglial homeostasis, clears cognitive fog, and restores vitality.
 
-*Experience the 11.3 Hz preset and the Multiple Sclerosis Brain Infection suite on [Brain Beats](https://brain-beats.in) to nurture your nervous system and restore cognitive clarity.*
+*Experience the 11.3 Hz preset and the Multiple Sclerosis Brain Infection suite on [Brain Beats](https://brain-beats-pro.netlify.app) to nurture your nervous system and restore cognitive clarity.*

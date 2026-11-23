@@ -144,4 +144,4 @@ To maximize the spasticity relief and arthritis-soothing benefits of 7.69 Hz on 
 
 The **7.69 Hz Rife Frequency** serves as an indispensable acoustic bridge between neurological calm and musculoskeletal freedom. By entraining brainwaves at the tranquil **Theta-Alpha cusp**, 7.69 Hz softens stubborn spasticity, soothes arthritic and spinal inflammation, restores smooth motor control, and cultivates lasting physical ease.
 
-*Experience the 7.69 Hz preset and the Joint, Spine & Motor Harmony suite on [Brain Beats](https://brain-beats.in) to enrich your physical recovery and mobility routine.*
+*Experience the 7.69 Hz preset and the Joint, Spine & Motor Harmony suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enrich your physical recovery and mobility routine.*

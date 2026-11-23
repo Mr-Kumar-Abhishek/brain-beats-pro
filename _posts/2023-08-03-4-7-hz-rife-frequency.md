@@ -151,4 +151,4 @@ For enhanced respiratory and physical relaxation, 4.7 Hz pairs effectively with:
 
 The **4.7 Hz Rife Frequency** serves as a potent sonic bridge between neural relaxation and respiratory ease. By guiding the brain into **Theta-wave tranquility**, 4.7 Hz helps break the cycle of breathing-induced panic, soothe hyper-reactive bronchial smooth muscles, and cultivate a peaceful foundation for clear, deep, and effortless respiration.
 
-*Experience the 4.7 Hz preset and the Asthma 1 pulmonary suite on [Brain Beats](https://brain-beats.in) to enhance your respiratory wellness and mindfulness practices.*
+*Experience the 4.7 Hz preset and the Asthma 1 pulmonary suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your respiratory wellness and mindfulness practices.*

@@ -156,4 +156,4 @@ To maximize the neuropathic calming and intuitive benefits of 7.5 Hz on Brain Be
 
 The **7.5 Hz Rife Frequency** serves as a vital bridge between profound physical comfort and elevated mental lucidity. By synchronizing brainwave dynamics at the **Theta-Alpha gateway**, 7.5 Hz soothes hyper-excitable cranial nerves, relieves neuropathic pain tension, expands creative intuition, and fosters deep restorative well-being.
 
-*Experience the 7.5 Hz preset and the Cranial Nerve & Neuro-Calm suite on [Brain Beats](https://brain-beats.in) to enhance your relaxation and recovery routine.*
+*Experience the 7.5 Hz preset and the Cranial Nerve & Neuro-Calm suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your relaxation and recovery routine.*

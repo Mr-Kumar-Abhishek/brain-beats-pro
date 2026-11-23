@@ -147,4 +147,4 @@ To maximize the fluid-mobilizing and cleansing benefits of 15.05 Hz on Brain Bea
 
 The **15.05 Hz Rife Frequency** is a premier bio-acoustic frequency for stimulating lymphatic motility, clearing interstitial stagnation, and revitalizing systemic energy. By attuning the body to **Mid-Beta vibrancy**, 15.05 Hz supports the natural cleansing pathways of the body, leaving you feeling lighter, refreshed, and renewed.
 
-*Experience the 15.05 Hz preset and explore the complete Lymph Support and Detox suites on [Brain Beats](https://brain-beats.in) to enhance your body's natural purification.*
+*Experience the 15.05 Hz preset and explore the complete Lymph Support and Detox suites on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your body's natural purification.*

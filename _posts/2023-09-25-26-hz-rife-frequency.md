@@ -146,4 +146,4 @@ To maximize the antispasmodic and restorative benefits of 26 Hz on Brain Beats:
 
 The **26 Hz Rife Frequency** serves as a specialized acoustic tool for relieving menstrual cramps, easing myometrial spasms, supporting pancreatic digestion, and anchoring the biofield to the **4th Schumann Resonance Harmonic**. By attuning the body to **Low-Gamma harmony**, 26 Hz promotes deep pelvic comfort, digestive vitality, and grounded mental clarity.
 
-*Experience the 26 Hz preset and explore the Dysmenorrhea and Pancreatic suites on [Brain Beats](https://brain-beats.in) to enhance your pelvic comfort and digestive health.*
+*Experience the 26 Hz preset and explore the Dysmenorrhea and Pancreatic suites on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your pelvic comfort and digestive health.*

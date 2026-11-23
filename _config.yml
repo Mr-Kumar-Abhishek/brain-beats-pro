@@ -21,4 +21,6 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 
+include: [".well-known", "_redirects"]
+
 exclude: ["node_modules", "package-lock.json", "css/main.scss", "blog/css/main.scss", "scratch", "Gemfile", "Gemfile.lock", "tests", "reports", "workbox-config.js", ".github", ".agents", "DEVELOPMENT.md", "TEST_REPORT.md", "CONTRIBUTING.md", "cocomo-cost-estimate.md", "README.md", "LICENSE.txt", "LICENSE-CONTENT.txt"]

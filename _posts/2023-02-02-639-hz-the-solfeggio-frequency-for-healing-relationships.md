@@ -44,7 +44,7 @@ The 639 Hz solfeggio frequency can also have a positive impact on your cellular 
 
 There are many ways to use the 639 Hz solfeggio frequency for healing your relationships and yourself. You can:
 
-- Listen to music or sounds that are tuned to this frequency, such as from [here](https://brain-beats.in/solfeggio-frequency.html)
+- Listen to music or sounds that are tuned to this frequency, such as from [here](https://brain-beats-pro.netlify.app/solfeggio-frequency.html)
 - Sing or hum along with the tone
 - Use a tuning fork or a singing bowl that produces this frequency
 - Meditate or do yoga while focusing on this frequency

@@ -98,7 +98,7 @@ This release resolves CI/CD build pipeline failures, decouples non-critical offl
 - **Legacy Pages Builder Deactivation:**
   - Migrated GitHub Pages repository build source from `legacy` to `workflow`, eliminating dynamic `pages-build-deployment` timeout failures (10m+ on file sync).
 - **Automated Sitemap & Content Expansion:**
-  - Regenerated `sitemap.xml` with 1,447 canonical URLs (`https://brain-beats.in/`) covering all 46 root audio tools and 1,401 published blog posts through November 2026.
+  - Regenerated `sitemap.xml` with 1,447 canonical URLs (`https://brain-beats-pro.netlify.app/`) covering all 46 root audio tools and 1,401 published blog posts through November 2026.
 - **Audio Engine & TDD Verification:**
   - All 86 automated test assertions pass with 100% success across all 14 evaluation phases (`tests/audio-engine.test.js`).
 

@@ -45,7 +45,7 @@ To harness the benefits of this phase:
 
 Remember that consistency is key when working with sound therapy. Regular exposure amplifies the effects over time.
 
-You could find this preset in [brain beats](https://brain-beats.in).
+You could find this preset in [brain beats](https://brain-beats-pro.netlify.app).
 
 ## **Conclusion**
 

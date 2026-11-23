@@ -153,4 +153,4 @@ To maximize the therapeutic benefits of 10.0 Hz for relaxation, nerve healing, a
 
 The **10.0 Hz Rife Frequency** stands as the universal crown jewel of neuro-acoustic sound therapy. By harmonizing brainwaves into the **Universal Alpha Peak**, 10.0 Hz awakens the body’s innate regenerative potential—melting away stress, accelerating nerve healing, dissipating migraines and sciatica, and restoring profound, serene equilibrium to mind and body.
 
-*Experience the 10.0 Hz preset and the Universal Alpha & Nerve Healing suites on [Brain Beats](https://brain-beats.in) to elevate your relaxation and vitality.*
+*Experience the 10.0 Hz preset and the Universal Alpha & Nerve Healing suites on [Brain Beats](https://brain-beats-pro.netlify.app) to elevate your relaxation and vitality.*

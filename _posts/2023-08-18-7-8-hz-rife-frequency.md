@@ -145,4 +145,4 @@ To maximize the anxiety relief and biological grounding benefits of 7.8 Hz on Br
 
 The **7.8 Hz Rife Frequency** serves as an indispensable acoustic bridge to inner peace, Earth connection, and emotional equilibrium. By entraining brainwaves to the **Schumann Resonance threshold**, 7.8 Hz dispels acute and chronic anxiety, balances the autonomic nervous system, supports restorative endocrine renewal, and anchors the mind in lasting serenity.
 
-*Experience the 7.8 Hz preset and the Anxiety Relief & Schumann Grounding suite on [Brain Beats](https://brain-beats.in) to enrich your peace of mind and daily vitality.*
+*Experience the 7.8 Hz preset and the Anxiety Relief & Schumann Grounding suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enrich your peace of mind and daily vitality.*

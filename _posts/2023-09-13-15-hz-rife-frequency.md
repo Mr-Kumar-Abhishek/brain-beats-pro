@@ -164,4 +164,4 @@ To maximize the therapeutic benefits of 15 Hz on Brain Beats:
 
 The **15 Hz Rife Frequency** is a powerful acoustic modality bridging mental alertness, osteogenic bone support, cardiovascular relaxation, and neuropathic sciatic relief. By attuning the body and brain to **Mid-Beta harmony**, 15 Hz empowers cellular regeneration, calms nerve compression, and supports systemic vitality.
 
-*Experience the 15 Hz preset and explore the Complete Early Crane, Dental Infection, and Sciatica suites on [Brain Beats](https://brain-beats.in) to enhance your wellness journey.*
+*Experience the 15 Hz preset and explore the Complete Early Crane, Dental Infection, and Sciatica suites on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your wellness journey.*

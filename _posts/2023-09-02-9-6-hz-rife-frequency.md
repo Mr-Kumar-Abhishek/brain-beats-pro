@@ -153,4 +153,4 @@ To maximize the therapeutic benefits of 9.6 Hz for spinal comfort, headache reli
 
 The **9.6 Hz Rife Frequency** provides an invaluable neuro-acoustic tool for releasing deep spinal subluxation tension, dissolving cervicogenic headaches, supporting post-concussion recovery, and balancing calcium metabolism. By guiding brainwaves into **Mid-Alpha tranquility**, 9.6 Hz restores structural ease, cranial calmness, and agile physical freedom.
 
-*Experience the 9.6 Hz preset and the Spinal Alignment & Cranial Care suites on [Brain Beats](https://brain-beats.in) to enhance your posture and mental clarity.*
+*Experience the 9.6 Hz preset and the Spinal Alignment & Cranial Care suites on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your posture and mental clarity.*

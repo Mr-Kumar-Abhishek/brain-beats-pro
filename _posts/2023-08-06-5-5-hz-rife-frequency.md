@@ -147,4 +147,4 @@ To maximize the hormonal and neurological benefits of 5.5 Hz on Brain Beats:
 
 The **5.5 Hz Rife Frequency** serves as a vital sonic tool for restoring neuroendocrine harmony and calming sensory nerve irritation. By guiding the brain into **Mid-Theta tranquility**, 5.5 Hz helps stabilize hypothalamic temperature regulation, soothe paresthesia and numbness, ease menopausal discomfort, and foster a peaceful foundation for restorative sleep and vitality.
 
-*Experience the 5.5 Hz preset and the Hormonal Imbalance & Menopause suites on [Brain Beats](https://brain-beats.in) to enhance your restorative wellness journey.*
+*Experience the 5.5 Hz preset and the Hormonal Imbalance & Menopause suites on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your restorative wellness journey.*

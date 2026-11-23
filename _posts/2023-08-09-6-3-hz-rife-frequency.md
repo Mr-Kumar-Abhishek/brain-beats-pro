@@ -141,4 +141,4 @@ To maximize the lymphatic drainage and detoxification benefits of 6.3 Hz on Brai
 
 The **6.3 Hz Rife Frequency** serves as a vital sonic catalyst for systemic purification, lymphatic drainage, and cellular regeneration. By entraining the brain into **Upper-Theta tranquility**, 6.3 Hz helps stimulate intrinsic lymphangion pumping, reduce tissue edema and swelling, clear toxic cephalea, and restore a light, revitalized sense of full-body well-being.
 
-*Experience the 6.3 Hz preset and the Detox & Lymphatic Drainage suite on [Brain Beats](https://brain-beats.in) to enhance your natural cleansing and recovery routine.*
+*Experience the 6.3 Hz preset and the Detox & Lymphatic Drainage suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your natural cleansing and recovery routine.*

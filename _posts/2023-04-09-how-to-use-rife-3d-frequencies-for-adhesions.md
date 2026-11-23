@@ -19,7 +19,7 @@ One of the possible ways to treat adhesions is to use Rife 3D frequencies. Rife 
 
 Rife 3D frequencies are different from traditional Rife frequencies, which are usually single tones or simple waveforms. Rife 3D frequencies are complex and dynamic, creating a more immersive and effective experience. They can also target multiple issues at once, as each frequency has multiple harmonics and subharmonics.
 
-To use Rife 3D frequencies for adhesions, you will need a device that can generate and play them. There are several options available on the market, such as the Spooky2 Rife Machine, the GB4000 Frequency Generator, the F-Scan Frequency Synthesizer or [brain beats](https://brain-beats.in). You will also need a pair of headphones or speakers to listen to the frequencies.
+To use Rife 3D frequencies for adhesions, you will need a device that can generate and play them. There are several options available on the market, such as the Spooky2 Rife Machine, the GB4000 Frequency Generator, the F-Scan Frequency Synthesizer or [brain beats](https://brain-beats-pro.netlify.app). You will also need a pair of headphones or speakers to listen to the frequencies.
 
 The following is a sample healing preset for adhesions using Rife 3D frequencies. You can adjust the duration, intensity, and volume according to your preference and tolerance. You can also add or remove frequencies as needed.
 

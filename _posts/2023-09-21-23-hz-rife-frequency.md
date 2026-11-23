@@ -141,4 +141,4 @@ To maximize the throat-soothing and antimicrobial benefits of 23 Hz on Brain Bea
 
 The **23 Hz Rife Frequency** serves as an indispensable acoustic tool for combating oropharyngeal pathogens, soothing sore throats, promoting cervicofacial lymphatic drainage, and sharpening mental clarity. By attuning the body and mind to **High-Beta vitality**, 23 Hz empowers natural mucosal recovery, relieves throat irritation, and restores comfortable, easy breathing and swallowing.
 
-*Experience the 23 Hz preset and explore the Sore Throat Comp and Actinomyces suites on [Brain Beats](https://brain-beats.in) to nurture your throat health and immune resilience.*
+*Experience the 23 Hz preset and explore the Sore Throat Comp and Actinomyces suites on [Brain Beats](https://brain-beats-pro.netlify.app) to nurture your throat health and immune resilience.*

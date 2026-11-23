@@ -144,4 +144,4 @@ To maximize the therapeutic benefits of 9.5 Hz for parathyroid health and neural
 
 The **9.5 Hz Rife Frequency** serves as a vital bridge between **endocrine mineral regulation** and **central nervous system remyelination**. By entraining brainwaves into **Mid-Alpha tranquility**, 9.5 Hz supports healthy parathyroid function, balances calcium-phosphate homeostasis, nurtures myelin integrity, and promotes whole-body resilience and calm vitality.
 
-*Experience the 9.5 Hz preset and the Hyperparathyroidism & Remyelination suites on [Brain Beats](https://brain-beats.in) to support your endocrine and neurological health.*
+*Experience the 9.5 Hz preset and the Hyperparathyroidism & Remyelination suites on [Brain Beats](https://brain-beats-pro.netlify.app) to support your endocrine and neurological health.*

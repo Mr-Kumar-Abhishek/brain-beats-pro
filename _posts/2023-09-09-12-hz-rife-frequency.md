@@ -151,4 +151,4 @@ To maximize the energizing and endocrine-supportive benefits of 12 Hz on Brain B
 
 The **12 Hz Rife Frequency** provides an invigorating neuro-acoustic modality for overcoming metabolic sluggishness, supporting the endocrine HPT-axis, and dispelling mental fog. By anchoring brainwaves at the dynamic **Alpha-Beta / SMR threshold**, 12 Hz cultivates focused clarity, balanced vitality, and refreshed motivation.
 
-*Experience the 12 Hz preset and explore the Hypothyroid multi-frequency suite on [Brain Beats](https://brain-beats.in) to revitalize your daily energy and mental focus.*
+*Experience the 12 Hz preset and explore the Hypothyroid multi-frequency suite on [Brain Beats](https://brain-beats-pro.netlify.app) to revitalize your daily energy and mental focus.*

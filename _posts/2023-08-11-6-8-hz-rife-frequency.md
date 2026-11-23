@@ -156,4 +156,4 @@ To maximize the muscle relaxation and anxiety-relieving benefits of 6.8 Hz on Br
 
 The **6.8 Hz Rife Frequency** serves as an indispensable acoustic bridge between mental peace and somatic physical relaxation. By entraining the brain into **Upper-Theta tranquility**, 6.8 Hz releases stubborn muscular spasms, melts somatic anxiety, restores microvascular tissue perfusion, and cultivates lasting full-body wellness.
 
-*Experience the 6.8 Hz preset and the Muscle Relaxation & Anxiety Suite on [Brain Beats](https://brain-beats.in) to elevate your recovery and relaxation routine.*
+*Experience the 6.8 Hz preset and the Muscle Relaxation & Anxiety Suite on [Brain Beats](https://brain-beats-pro.netlify.app) to elevate your recovery and relaxation routine.*

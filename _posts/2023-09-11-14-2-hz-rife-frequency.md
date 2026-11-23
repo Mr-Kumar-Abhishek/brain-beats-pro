@@ -150,4 +150,4 @@ To maximize the motor-supportive and remyelinating benefits of 14.2 Hz on Brain 
 
 The **14.2 Hz Rife Frequency** serves as an acoustic catalyst for motor pathway synchronization, corticospinal signaling efficiency, and myelin sheath regeneration. By tuning brainwaves to the vibrant threshold of **Low-Beta / SMR harmony**, 14.2 Hz empowers motor control, counters paresis, and supports the nervous system's capacity for functional restoration and structural renewal.
 
-*Experience the 14.2 Hz preset and explore the Multiple Sclerosis Myelin Sheath Repair suite on [Brain Beats](https://brain-beats.in) to enhance your motor strength and neuro-regeneration.*
+*Experience the 14.2 Hz preset and explore the Multiple Sclerosis Myelin Sheath Repair suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your motor strength and neuro-regeneration.*

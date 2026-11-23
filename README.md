@@ -21,7 +21,7 @@ For detailed technical guides, architectural blueprints, test reports, and contr
 | 🧪 **[Test Verification Report](TEST_REPORT.md)** | Test-Driven Development (TDD) verification suite | 91 automated unit & integration tests, 15 test phases, Red-Green-Refactor audit matrix, execution logs |
 | 🚀 **[Release Notes & Deployment Reports](RELEASE_NOTES.md)** | Production deployment stabilization & CI/CD logs | Simultaneous Ruby/Node pipeline, SCSS fix, serialized concurrency, live site audit |
 | 🤝 **[Contributing Guidelines](CONTRIBUTING.md)** | Contribution standards & code style | PR workflows, bug reporting, XSS prevention, safe DOM handling, branch management |
-| 📊 **[COCOMO Cost Estimation](cocomo-cost-estimate.md)** | Formal software engineering economic analysis | Constructive Cost Model effort estimation, 2,660.62 KLOC codebase metrics, work packages (also at [cocomo.html](https://brain-beats.in/cocomo.html)) |
+| 📊 **[COCOMO Cost Estimation](cocomo-cost-estimate.md)** | Formal software engineering economic analysis | Constructive Cost Model effort estimation, 2,660.62 KLOC codebase metrics, work packages (also at [cocomo.html](https://brain-beats-pro.netlify.app/cocomo.html)) |
 | 🔀 **[Branch Synchronicity Report](reports/branch-synchronicity-report.md)** | Multi-remote & upstream Git branch audit | 4-remote topology (`base-stream`, `org`, `origin`, `upstream`), 50-branch matrix, 14-commit delta ahead of `upstream`, tag & `HEAD` symref status |
 | ⚖️ **[Source Code & Config License (AGPLv3)](LICENSE)** | Software, mechanics, configs & server configurations | GNU Affero General Public License v3.0 covering all software programming code, audio DSP algorithms, worklets, mechanics, configuration files, and server configurations |
 | 📝 **[Content License (CC BY 4.0)](LICENSE-CONTENT.txt)** | Content & documentation license | Creative Commons Attribution 4.0 International license covering written articles, documentation, and audio preset datasets (strictly excluding code, mechanics, configuration files, and server configurations) |
@@ -190,7 +190,7 @@ npm run build
 ## 🚀 CI/CD & Deployment Architecture
 
 * **GitHub Pages CI/CD ([`.github/workflows/pages.yml`](.github/workflows/pages.yml)):** Automated GitHub Actions pipeline running on Node.js 24 and Ruby 3.3. Executes test gates, transpiles SCSS, builds Jekyll assets, compiles the Service Worker, and deploys directly to GitHub Pages and the [`gh-pages`](https://github.com/Mr-Kumar-Abhishek/brain-beats/tree/gh-pages) branch.
-* **Netlify Production ([`netlify.toml`](netlify.toml)):** Automated cloud edge deployment with strict HTTP security headers, immutable caching for audio worklets/fonts, and domain canonicalization to `brain-beats.in`.
+* **Netlify Production ([`netlify.toml`](netlify.toml)):** Automated cloud edge deployment with strict HTTP security headers, immutable caching for audio worklets/fonts, and domain canonicalization to `brain-beats-pro.netlify.app`.
 * **Multi-Remote Synchronization:** Maintains synchronized branch tips across:
   * `origin`: Primary development & deployment repository (`Mr-Kumar-Abhishek/brain-beats`)
   * `base-stream`: Secondary mirror & pro distribution repository (`Mr-Kumar-Abhishek/brain-beats-pro`)

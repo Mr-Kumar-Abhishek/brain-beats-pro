@@ -137,4 +137,4 @@ To maximize the backache relief and spinal relaxation benefits of 7.6 Hz on Brai
 
 The **7.6 Hz Rife Frequency** serves as an indispensable acoustic bridge for spinal health, back pain relief, and somatic comfort. By gently guiding brainwaves to the **Theta-Alpha cusp**, 7.6 Hz releases stubborn paraspinal muscle spasms, modulates spinal pain gating, unloads compressive disc stress, and restores a serene sense of physical freedom.
 
-*Experience the 7.6 Hz preset and the Spine & Muscle Recovery suite on [Brain Beats](https://brain-beats.in) to support your posture, spine, and musculoskeletal vitality.*
+*Experience the 7.6 Hz preset and the Spine & Muscle Recovery suite on [Brain Beats](https://brain-beats-pro.netlify.app) to support your posture, spine, and musculoskeletal vitality.*

@@ -144,4 +144,4 @@ To maximize the therapeutic benefits of 10.36 Hz for lymphatic drainage and cell
 
 The **10.36 Hz Rife Frequency** provides an invaluable neuro-acoustic tool for revitalizing lymphatic circulation, overcoming tissue stagnation, and supporting whole-body detoxification. By synchronizing brainwaves into **Upper-Alpha vitality**, 10.36 Hz stimulates lymphangion pumping, purifies interstitial fluids, boosts immune defense, and restores light, buoyant physical energy.
 
-*Experience the 10.36 Hz preset and the Lymph Support suite on [Brain Beats](https://brain-beats.in) to enhance your lymphatic flow and detoxifying wellness.*
+*Experience the 10.36 Hz preset and the Lymph Support suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your lymphatic flow and detoxifying wellness.*

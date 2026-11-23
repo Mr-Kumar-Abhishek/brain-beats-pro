@@ -140,4 +140,4 @@ To maximize the nerve-decompression and pain-relieving benefits of 25.4 Hz on Br
 
 The **25.4 Hz Rife Frequency** serves as an indispensable acoustic tool for piriformis myofascial release, sciatic nerve decompression, and lumbosacral radicular pain calming. By attuning neural and musculoskeletal pathways to **25.4 Hz**, you unlock natural pelvic muscle relaxation, promote nerve recovery, and restore fluid, pain-free walking.
 
-*Experience the 25.4 Hz preset and explore the complete Sciatica 1 suite on [Brain Beats](https://brain-beats.in) to reclaim your lower back comfort and mobility.*
+*Experience the 25.4 Hz preset and explore the complete Sciatica 1 suite on [Brain Beats](https://brain-beats-pro.netlify.app) to reclaim your lower back comfort and mobility.*

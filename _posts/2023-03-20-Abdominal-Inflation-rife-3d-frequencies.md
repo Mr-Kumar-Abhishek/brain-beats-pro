@@ -17,7 +17,7 @@ One of the alternative treatments for abdominal inflammation is Rife 3D frequenc
 
 In this blog post, I will share with you a Rife 3D frequencies preset for abdominal inflammation. This preset contains frequencies that are selected to target the inflammation and reduce the symptoms. The frequencies in this preset are: 2720 hz, 2489 hz, 2170 hz, 2000 hz, 1865 hz, 1800 hz, 1600 hz, 1550 hz, 880 hz, 832 hz, 802 hz, 787 hz, 776 hz, 727 hz, 660 hz, 465 hz, 450 hz, 444 hz, 440 hz, 428 hz, 380 hz, 250 hz, 146 hz, 125 hz, 95 hz, 72 hz, 20 hz, 1.2 hz. The total duration of the preset is 84 minutes.
 
-To use this preset, you will need a device that can generate Rife 3D frequencies, such as [brain beats 3D Rife machine](https://brain-beats.in/3d-rife-machine.html). You will also need a speaker or headphones to listen to the frequencies. 
+To use this preset, you will need a device that can generate Rife 3D frequencies, such as [brain beats 3D Rife machine](https://brain-beats-pro.netlify.app/3d-rife-machine.html). You will also need a speaker or headphones to listen to the frequencies. 
 
 To start the treatment, you should first find a comfortable place where you can relax and listen to the frequencies. You can lie down on a bed or couch, or sit in a chair. You should avoid any distractions or noises that could interfere with the frequencies. You should also drink plenty of water before and after the treatment to help flush out any toxins.
 

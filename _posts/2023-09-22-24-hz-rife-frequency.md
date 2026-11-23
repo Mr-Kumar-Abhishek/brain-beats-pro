@@ -148,4 +148,4 @@ To maximize the vision-supportive and detoxifying benefits of 24 Hz on Brain Bea
 
 The **24 Hz Rife Frequency** serves as an indispensable acoustic modality for promoting retinal macular health, accelerating intercellular detoxification, and anchoring peak high-beta mental focus. By attuning the body and mind to the **24 Hz harmonic summit**, you support ocular micro-circulation, stimulate cellular purification, and cultivate vibrant cognitive vitality.
 
-*Experience the 24 Hz preset and explore the Macular Degeneration 1, Detox 1, and Vitamag suites on [Brain Beats](https://brain-beats.in) to enhance your visual health and daily vitality.*
+*Experience the 24 Hz preset and explore the Macular Degeneration 1, Detox 1, and Vitamag suites on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your visual health and daily vitality.*

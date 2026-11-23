@@ -141,4 +141,4 @@ To maximize the cognitive-enhancing benefits of 22 Hz on Brain Beats:
 
 The **22 Hz Rife Frequency** is a dynamic neuro-acoustic tool for cognitive awakening, executive focus, and mental stamina. By attuning neural networks to **High-Beta excellence**, 22 Hz banishes mental sluggishness, sharpens working memory, and unlocks peak daily productivity.
 
-*Experience the 22 Hz preset and explore the Brain Beta Stim TR suite on [Brain Beats](https://brain-beats.in) to elevate your focus and cognitive performance.*
+*Experience the 22 Hz preset and explore the Brain Beta Stim TR suite on [Brain Beats](https://brain-beats-pro.netlify.app) to elevate your focus and cognitive performance.*

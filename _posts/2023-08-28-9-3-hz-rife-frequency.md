@@ -146,4 +146,4 @@ To maximize the backache relief and muscular relaxation benefits of 9.3 Hz on Br
 
 The **9.3 Hz Rife Frequency** serves as an indispensable neuro-acoustic ally for releasing lumbar spine strain, quietening hyperactive muscle spasms, and soothing chronic backache. By entraining brainwaves into **Mid-Alpha tranquility**, 9.3 Hz interrupts pain-spasm cycles, encourages deep somatic restoration, and returns effortless comfort to the spine.
 
-*Experience the 9.3 Hz preset and the Backache 2 suite on [Brain Beats](https://brain-beats.in) to nurture your spinal health and ease.*
+*Experience the 9.3 Hz preset and the Backache 2 suite on [Brain Beats](https://brain-beats-pro.netlify.app) to nurture your spinal health and ease.*

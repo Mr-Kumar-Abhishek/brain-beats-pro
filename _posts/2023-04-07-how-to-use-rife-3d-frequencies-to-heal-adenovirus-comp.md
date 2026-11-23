@@ -19,7 +19,7 @@ In this blog post, I will show you how to use Rife 3D frequencies to heal adenov
 
 10000 hz, 7767 hz, 7762 hz, 7702 hz, 7009 hz, 7001 hz, 6989 hz, 5000 hz, 4868 hz, 2720 hz, 2050 hz, 1500 hz, 1395 hz, 1062 hz, 1060 hz, 1034 hz, 1009 hz, 969 hz, 968 hz, 962 hz, 959 hz, 960 hz, 952 hz, 951 hz, 942 hz, 880 hz, 1550 hz, 802 hz, 787 hz, 768 hz, 728 hz, 690 hz, 660 hz, 555 hz, 523 hz, 522 hz, 1865 hz, 444 hz, 333 hz, 300 hz, 180 hz, 160 hz, 125 hz, 95 hz, 72 hz, 60 hz, 48 hz, 26 hz, 20 hz
 
-To use this preset, you will need a Rife software that can generate these frequencies and deliver them to your body. There are many types of Rife software available on the market. You will also need a software program that can control the device and run the preset. I recommend using  [brain beats website](https://brain-beats.in), which is free and compatible with most most speakers and headphones.
+To use this preset, you will need a Rife software that can generate these frequencies and deliver them to your body. There are many types of Rife software available on the market. You will also need a software program that can control the device and run the preset. I recommend using  [brain beats website](https://brain-beats-pro.netlify.app), which is free and compatible with most most speakers and headphones.
 
 To run the preset, follow these steps:
 

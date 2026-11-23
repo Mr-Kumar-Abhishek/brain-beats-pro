@@ -140,4 +140,4 @@ To maximize the biological grounding, anxiety relief, and wellness benefits of 7
 
 The **7.83 Hz Rife Frequency** is humanity's innate acoustic bridge to planetary wellness, inner stillness, and full-body vitality. By synchronizing brainwaves to the **Schumann Resonance**, 7.83 Hz melts stubborn anxiety and akathisia, balances blood pressure and heart rhythms, accelerates nerve and tissue recovery, and re-anchors the mind in profound peace.
 
-*Experience the 7.83 Hz preset and the Schumann Resonance & Global Grounding suite on [Brain Beats](https://brain-beats.in) to revitalize your life force and daily well-being.*
+*Experience the 7.83 Hz preset and the Schumann Resonance & Global Grounding suite on [Brain Beats](https://brain-beats-pro.netlify.app) to revitalize your life force and daily well-being.*

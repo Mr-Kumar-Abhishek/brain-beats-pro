@@ -27,7 +27,7 @@ The frequencies that I will use in this preset are:
 
 To use this preset, follow these steps:
 
-1. Connect your device to your computer and load the preset file. You can play the preset file from this website: [brain beats](https://brain-beats.in)
+1. Connect your device to your computer and load the preset file. You can play the preset file from this website: [brain beats](https://brain-beats-pro.netlify.app)
 2. Plug in your headphones or speakers and adjust the volume to a comfortable level. You should be able to hear the frequencies clearly, but not too loud.
 3. Start the program and listen to the frequencies for at least 30 minutes per day. You can listen longer if you wish, but do not exceed 2 hours per day.
 4. Repeat this process daily until your symptoms improve or disappear. You may also notice changes in your weight or body fat percentage over time.

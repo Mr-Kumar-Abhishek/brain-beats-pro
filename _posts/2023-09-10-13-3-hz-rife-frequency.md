@@ -150,4 +150,4 @@ To maximize the neuro-regenerative and motor-supportive benefits of 13.3 Hz on B
 
 The **13.3 Hz Rife Frequency** serves as an acoustic catalyst for motor stabilization, oligodendrocyte differentiation, and myelin sheath regeneration. By tuning brainwaves to the steady rhythm of **Low-Beta / SMR harmony**, 13.3 Hz supports healthy axon-glial communication, dampens spasticity, and reinforces the nervous system's innate capacity for renewal and repair.
 
-*Explore the 13.3 Hz preset and the complete Multiple Sclerosis Myelin Sheath Repair suite on [Brain Beats](https://brain-beats.in) to enhance your neural resilience and motor vitality.*
+*Explore the 13.3 Hz preset and the complete Multiple Sclerosis Myelin Sheath Repair suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your neural resilience and motor vitality.*

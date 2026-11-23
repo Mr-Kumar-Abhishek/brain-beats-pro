@@ -150,4 +150,4 @@ To maximize the spasticity-relieving and remyelinating benefits of 14.8 Hz on Br
 
 The **14.8 Hz Rife Frequency** provides an essential acoustic tool for spinal reflex modulation, spasticity relief, and myelin sheath regeneration. By tuning neural oscillations to the peak of **Low-Beta harmony**, 14.8 Hz eases chronic muscle stiffness, promotes fluid motor control, and reinforces structural neuro-repair.
 
-*Experience the 14.8 Hz preset and explore the Multiple Sclerosis Myelin Sheath Repair suite on [Brain Beats](https://brain-beats.in) to enhance your physical mobility and neurological well-being.*
+*Experience the 14.8 Hz preset and explore the Multiple Sclerosis Myelin Sheath Repair suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your physical mobility and neurological well-being.*

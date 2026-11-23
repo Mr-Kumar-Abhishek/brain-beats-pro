@@ -146,4 +146,4 @@ To maximize the motor stabilization and paralysis recovery benefits of 8.25 Hz o
 
 The **8.25 Hz Rife Frequency** serves as an indispensable acoustic bridge for motor control, sensorimotor harmony, and neuromuscular rehabilitation. By entraining brainwaves to the **Low-Alpha Sensorimotor Rhythm**, 8.25 Hz soothes spastic convulsions, calms kinetic tremors, awakens dormant motor pathways, and restores confident, graceful movement.
 
-*Experience the 8.25 Hz preset and the Motor Harmony & Neuromuscular Suite on [Brain Beats](https://brain-beats.in) to enhance your physical recovery and movement freedom.*
+*Experience the 8.25 Hz preset and the Motor Harmony & Neuromuscular Suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your physical recovery and movement freedom.*

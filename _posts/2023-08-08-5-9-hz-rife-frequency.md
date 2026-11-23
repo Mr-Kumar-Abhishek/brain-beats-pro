@@ -145,4 +145,4 @@ To maximize the disturbance field clearing and relaxing benefits of 5.9 Hz on Br
 
 The **5.9 Hz Rife Frequency** is a unique bio-energetic tool engineered to resolve the hidden interference of **Acupuncture Disturbance Fields and Scar Focuses**. By entraining the brain into **Upper-Theta tranquility**, 5.9 Hz helps restore cellular membrane potential, release fascial restrictions, unblock meridian flow, and foster deep somatic harmony.
 
-*Experience the 5.9 Hz preset and the Acupuncture Disturbance Field suite on [Brain Beats](https://brain-beats.in) to enhance your energetic alignment and wellness journey.*
+*Experience the 5.9 Hz preset and the Acupuncture Disturbance Field suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your energetic alignment and wellness journey.*

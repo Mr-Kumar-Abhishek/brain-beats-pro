@@ -143,4 +143,4 @@ To maximize the therapeutic benefits of 9.2 Hz for kidney wellness and blood pre
 
 The **9.2 Hz Rife Frequency** serves as a vital neuro-acoustic anchor for renal well-being and vascular tranquility. By entraining brainwaves into **Mid-Alpha harmony**, 9.2 Hz eases renal arteriolar constriction, supports natural excretory filtration, moderates diastolic blood pressure, and restores light, buoyant vitality.
 
-*Experience the 9.2 Hz preset and the Renal Vitality suite on [Brain Beats](https://brain-beats.in) to support your kidneys and cardiovascular balance.*
+*Experience the 9.2 Hz preset and the Renal Vitality suite on [Brain Beats](https://brain-beats-pro.netlify.app) to support your kidneys and cardiovascular balance.*

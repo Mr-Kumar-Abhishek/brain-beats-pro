@@ -37,6 +37,6 @@ Turquoise noise can be used for various purposes, such as sound synthesis, sound
 
 Turquoise noise is a type of noise that has a flat frequency spectrum, except for a narrow band of frequencies that are boosted or attenuated. It is similar to white noise, but with a slight coloration. Turquoise noise can be created by applying a band-pass filter to white noise, or by using the method of matching up the light spectrum. Turquoise noise can be used for sound synthesis, sound masking, or sound art.
 
-We hope you enjoyed this blog post and learned something new about turquoise noise. If you want to hear some examples of turquoise noise, you can check out this [brain beats website](https://brain-beats.in/noise.html) that offers different types of noise. 
+We hope you enjoyed this blog post and learned something new about turquoise noise. If you want to hear some examples of turquoise noise, you can check out this [brain beats website](https://brain-beats-pro.netlify.app/noise.html) that offers different types of noise. 
 
 Thank you for reading and happy listening!

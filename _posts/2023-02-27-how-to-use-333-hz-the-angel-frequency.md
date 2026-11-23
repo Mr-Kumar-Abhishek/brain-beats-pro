@@ -40,7 +40,7 @@ There are many ways to use 333 Hz for your benefit. Here are some suggestions:
 - Sing or hum along with it to enhance its effects on your voice and throat chakra.
 - Use headphones or earphones for a more immersive experience.
 
-You can find many videos and audios of 333 Hz online or on streaming platforms. You can also use a frequency generator app or device to create your own custom sounds. [Lastly, you can just use our portal to listen to 333 hz.](https://brain-beats.in/angel-frequency.html)
+You can find many videos and audios of 333 Hz online or on streaming platforms. You can also use a frequency generator app or device to create your own custom sounds. [Lastly, you can just use our portal to listen to 333 hz.](https://brain-beats-pro.netlify.app/angel-frequency.html)
 
 ## Conclusion
 

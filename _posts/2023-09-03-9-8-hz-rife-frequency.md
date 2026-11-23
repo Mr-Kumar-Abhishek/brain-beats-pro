@@ -139,4 +139,4 @@ To maximize the therapeutic benefits of 9.8 Hz for myelin support, motor coordin
 
 The **9.8 Hz Rife Frequency** serves as a vital neuro-acoustic catalyst for central nervous system remyelination, axonal conduction efficiency, and sensorimotor grace. By guiding brainwaves into **Upper-Alpha coherence**, 9.8 Hz supports oligodendrocyte health, calms spastic contractures, overcomes neurological fatigue, and nurtures resilient, agile well-being.
 
-*Experience the 9.8 Hz preset and the Multiple Sclerosis Myelin Sheath Repair suite on [Brain Beats](https://brain-beats.in) to enhance your neural conduction and physical harmony.*
+*Experience the 9.8 Hz preset and the Multiple Sclerosis Myelin Sheath Repair suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your neural conduction and physical harmony.*

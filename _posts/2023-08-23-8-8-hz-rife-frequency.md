@@ -150,4 +150,4 @@ To maximize the therapeutic benefits of 8.8 Hz for Meniere's relief and vestibul
 
 The **8.8 Hz Rife Frequency** serves as a specialized neuro-acoustic sanctuary for those navigating the challenges of Meniere's disease, endolymphatic hydrops, and vestibular imbalances. By synchronizing brainwaves into **Mid-Alpha tranquility** and fostering inner ear equilibrium, 8.8 Hz helps dissolve vertigo distress, reduce ear fullness, and restore calm, grounded clarity.
 
-*Experience the 8.8 Hz preset and the Menieres 1 suite on [Brain Beats](https://brain-beats.in) to nurture your balance and inner ear wellness.*
+*Experience the 8.8 Hz preset and the Menieres 1 suite on [Brain Beats](https://brain-beats-pro.netlify.app) to nurture your balance and inner ear wellness.*

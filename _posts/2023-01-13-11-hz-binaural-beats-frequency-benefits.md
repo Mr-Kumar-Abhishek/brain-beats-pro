@@ -74,4 +74,4 @@ If you are looking for a simple and effective way to enhance your focus, relaxat
 : [Binaural Beats: What Are They and What Are the Benefits? - WebMD](https://www.webmd.com/balance/what-are-binaural-beats)
 : [Binaural beats therapy: Benefits and how they work - Medical News Today](https://www.medicalnewstoday.com/articles/320019)
 : [What are Binaural Beats and How Can They Help You Focus?](https://www.lafilm.edu/blog/what-are-binaural-beats-and-how-can-they-help-you-focus/)
-: [Binaural Beats Generator](https://brain-beats.in/binaural-beats-generator.html)
+: [Binaural Beats Generator](https://brain-beats-pro.netlify.app/binaural-beats-generator.html)

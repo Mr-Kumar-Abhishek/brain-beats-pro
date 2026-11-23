@@ -149,4 +149,4 @@ To maximize the therapeutic benefits of 9.125 Hz for cellular regeneration and r
 
 The **9.125 Hz Rife Frequency** stands as a magnificent intersection between **Dr. Paul Nogier’s cellular frequency discoveries** and **Mid-Alpha brainwave entrainment**. By bathing the nervous system in harmonic resonance, 9.125 Hz promotes ectodermal repair, soothes neural irritability, balances micro-vascular tone, and brings deep, restorative equilibrium to mind and body.
 
-*Experience the 9.125 Hz preset and the Nogier Frequencies collection on [Brain Beats](https://brain-beats.in) to enhance your cellular vitality and inner serenity.*
+*Experience the 9.125 Hz preset and the Nogier Frequencies collection on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your cellular vitality and inner serenity.*

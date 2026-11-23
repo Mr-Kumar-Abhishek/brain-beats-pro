@@ -164,4 +164,4 @@ For enhanced regenerative and harmonizing effects, 4.56 Hz pairs effectively wit
 
 The **4.56 Hz Rife / Nogier Frequency** is a profound bridge uniting French auricular biophysics with modern psychoacoustic entrainment. By delivering the subharmonic resonance of **Nogier Frequency A** through **Theta-wave tranquility**, 4.56 Hz helps rejuvenate ectodermal tissues, soothe nerve hyper-excitability, restore autonomic harmony, and elevate overall cellular vitality.
 
-*Experience the 4.56 Hz preset and the complete Nogier Frequency suite on [Brain Beats](https://brain-beats.in) to enhance your restorative healing journey.*
+*Experience the 4.56 Hz preset and the complete Nogier Frequency suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your restorative healing journey.*

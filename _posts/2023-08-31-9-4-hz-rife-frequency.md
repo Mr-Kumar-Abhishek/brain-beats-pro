@@ -151,4 +151,4 @@ To maximize the therapeutic benefits of 9.4 Hz for neuromotor recovery, joint ea
 
 The **9.4 Hz Rife Frequency** serves as an indispensable neuro-acoustic sanctuary for cellular neurological restoration, motor recovery, and musculoskeletal comfort. By entraining brainwaves into **Mid-Alpha tranquility**, 9.4 Hz supports myelin sheath integrity, awakens paretic motor pathways, dissolves joint arthritis and backache tension, and empowers resilient vitality.
 
-*Experience the 9.4 Hz preset and the Multiple Sclerosis & Neuromotor suites on [Brain Beats](https://brain-beats.in) to enhance your neural strength and physical ease.*
+*Experience the 9.4 Hz preset and the Multiple Sclerosis & Neuromotor suites on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your neural strength and physical ease.*

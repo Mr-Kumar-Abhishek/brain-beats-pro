@@ -145,4 +145,4 @@ To maximize the therapeutic benefits of 9.9 Hz for vision health and digestive c
 
 The **9.9 Hz Rife Frequency** serves as an indispensable neuro-acoustic ally for supporting macular vitality, choroidal perfusion, and gastrointestinal mucosal resilience. By guiding brainwaves into **Upper-Alpha serenity**, 9.9 Hz nourishes retinal cellular health, calms gut irritation, and restores clear, refreshed well-being.
 
-*Experience the 9.9 Hz preset and the Macular Degeneration & Digestive Health suites on [Brain Beats](https://brain-beats.in) to enhance your vision and gut harmony.*
+*Experience the 9.9 Hz preset and the Macular Degeneration & Digestive Health suites on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your vision and gut harmony.*

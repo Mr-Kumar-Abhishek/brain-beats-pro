@@ -134,4 +134,4 @@ To maximize the nerve healing and neuropathic relief benefits of 7.64 Hz on Brai
 
 The **7.64 Hz Rife Frequency** serves as an indispensable acoustic ally for nervous system rejuvenation, nerve healing, and neuropathic comfort. By guiding brainwaves into the serene **Theta-Alpha cusp**, 7.64 Hz quiets hyper-excitable nerve signals, stimulates neurotrophic regenerative pathways, and cultivates profound full-body neurological ease.
 
-*Experience the 7.64 Hz preset and the Nerve Healing & Neuro-Regeneration suite on [Brain Beats](https://brain-beats.in) to support your nerve health and vitality.*
+*Experience the 7.64 Hz preset and the Nerve Healing & Neuro-Regeneration suite on [Brain Beats](https://brain-beats-pro.netlify.app) to support your nerve health and vitality.*

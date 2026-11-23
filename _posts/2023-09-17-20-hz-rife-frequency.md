@@ -148,4 +148,4 @@ To maximize the comprehensive energizing and immune-supportive benefits of 20 Hz
 
 The **20 Hz Rife Frequency** stands as the definitive universal master frequency of electro-medicine, bridging immune vitality, endocrine resilience, and sharp high-beta focus. By harmonizing the body and mind to the universal **20 Hz standard**, you unlock a powerful acoustic catalyst for whole-body rejuvenation, stamina, and mental clarity.
 
-*Experience the 20 Hz preset and explore the Complete Early Crane master suites on [Brain Beats](https://brain-beats.in) to elevate your daily vitality and immune strength.*
+*Experience the 20 Hz preset and explore the Complete Early Crane master suites on [Brain Beats](https://brain-beats-pro.netlify.app) to elevate your daily vitality and immune strength.*

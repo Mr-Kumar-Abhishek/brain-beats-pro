@@ -142,4 +142,4 @@ To maximize the refreshing and recalibrating benefits of 10.55 Hz on Brain Beats
 
 The **10.55 Hz Rife Frequency** serves as an indispensable neuro-acoustic reset button for anyone navigating the effects of frequency over-saturation and sensory fatigue. By guiding brainwaves into **Upper-Alpha serenity**, 10.55 Hz clears mental heaviness, recharges exhausted synaptic networks, restores bio-energetic balance, and returns clear, buoyant lucidity.
 
-*Experience the 10.55 Hz preset and the Frequency Fatigue Reset suite on [Brain Beats](https://brain-beats.in) to restore your natural vibrancy and peace of mind.*
+*Experience the 10.55 Hz preset and the Frequency Fatigue Reset suite on [Brain Beats](https://brain-beats-pro.netlify.app) to restore your natural vibrancy and peace of mind.*

@@ -149,4 +149,4 @@ For holistic digestive and energetic restoration, 4.18 Hz pairs effectively with
 
 The **4.18 Hz Rife Frequency** serves as a vital sonic bridge between the brain and the digestive system. By tapping into the restorative power of **Low-Theta brainwave entrainment**, 4.18 Hz helps quiet systemic inflammation, relieve visceral tension, clear cognitive brain fog, and promote an optimal internal terrain for cellular and mucosal recovery.
 
-*Experience the 4.18 Hz preset and the Celiac Disease 1 multi-frequency suite on [Brain Beats](https://brain-beats.in) to support your holistic wellness journey.*
+*Experience the 4.18 Hz preset and the Celiac Disease 1 multi-frequency suite on [Brain Beats](https://brain-beats-pro.netlify.app) to support your holistic wellness journey.*

@@ -75,4 +75,4 @@ Here are some tips and resources to help you get the most out of the 2048 Hz pur
 Here are some links to some useful resources for using the 2048 Hz pure tone frequency:
 
 - An app that generates pure tone frequency of solar chakra: [Brain beats app](https://play.google.com/store/apps/details?id=app.netlify.brain_beats.twa)
-- A website that generates pure tone frequency of solar chakra: [brain beats web app](https://brain-beats.in/pure-tones.html)
+- A website that generates pure tone frequency of solar chakra: [brain beats web app](https://brain-beats-pro.netlify.app/pure-tones.html)

@@ -148,4 +148,4 @@ For enhanced muscular, visceral, and neural recovery, 4.9 Hz harmonizes effectiv
 
 The **4.9 Hz Rife Frequency** is a versatile spasmolytic frequency engineered to soothe neuromuscular tension, calm gastrointestinal and uterine cramping, and alleviate stress-induced headaches. By guiding the brain into **Theta-wave tranquility**, 4.9 Hz helps release physical resistance, quiet central pain pathways, and restore full somatic comfort.
 
-*Experience the 4.9 Hz preset and the Stiff Neck & Muscular Relief suites on [Brain Beats](https://brain-beats.in) to enhance your physical recovery and wellbeing.*
+*Experience the 4.9 Hz preset and the Stiff Neck & Muscular Relief suites on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your physical recovery and wellbeing.*

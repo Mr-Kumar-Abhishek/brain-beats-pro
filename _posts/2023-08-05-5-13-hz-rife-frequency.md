@@ -148,4 +148,4 @@ For comprehensive digestive and emotional recovery, 5.13 Hz harmonizes effective
 
 The **5.13 Hz Rife Frequency** provides an invaluable sonic bridge for gut-brain harmony and digestive relaxation. By guiding the brain into **Mid-Theta serenity**, 5.13 Hz helps ease visceral tension, stimulate lymphatic drainage, clear post-prandial anxiety, and create a peaceful environment for deep digestive recovery.
 
-*Experience the 5.13 Hz preset and the Celiac Disease 1 frequency suite on [Brain Beats](https://brain-beats.in) to enrich your holistic wellness routine.*
+*Experience the 5.13 Hz preset and the Celiac Disease 1 frequency suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enrich your holistic wellness routine.*

@@ -100,7 +100,7 @@ git worktree remove /tmp/gh-pages-deploy --force
 
 ## 4. Netlify Edge CDN Deployment
 
-The live domain `https://brain-beats.in` is routed through Netlify Edge CDN with automatic HTTPS.
+The live domain `https://brain-beats-pro.netlify.app` is routed through Netlify Edge CDN with automatic HTTPS.
 - **`netlify.toml` Configuration**:
   - Configured with `NODE_VERSION = '24'`.
   - Excludes unstable plugins (e.g. `@netlify/plugin-sitemap`) to guarantee zero-exit-code reliability.

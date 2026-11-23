@@ -152,4 +152,4 @@ In comprehensive sound therapy and Rife protocols, 3.9 Hz synergizes effectively
 
 The **3.9 Hz Rife Frequency** is an exceptional sound therapy tool capable of bridging deep neural relaxation with targeted somatic healing. Whether addressing facial nerve recovery in Bell's Palsy, nourishing cardiovascular vagal tone, alleviating neuropathic distress, or soothing gastrointestinal spasms, 3.9 Hz provides a versatile, non-invasive frequency foundation for whole-body restoration.
 
-*Experience the 3.9 Hz preset directly on [Brain Beats](https://brain-beats.in) to enhance your recovery and restorative wellness routine.*
+*Experience the 3.9 Hz preset directly on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your recovery and restorative wellness routine.*

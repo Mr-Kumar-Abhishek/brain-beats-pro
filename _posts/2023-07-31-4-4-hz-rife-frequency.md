@@ -149,4 +149,4 @@ For comprehensive neuro-rehabilitation and physical recovery, 4.4 Hz pairs effec
 
 The **4.4 Hz Rife Frequency** stands as a targeted neuro-acoustic tool designed to support the body's natural regenerative intelligence. By entraining the brain into **Low-Theta serenity**, 4.4 Hz helps calm neuro-inflammation, alleviate muscle spasticity and fatigue, and create a tranquil bio-energetic environment for oligodendrocyte and myelin sheath recovery.
 
-*Experience the 4.4 Hz preset and the Multiple Sclerosis Myelin Sheath Repair suite directly on [Brain Beats](https://brain-beats.in) to enhance your neurological wellness.*
+*Experience the 4.4 Hz preset and the Multiple Sclerosis Myelin Sheath Repair suite directly on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your neurological wellness.*

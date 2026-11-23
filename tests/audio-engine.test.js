@@ -3,6 +3,7 @@
  * Test-Driven Development (TDD) Test Runner
  */
 
+const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
@@ -160,9 +161,9 @@ global.window = {
 global.AudioContext = MockAudioContext;
 global.AudioWorkletNode = MockAudioWorkletNode;
 global.document = {
-  querySelector: () => ({ classList: { add: ()=>{}, remove: ()=>{} }, style: {} }),
+  querySelector: () => ({ classList: { add: () => { }, remove: () => { } }, style: {} }),
   querySelectorAll: () => [],
-  addEventListener: () => {},
+  addEventListener: () => { },
   getElementById: (id) => ({ value: "100" })
 };
 global.$ = (selector) => {
@@ -316,11 +317,11 @@ async function runTestSuite() {
 
     await global.play_violet_noise();
     assert(global.boolViolet === 1, "play_violet_noise() activates +6dB/oct differentiated violet noise");
-    
+
     // Test transition from Violet to Yellow noise
     await global.play_yellow_noise();
     assert(global.boolYellow === 1 && global.boolViolet === 0, "play_yellow_noise() cleanly transitions from violet to yellow noise without conflicts");
-    
+
     // Test transition from Yellow to Violet noise
     await global.play_violet_noise();
     assert(global.boolViolet === 1 && global.boolYellow === 0, "play_violet_noise() cleanly transitions from yellow to violet noise without conflicts");
@@ -334,7 +335,7 @@ async function runTestSuite() {
   try {
     global.testVolumeVal = 75;
     assert(global.volume_set() === 0.75, "volume_set() converts 0-100 percentage scale to 0.0-1.0 gain factor (75 -> 0.75)");
-    
+
     global.play_solfeggio(528);
     global.live_volume_set();
     assert(global.volume.gain.value === 0.75, "live_volume_set() dynamically updates active tone volume GainNode");
@@ -415,6 +416,36 @@ async function runTestSuite() {
     }
   }
   assert(existingUrls === matches.length, `All ${matches.length} precached Service Worker URLs physically exist on disk`);
+  const revPairs = [...swCode.matchAll(/\{"revision":"([0-9a-f]{32})","url":"([^"]+)"\}/g)];
+  let md5Matches = 0;
+  for (const [, rev, relUrl] of revPairs) {
+    const localPath = path.join(__dirname, '..', relUrl);
+    if (fs.existsSync(localPath)) {
+      const diskMd5 = crypto.createHash('md5').update(fs.readFileSync(localPath)).digest('hex');
+      if (diskMd5 === rev) md5Matches++;
+    }
+  }
+  assert(revPairs.length === matches.length && md5Matches === revPairs.length, `All ${md5Matches} precached Service Worker MD5 revision hashes match files on disk`);
+
+  const sha256ManifestPath = path.join(__dirname, '../reports/sha256-manifest.json');
+  let sha256Valid = false;
+  let manifestCount = 0;
+  let sha256Matches = 0;
+  if (fs.existsSync(sha256ManifestPath)) {
+    const sha256Manifest = JSON.parse(fs.readFileSync(sha256ManifestPath, 'utf8'));
+    const manifestEntries = Object.entries(sha256Manifest.files || {});
+    manifestCount = manifestEntries.length;
+    for (const [relPath, meta] of manifestEntries) {
+      const localPath = path.join(__dirname, '..', relPath);
+      if (fs.existsSync(localPath)) {
+        const diskSha256 = crypto.createHash('sha256').update(fs.readFileSync(localPath)).digest('hex');
+        if (diskSha256 === meta.sha256) sha256Matches++;
+      }
+    }
+    sha256Valid = manifestCount >= matches.length && sha256Matches === manifestCount;
+  }
+  assert(sha256Valid, `All ${sha256Matches}/${manifestCount} files in reports/sha256-manifest.json match live SHA-256 digests`);
+
   assert(!swCode.includes('"url":"blog/') && !swCode.includes('"url":"_posts/'), "Service worker precache strictly excludes all blog posts and blog components");
   assert(swCode.includes("showOfflineReadyNotification") && swCode.includes("PRECACHE_COMPLETE") && swCode.includes("NetworkOnly"), "Service worker implements offline ready notifications, client broadcasts, and NetworkOnly exclusion for blog posts");
 
@@ -481,7 +512,13 @@ async function runTestSuite() {
   const defaultLayoutContent = fs.readFileSync(path.join(__dirname, '../_layouts/default.html'), 'utf8');
   const indexHtmlContent = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
   assert(licensesHtmlContent.includes("Creative Commons Attribution 4.0 International (CC BY 4.0)") && licensesHtmlContent.includes("Dual Licensing Model &amp; Governance") && defaultLayoutContent.includes("Creative Commons Attribution 4.0 International (CC BY 4.0)") && indexHtmlContent.includes("licenses.html") && !indexHtmlContent.includes("raw.githubusercontent.com"), "Web UI templates and pages include Creative Commons content license scope and clean navigation without raw links");
-  assert(defaultLayoutContent.includes("mailto:support@brain-beats.in") && indexHtmlContent.includes("mailto:support@brain-beats.in"), "Web UI templates and layouts include support@brain-beats.in contact email");
+  assert(
+    defaultLayoutContent.includes("https://discord.gg/JNRPJDFWdY") &&
+    indexHtmlContent.includes("https://discord.gg/JNRPJDFWdY") &&
+    !defaultLayoutContent.includes("brain-beats.in") &&
+    !indexHtmlContent.includes("brain-beats.in"),
+    "Web UI templates and layouts use Discord chat support with zero legacy .in TLD references"
+  );
 
   const mainJsContent = fs.readFileSync(path.join(__dirname, '../js/main.js'), 'utf8');
   assert(mainJsContent.includes("play_yellow_noise") && mainJsContent.includes("play_violet_noise") && mainJsContent.includes("live_volume_set"), "js/main.js contains yellow noise, violet noise, and volume dynamics patches");
@@ -553,7 +590,28 @@ async function runTestSuite() {
   assert(pkgJson.scripts && pkgJson.scripts["build:sitemap"] && pkgJson.scripts["build:sw"] && pkgJson.scripts["build:offline"], "package.json contains automated sitemap and offline build scripts");
 
   const sitemapXmlContent = fs.readFileSync(path.join(__dirname, '../sitemap.xml'), 'utf8');
-  assert(sitemapXmlContent.includes("https://brain-beats.in"), "sitemap.xml exists and maintains canonical domain integrity (https://brain-beats.in)");
+  assert(
+    sitemapXmlContent.includes("https://brain-beats-pro.netlify.app") &&
+    !sitemapXmlContent.includes("brain-beats.in"),
+    "sitemap.xml exists and maintains canonical domain integrity (https://brain-beats-pro.netlify.app)"
+  );
+
+  const assetlinksPath = path.join(__dirname, '../.well-known/assetlinks.json');
+  const assetlinks = fs.existsSync(assetlinksPath) ? JSON.parse(fs.readFileSync(assetlinksPath, 'utf8')) : [];
+  const validAssetlinks =
+    Array.isArray(assetlinks) &&
+    assetlinks.length > 0 &&
+    assetlinks.every((entry) =>
+      entry &&
+      entry.target &&
+      Array.isArray(entry.target.sha256_cert_fingerprints) &&
+      entry.target.sha256_cert_fingerprints.length > 0 &&
+      entry.target.sha256_cert_fingerprints.every((fp) => /^[0-9A-F]{2}(:[0-9A-F]{2}){31}$/.test(fp))
+    ) &&
+    configYml.includes('".well-known"') &&
+    !fs.existsSync(path.join(__dirname, '../CNAME')) &&
+    !fs.existsSync(path.join(__dirname, '../.well-known/brave-rewards-verification.txt'));
+  assert(validAssetlinks, ".well-known/assetlinks.json contains valid SHA-256 certificate fingerprints, _config.yml publishes .well-known, and legacy .in TLD verification files are removed");
 
   const codeqlWorkflow = fs.readFileSync(path.join(__dirname, '../.github/workflows/codeql.yml'), 'utf8');
   assert(codeqlWorkflow.includes("github/codeql-action/analyze"), ".github/workflows/codeql.yml exists and configures automated CodeQL scanning");
@@ -581,7 +639,7 @@ async function runTestSuite() {
   );
 
   assert(
-    defaultLayoutContent.includes('title="Email Brain Beats Pro Support"') &&
+    defaultLayoutContent.includes('title="Join Brain Beats Pro Discord Support Chat"') &&
     defaultLayoutContent.includes('title="Subscribe to Brain Beats Pro Atom/RSS Feed"') &&
     defaultLayoutContent.includes('title="Creative Commons Attribution 4.0 International License Details"') &&
     defaultLayoutContent.includes('title="GNU Affero General Public License v3.0 Details"'),

@@ -144,4 +144,4 @@ To maximize the biliary headache relief and social calming benefits of 8.5 Hz on
 
 The **8.5 Hz Rife Frequency** serves as an indispensable acoustic bridge between visceral comfort and social serenity. By entraining brainwaves into **Low-Alpha harmony**, 8.5 Hz releases stubborn biliary spasms, dissolves referred cranial headaches, eases social anxiety, and restores light, tranquil well-being.
 
-*Experience the 8.5 Hz preset and the Visceral Calm & Social Serenity suite on [Brain Beats](https://brain-beats.in) to enhance your digestive comfort and peace of mind.*
+*Experience the 8.5 Hz preset and the Visceral Calm & Social Serenity suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your digestive comfort and peace of mind.*

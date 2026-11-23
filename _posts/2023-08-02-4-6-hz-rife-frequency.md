@@ -152,4 +152,4 @@ For comprehensive endocrine and physical balance, 4.6 Hz harmonizes effectively 
 
 The **4.6 Hz Rife Frequency** serves as a vital sonic tool for restoring neuro-endocrine calm and autonomic balance. By guiding the brain into **Theta-wave tranquility**, 4.6 Hz helps quiet neuromuscular hyper-excitability, alleviate cognitive fatigue, and foster an optimal internal environment for homeostatic recovery.
 
-*Experience the 4.6 Hz preset and the endocrine support frequency suite on [Brain Beats](https://brain-beats.in) to enrich your restorative wellness journey.*
+*Experience the 4.6 Hz preset and the endocrine support frequency suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enrich your restorative wellness journey.*

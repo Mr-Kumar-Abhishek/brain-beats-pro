@@ -148,4 +148,4 @@ To maximize the therapeutic benefits of 8.9 Hz for Meniere's relief and vestibul
 
 The **8.9 Hz Rife Frequency** serves as an indispensable acoustic tool for restoring equilibrium and inner ear comfort. By combining **Mid-Alpha brainwave entrainment** with inner ear hydrops relief, 8.9 Hz calms overactive vestibular nerves, aids endolymphatic decompression, eases spinning sensations, and nurtures clear, centered tranquility.
 
-*Experience the 8.9 Hz preset and the Menieres 1 suite on [Brain Beats](https://brain-beats.in) to support your balance and auditory serenity.*
+*Experience the 8.9 Hz preset and the Menieres 1 suite on [Brain Beats](https://brain-beats-pro.netlify.app) to support your balance and auditory serenity.*

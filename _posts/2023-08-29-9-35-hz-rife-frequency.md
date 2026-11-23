@@ -145,4 +145,4 @@ To maximize the therapeutic benefits of 9.35 Hz for bronchial soothing and airwa
 
 The **9.35 Hz Rife Frequency** serves as a specialized neuro-acoustic bridge for respiratory restoration and bronchial comfort. By synchronizing brainwaves into **Mid-Alpha serenity**, 9.35 Hz eases acute bronchospasms, supports mucociliary clearance, dissolves chest constriction, and restores easy, revitalizing breath.
 
-*Experience the 9.35 Hz preset and the Bronchitis suite on [Brain Beats](https://brain-beats.in) to nurture your respiratory health and breathing ease.*
+*Experience the 9.35 Hz preset and the Bronchitis suite on [Brain Beats](https://brain-beats-pro.netlify.app) to nurture your respiratory health and breathing ease.*

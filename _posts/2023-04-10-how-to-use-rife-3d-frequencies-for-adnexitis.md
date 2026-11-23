@@ -23,7 +23,7 @@ This blog post is for informational purposes only and does not constitute medica
 
 ## How to Use the Preset
 
-To use this preset, you will need a device that can generate and play Rife 3D frequencies, such as a Spooky2 generator or a smartphone app or website such as [brain beats](https://brain-beats.in). You will also need a way to deliver the frequencies to your body, such as headphones, speakers, contact electrodes, plasma tube, or scalar field.
+To use this preset, you will need a device that can generate and play Rife 3D frequencies, such as a Spooky2 generator or a smartphone app or website such as [brain beats](https://brain-beats-pro.netlify.app). You will also need a way to deliver the frequencies to your body, such as headphones, speakers, contact electrodes, plasma tube, or scalar field.
 
 The preset contains six frequencies that are played in sequence for three minutes each. The total duration of the preset is 18 minutes. You can repeat the preset as often as you like, depending on your condition and response. Some people may notice improvement after one session, while others may need several sessions over days or weeks.
 

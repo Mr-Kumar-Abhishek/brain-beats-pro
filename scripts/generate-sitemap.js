@@ -1,13 +1,13 @@
 /**
  * Brain Beats - Automated Local Sitemap Generator
- * Generates sitemap.xml with full canonical domain integrity (https://brain-beats.in)
+ * Generates sitemap.xml with full canonical domain integrity (https://brain-beats-pro.netlify.app)
  * Indexes all root HTML pages and all chronological blog articles in _posts/.
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const DOMAIN = 'https://brain-beats.in';
+const DOMAIN = 'https://brain-beats-pro.netlify.app';
 const ROOT_DIR = path.resolve(__dirname, '..');
 const SITEMAP_PATH = path.join(ROOT_DIR, 'sitemap.xml');
 

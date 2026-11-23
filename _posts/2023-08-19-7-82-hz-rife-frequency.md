@@ -152,4 +152,4 @@ To maximize the stomach-soothing, dental healing, and focus benefits of 7.82 Hz 
 
 The **7.82 Hz Rife Frequency** serves as an indispensable acoustic bridge for mental focus, gut-brain harmony, and surgical recovery. By entraining brainwaves to the **Schumann Resonance Harmonic**, 7.82 Hz balances gastric acidity, accelerates dental bone healing, soothes craniofacial nerve tension, and fosters sharp, effortless mental concentration.
 
-*Experience the 7.82 Hz preset and the Gut-Brain & Focus Suite on [Brain Beats](https://brain-beats.in) to enrich your clarity, digestion, and daily vitality.*
+*Experience the 7.82 Hz preset and the Gut-Brain & Focus Suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enrich your clarity, digestion, and daily vitality.*

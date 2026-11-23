@@ -146,4 +146,4 @@ To maximize the coughing relief and joint soothing benefits of 7.7 Hz on Brain B
 
 The **7.7 Hz Rife Frequency** serves as a vital acoustic refuge for irritated respiratory pathways and fatigued joints. By guiding brainwaves to the serene **Theta-Alpha cusp**, 7.7 Hz soothes hyper-active cough reflexes, relaxes tight chest and paraspinal muscles, eases arthritic stiffness, and restores full-body breathing ease.
 
-*Experience the 7.7 Hz preset and the Respiratory & Joint Recovery suite on [Brain Beats](https://brain-beats.in) to enhance your breathing comfort and physical well-being.*
+*Experience the 7.7 Hz preset and the Respiratory & Joint Recovery suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your breathing comfort and physical well-being.*

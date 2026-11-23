@@ -155,4 +155,4 @@ To maximize the therapeutic benefits of 9.39 Hz for joint comfort and urogenital
 
 The **9.39 Hz Rife Frequency** serves as a vital multi-system acoustic bridge connecting joint ease with pelvic and urogenital balance. By guiding brainwaves into **Mid-Alpha tranquility**, 9.39 Hz encourages healthy micro-vascular flow, soothes gouty and arthritic discomfort, relieves bladder and prostate tightness, and restores light, buoyant physical well-being.
 
-*Experience the 9.39 Hz preset and the Joint & Pelvic Vitality suites on [Brain Beats](https://brain-beats.in) to nurture your circulation and mobility.*
+*Experience the 9.39 Hz preset and the Joint & Pelvic Vitality suites on [Brain Beats](https://brain-beats-pro.netlify.app) to nurture your circulation and mobility.*

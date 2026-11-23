@@ -27,7 +27,7 @@ Pink noise might also have some benefits for your brain and memory. Some studies
 
 ## How to Use Pink Noise for Sleep?
 
-If you want to try using pink noise for sleep, you will need a device that can play pink noise continuously throughout the night. You can use a sound machine, a speaker, a smartphone, or a computer. You can also download [pink noise apps and websites](https://brain-beats.in/) or find pink noise videos on YouTube. 
+If you want to try using pink noise for sleep, you will need a device that can play pink noise continuously throughout the night. You can use a sound machine, a speaker, a smartphone, or a computer. You can also download [pink noise apps and websites](https://brain-beats-pro.netlify.app/) or find pink noise videos on YouTube. 
 
 Once you have your pink noise source ready, you can adjust the volume to a comfortable level. It should be loud enough to mask other noises, but not too loud to cause hearing damage or annoyance. You can also experiment with different types of pink noise to find the one that suits your preference and mood.
 

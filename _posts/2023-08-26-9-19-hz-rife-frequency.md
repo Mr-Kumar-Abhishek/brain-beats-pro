@@ -152,4 +152,4 @@ To maximize the therapeutic benefits of 9.19 Hz for blood pressure regulation an
 
 The **9.19 Hz Rife Frequency** provides a versatile neuro-acoustic gateway connecting cardiovascular relaxation with deep musculoskeletal relief. By guiding brainwaves into **Mid-Alpha serenity**, 9.19 Hz assists in moderating renin-induced vascular hypertension, releasing stubborn spinal and neck spasticity, supporting auditory bone health, and restoring tranquil balance.
 
-*Experience the 9.19 Hz preset and the Cardiovascular & Musculoskeletal suites on [Brain Beats](https://brain-beats.in) to nurture your circulation and physical ease.*
+*Experience the 9.19 Hz preset and the Cardiovascular & Musculoskeletal suites on [Brain Beats](https://brain-beats-pro.netlify.app) to nurture your circulation and physical ease.*

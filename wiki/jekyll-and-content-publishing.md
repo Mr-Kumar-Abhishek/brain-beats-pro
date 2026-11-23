@@ -89,4 +89,4 @@ class PrecisionToneSynthesizer {
    - `blog/blog/atom.xml`: Generates a W3C-valid XML feed capped to the 50 most recent posts with escaped titles and XML character sanitization.
    - `feed.xml`: Site-wide RSS feed.
 2. **Sitemap**:
-   - `scripts/generate-sitemap.js`: Scans the entire project tree and produces a clean 1,415+ URL sitemap (`sitemap.xml`) referencing `https://brain-beats.in`.
+   - `scripts/generate-sitemap.js`: Scans the entire project tree and produces a clean 1,415+ URL sitemap (`sitemap.xml`) referencing `https://brain-beats-pro.netlify.app`.

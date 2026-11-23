@@ -51,7 +51,7 @@ To use 144 Hz pure tone therapy for your headaches and migraines, you will need:
 - A pair of headphones or earbuds that can reproduce high-quality sound
 - A comfortable place where you can sit or lie down without distractions
 
-You can find 144 Hz pure tone sound files online, or you can use a free app or [website](https://brain-beats.in/pure-tones.html) that can generate them
+You can find 144 Hz pure tone sound files online, or you can use a free app or [website](https://brain-beats-pro.netlify.app/pure-tones.html) that can generate them
 
 Once you have your device ready, follow these steps:
 

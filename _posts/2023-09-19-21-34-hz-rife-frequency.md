@@ -145,4 +145,4 @@ To maximize the liver-supportive and bile-regulating benefits of 21.34 Hz on Bra
 
 The **21.34 Hz Rife Frequency** serves as a specialized acoustic tool for promoting hepatic bile flow, regulating cholesterol metabolism, and banishing sluggish liver brain fog. By attuning the body and mind to **High-Beta vitality**, 21.34 Hz supports smooth digestive function, healthy lipid balance, and refreshed systemic energy.
 
-*Experience the 21.34 Hz preset and explore the Liver and Digestive suites on [Brain Beats](https://brain-beats.in) to enhance your body's natural metabolic harmony.*
+*Experience the 21.34 Hz preset and explore the Liver and Digestive suites on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your body's natural metabolic harmony.*

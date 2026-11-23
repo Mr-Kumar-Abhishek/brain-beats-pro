@@ -138,4 +138,4 @@ To optimize your listening sessions with the 6.7 Hz preset on Brain Beats:
 
 The **6.7 Hz Rife Frequency** serves as a gentle, restorative acoustic haven for an overworked central nervous system. By gently guiding brainwaves into the serene **Upper-Theta band**, 6.7 Hz promotes microglial calming, eases neuropathic tension, clears cognitive exhaustion, and fosters deep neurological resilience.
 
-*Experience the 6.7 Hz preset and the Central Nervous System & Neuro-Calm suite on [Brain Beats](https://brain-beats.in) to enrich your restorative wellness journey.*
+*Experience the 6.7 Hz preset and the Central Nervous System & Neuro-Calm suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enrich your restorative wellness journey.*

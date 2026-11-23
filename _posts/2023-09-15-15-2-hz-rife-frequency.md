@@ -145,4 +145,4 @@ To maximize the visceral detox and lymphatic drainage benefits of 15.2 Hz on Bra
 
 The **15.2 Hz Rife Frequency** serves as an indispensable acoustic catalyst for deep visceral lymphatic drainage, hepatosplenic clearance, and metabolic renewal. By tuning neural oscillations to **Mid-Beta alertness**, 15.2 Hz clears systemic heaviness, accelerates internal waste elimination, and restores vibrant vitality.
 
-*Experience the 15.2 Hz preset and explore the Detox and Lymphs master suite on [Brain Beats](https://brain-beats.in) to revitalize your body's deep detoxification pathways.*
+*Experience the 15.2 Hz preset and explore the Detox and Lymphs master suite on [Brain Beats](https://brain-beats-pro.netlify.app) to revitalize your body's deep detoxification pathways.*

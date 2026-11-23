@@ -146,4 +146,4 @@ To maximize the therapeutic benefit of 5.8 Hz on Brain Beats:
 
 The **5.8 Hz Rife Frequency** serves as a vital sonic tool for restoring musculoskeletal integrity and sensory-vestibular equilibrium. By guiding the brain into **Upper-Theta serenity**, 5.8 Hz helps deactivate painful myofascial trigger points, accelerate tendon recovery, relieve vertigo and dizziness, and foster deep somatic harmony.
 
-*Experience the 5.8 Hz preset and the Tendomyopathy & Vertigo Relief suites on [Brain Beats](https://brain-beats.in) to enhance your physical recovery and wellbeing.*
+*Experience the 5.8 Hz preset and the Tendomyopathy & Vertigo Relief suites on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your physical recovery and wellbeing.*

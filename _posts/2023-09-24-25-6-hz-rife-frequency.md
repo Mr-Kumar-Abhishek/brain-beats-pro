@@ -144,4 +144,4 @@ To maximize the retinal and visual benefits of 25.6 Hz on Brain Beats:
 
 The **25.6 Hz Rife Frequency** serves as an indispensable acoustic tool for foveal photoreceptor activation, retinal ganglion cell synchronization, and visual pathway revitalization. By attuning neural oscillations to **Low-Gamma harmony and Scientific Pitch resonance**, 25.6 Hz empowers cellular renewal in the retina and supports clear, vibrant vision.
 
-*Experience the 25.6 Hz preset and explore the Macular Degeneration 1 suite on [Brain Beats](https://brain-beats.in) to enhance your visual vitality and daily clarity.*
+*Experience the 25.6 Hz preset and explore the Macular Degeneration 1 suite on [Brain Beats](https://brain-beats-pro.netlify.app) to enhance your visual vitality and daily clarity.*

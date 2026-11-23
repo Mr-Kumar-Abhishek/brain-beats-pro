@@ -150,4 +150,4 @@ To maximize the energizing and cognitive benefits of 16 Hz on Brain Beats:
 
 The **16 Hz Rife Frequency** is a premier bio-resonance frequency for unlocking cellular energy, modulating calcium efflux, and cultivating sharp mental focus. By attuning the brain and body to **Mid-Beta harmony**, 16 Hz revitalizes cellular vitality, banishes cognitive sluggishness, and empowers peak daily performance.
 
-*Experience the 16 Hz preset and explore the Vitamag Complete Set on [Brain Beats](https://brain-beats.in) to recharge your cellular batteries and sharpen your mind.*
+*Experience the 16 Hz preset and explore the Vitamag Complete Set on [Brain Beats](https://brain-beats-pro.netlify.app) to recharge your cellular batteries and sharpen your mind.*
