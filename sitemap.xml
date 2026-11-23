@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://brain-beats-pro.netlify.app/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
     <loc>https://brain-beats-pro.netlify.app/3d-alt-frequency.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
@@ -113,18 +119,6 @@
     <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://brain-beats-pro.netlify.app/google7484c80835cfba45.html</loc>
-    <lastmod>2026-08-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://brain-beats-pro.netlify.app/</loc>
-    <lastmod>2026-11-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://brain-beats-pro.netlify.app/isochronic-tones-generator.html</loc>
@@ -277,6 +271,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://brain-beats-pro.netlify.app/blog/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://brain-beats-pro.netlify.app/blog/blog/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://brain-beats-pro.netlify.app/blog/search/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://brain-beats-pro.netlify.app/blog/2016/06/10/abhishek-kumar-site-launched.html</loc>
     <lastmod>2016-06-10</lastmod>
     <changefreq>yearly</changefreq>
@@ -331,7 +343,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://brain-beats-pro.netlify.app/blog/2023/01/09/1740-hz-the -solfeggio-frequency-for-upper-homes.html</loc>
+    <loc>https://brain-beats-pro.netlify.app/blog/2023/01/09/1740-hz-the-solfeggio-frequency-for-upper-homes.html</loc>
     <lastmod>2023-01-09</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
@@ -775,7 +787,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://brain-beats-pro.netlify.app/blog/2023/03/26/how-to use-rife-3d-frequencies-for-acne-relief.html</loc>
+    <loc>https://brain-beats-pro.netlify.app/blog/2023/03/26/how-to-use-rife-3d-frequencies-for-acne-relief.html</loc>
     <lastmod>2023-03-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
@@ -889,13 +901,13 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://brain-beats-pro.netlify.app/blog/2023/04/17/the-healing-tones-exploring-the-impact-of-0-15 Hz-binaural-beats-on-mild-depression.html</loc>
+    <loc>https://brain-beats-pro.netlify.app/blog/2023/04/17/the-healing-tones-exploring-the-impact-of-0-15-Hz-binaural-beats-on-mild-depression.html</loc>
     <lastmod>2023-04-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://brain-beats-pro.netlify.app/blog/2023/04/18/0-20-hz-binaural Beats-a-potential-relief-for-post-traumatic-stress.html</loc>
+    <loc>https://brain-beats-pro.netlify.app/blog/2023/04/18/0-20-hz-binaural-Beats-a-potential-relief-for-post-traumatic-stress.html</loc>
     <lastmod>2023-04-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
@@ -943,7 +955,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://brain-beats-pro.netlify.app/blog/2023/04/26/272-10-hz-Pure Tone-a-gateway-to-the-soul-heart-chakra.html</loc>
+    <loc>https://brain-beats-pro.netlify.app/blog/2023/04/26/272-10-hz-Pure-Tone-a-gateway-to-the-soul-heart-chakra.html</loc>
     <lastmod>2023-04-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>

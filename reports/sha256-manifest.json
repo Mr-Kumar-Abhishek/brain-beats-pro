@@ -76,9 +76,9 @@
       "sha256": "a7ad27cdf441bd4488cfe511332685a319d3cd135204b0c9bd088f7a7db5edb3"
     },
     "_config.yml": {
-      "bytes": 1007,
-      "md5": "c267443a278296da9b44b6591523fe42",
-      "sha256": "1ea0fce5b0923be748f7276d556ddbd6b70480a9e6e07b263f06db47bb442489"
+      "bytes": 1124,
+      "md5": "68555cf6ca779d2c7f2f03d9fab41624",
+      "sha256": "5359492ca11ffc9a20d4e672a7585e7bf5fdb60f20942bed6a493258f98a95d0"
     },
     "_includes/seo-schema.html": {
       "bytes": 5407,
@@ -911,9 +911,9 @@
       "sha256": "4a05f854bf8894dd03ad931f0a552c66e9be33898b206042b2efe55d3c103945"
     },
     "netlify.toml": {
-      "bytes": 3739,
-      "md5": "3e84df63b411e49ddb113309f0648842",
-      "sha256": "8b2be5150575924c84c807a400273382fadb6ee3f6a267c0ae9482ee6c76f053"
+      "bytes": 4243,
+      "md5": "4714793962f413fc1de3bab087d2bf42",
+      "sha256": "24251d866dea626bfb3a6eaf7971ce590165b90cf56e5dff6c4bb06730467ae9"
     },
     "noise-processor/black-noise-processor.js": {
       "bytes": 537,
@@ -996,9 +996,9 @@
       "sha256": "3675e8186a4c91f5ed4cae6b7cd6a63b47cf20303badf0af4b6e3e3221e1e9b8"
     },
     "package.json": {
-      "bytes": 1001,
-      "md5": "2122bf87224acdce80ee2b608b44a97a",
-      "sha256": "e56d491018d8657facfb234e298a9f7a572ada35a4c16cd2e3170c38b43411cb"
+      "bytes": 1173,
+      "md5": "ef91d9448e52cacd22c3881a5c0f7518",
+      "sha256": "9ff3ccbd7a140f435686f07e5554a1fae868fa6529ffbf4d20b3def11177bb9f"
     },
     "privacy-policy.html": {
       "bytes": 19895,
@@ -1046,9 +1046,9 @@
       "sha256": "c11e2f2d6c131a9548514b8542b8907992ba12c491d6180a4b3155521cee6416"
     },
     "scripts/generate-sitemap.js": {
-      "bytes": 2930,
-      "md5": "c0d2fb3be82fba005b01d2e7434fd03d",
-      "sha256": "1b5cb478dc32c5269838f3852f6dba91dde507e329b49179e4c7966a814d182b"
+      "bytes": 16014,
+      "md5": "bb4dd580a3c350659450612de565b54c",
+      "sha256": "05792b68caf084905f3af347732b55517493baf99ac58ecb1446a918839aefe9"
     },
     "scripts/verify-sha256.js": {
       "bytes": 6485,
@@ -1076,9 +1076,9 @@
       "sha256": "b932dcbfe4988bde6f417e7a7053bb7ae49ea010e6668b65871cae68df781acd"
     },
     "sitemap.xml": {
-      "bytes": 2528707,
-      "md5": "c814574f1d5ff2b74e05c558fd03c7a2",
-      "sha256": "ef3312f93eca25f3f7ba0753ac2b5d1d547d82a400399a6c85579294144c4005"
+      "bytes": 2529038,
+      "md5": "456878fc9f02767cd22eca241baef4e6",
+      "sha256": "fc678c1857b0d9518407f81d9c9ebaa211a01c12afae16c9332aa9a6f0dac5fa"
     },
     "solfeggio-frequency.html": {
       "bytes": 14465,
@@ -1097,8 +1097,8 @@
     },
     "sw-generated.js": {
       "bytes": 24143,
-      "md5": "723c81921843d930d6a508bf0ca25b92",
-      "sha256": "11cbdc7695d3779ee6dd02806041436b10f6e71584cbb78a346028b1c62fe308"
+      "md5": "cde0c1030e7153fa5af8c381a4354bfe",
+      "sha256": "676159f8f79a08b8e9891794f8bd65a0fca9a2ecb82fb1d701279847f388db46"
     },
     "sw.js": {
       "bytes": 5686,
@@ -1106,9 +1106,9 @@
       "sha256": "2d7c7b6171725035cc0e6f5d1fa81a72d38c8274dbba06120a3b6a7309f121f6"
     },
     "tests/audio-engine.test.js": {
-      "bytes": 33532,
-      "md5": "b4b31cbe344e11a1cb53b64bc0476ce2",
-      "sha256": "0e7591b890b8c153fbd7b124183e504f0ed94b3391e935d694aac3b45a82b8b7"
+      "bytes": 34632,
+      "md5": "a0fc5370fe28c8440dbe2e5a1b41a9b9",
+      "sha256": "9fa1eb62a93e36542e73c93fd32ce74911dde4074101018991d9650feacdf69d"
     },
     "webring.html": {
       "bytes": 12800,

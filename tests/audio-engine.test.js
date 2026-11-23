@@ -596,6 +596,29 @@ async function runTestSuite() {
     "sitemap.xml exists and maintains canonical domain integrity (https://brain-beats-pro.netlify.app)"
   );
 
+  assert(
+    pkgJson.scripts &&
+    pkgJson.scripts["verify:sitemap"] &&
+    pkgJson.bin &&
+    pkgJson.bin["brain-beats-sitemap"] &&
+    configYml.includes("jekyll-sitemap") &&
+    netlifyToml.includes("scripts/generate-sitemap.js") &&
+    pagesWorkflow.includes("verify:sitemap"),
+    "DevOps flows run standalone JavaScript sitemap generator while retaining Ruby jekyll-sitemap backup"
+  );
+
+  const sitemapGenerator = require('../scripts/generate-sitemap.js');
+  const sitemapCheck = sitemapGenerator.verifySitemap();
+  assert(
+    sitemapGenerator.normalizeSlug("1740-hz-the -solfeggio-frequency") === "1740-hz-the-solfeggio-frequency" &&
+    sitemapGenerator.normalizeSlug("how-to use-rife") === "how-to-use-rife" &&
+    sitemapCheck.valid === true &&
+    !/<loc>[^<]*\s[^<]*<\/loc>/.test(sitemapXmlContent) &&
+    sitemapXmlContent.includes("https://brain-beats-pro.netlify.app/blog/") &&
+    !sitemapXmlContent.includes("google7484c80835cfba45.html"),
+    "Standalone JS sitemap normalizes slugs, includes blog hubs, excludes verification files, and passes --verify"
+  );
+
   const assetlinksPath = path.join(__dirname, '../.well-known/assetlinks.json');
   const assetlinks = fs.existsSync(assetlinksPath) ? JSON.parse(fs.readFileSync(assetlinksPath, 'utf8')) : [];
   const validAssetlinks =

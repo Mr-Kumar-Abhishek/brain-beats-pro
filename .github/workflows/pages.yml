@@ -48,6 +48,9 @@ jobs:
       - name: Run Audio Engine Test Suite (TDD)
         run: npm test
 
+      - name: Generate & Verify JavaScript Sitemap (Ruby jekyll-sitemap Backup Active)
+        run: npm run build:sitemap && npm run verify:sitemap
+
       - name: Run Ruby & Node Builds Simultaneously
         env:
           JEKYLL_ENV: production
@@ -71,6 +74,9 @@ jobs:
       - name: Sync Sitemap, Service Worker & Bypass Jekyll Processing
         run: |
           cp sitemap.xml _site/sitemap.xml || true
+          mkdir -p _site/.well-known
+          cp .well-known/assetlinks.json _site/.well-known/assetlinks.json || true
+          cp _redirects _site/_redirects || true
           cp sw-generated.js _site/sw-generated.js || true
           cp css/main.css _site/css/main.css || true
           cp blog/css/main.css _site/blog/css/main.css || true

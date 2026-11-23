@@ -19,7 +19,7 @@ future: true
 plugins:
   - jekyll-paginate
   - jekyll-feed
-  - jekyll-sitemap
+  - jekyll-sitemap # Ruby backup when Node.js is unavailable; DevOps flows overwrite _site/sitemap.xml with scripts/generate-sitemap.js
 
 include: [".well-known", "_redirects"]
 

@@ -2,14 +2,18 @@
   "name": "brain-beats",
   "version": "1.0.2",
   "description": "Brainwave entrainment web audio application and research blog",
+  "bin": {
+    "brain-beats-sitemap": "./scripts/generate-sitemap.js"
+  },
   "scripts": {
     "test": "node tests/audio-engine.test.js",
     "build:css": "node scripts/build-css.js",
     "build:sitemap": "node scripts/generate-sitemap.js",
+    "verify:sitemap": "node scripts/generate-sitemap.js --verify",
     "build:sw": "workbox injectManifest workbox-config.js || true",
     "build:sha256": "node scripts/verify-sha256.js --write",
     "verify:sha256": "node scripts/verify-sha256.js",
-    "build": "npm run build:css && npm run build:sitemap && npm run build:sw",
+    "build": "npm run build:css && npm run build:sitemap && npm run verify:sitemap && npm run build:sw",
     "build:offline": "npm run build && npm test",
     "build:jekyll": "bundle exec jekyll build",
     "serve:jekyll": "bundle exec jekyll serve"
